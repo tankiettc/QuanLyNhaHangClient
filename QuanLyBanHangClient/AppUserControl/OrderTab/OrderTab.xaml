@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.OrderTab.OrderTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab"
+             xmlns:models="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="491" d:DesignWidth="800" >
+    <Border BorderBrush="{StaticResource MainSolidColor}" CornerRadius="{StaticResource CornerRadiusValue}" Background="{StaticResource MainSolidColor}">
+        <Grid>
+            <Image  Source="/Resource/Image/bg-1.png" OpacityMask="#2DFFFFFF" Margin="100" HorizontalAlignment="Left"/>
+            <DockPanel>
+                <DockPanel.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
+                    </Style>
+                </DockPanel.Resources>
+                <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
+                    <TextBlock.Background>
+                        <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                            <GradientStop Color="#FFBC4444"/>
+                            <GradientStop Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                Đặt thức ăn    @
+                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3.0*" />
+                    </Grid.ColumnDefinitions>
+                    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Margin="10,10,0,10">
+                        <StackPanel Grid.Column="0">
+                            <Button Style="{StaticResource BtnInSideBarStyle}" Margin="0" BorderThickness="0,0,0,1">
+                                <Grid>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" TextDecorations="Underline">Trở về</TextBlock>
+                                    <Image Source="/Resource/Image/back-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
+                                </Grid>
+                            </Button>
+                            <Button Style="{StaticResource BtnInSideBarStyle}" Margin="5">
+                                <Grid>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Thêm Order</TextBlock>
+                                    <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
+                                </Grid>
+                            </Button>
+                            <Button Style="{StaticResource BtnInSideBarStyle}" Height="40">
+                                <Grid>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Xóa Order</TextBlock>
+                                    <Image Source="/Resource/Image/remove-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
+                                </Grid>
+                            </Button>
+                            <Button Style="{StaticResource BtnInSideBarStyle}" Height="40">
+                                <Grid>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold" Text="Thanh toán" TextDecorations="Underline" FontSize="16"/>
+                                    <Image Source="/Resource/Image/detail-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" BorderThickness="2" Margin="10" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
+                        <DockPanel>
+                            <Grid DockPanel.Dock="Bottom">
+                                <Border BorderBrush="{x:Null}" Height="50" >
+                                    <TextBlock DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FFF4FF00" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
+                                    Thành tiền: 270000 VND
+                                    </TextBlock>
+                                </Border>
+                                <Button Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806">
+                                    Thanh toán
+                                </Button>
+                            </Grid>
+
+                            <ListView Background="Transparent">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <models:OrderInfo/>
+                                <models:OrderInfo/>
+                                <models:OrderInfo/>
+                            </ListView>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </Border>
+</UserControl>

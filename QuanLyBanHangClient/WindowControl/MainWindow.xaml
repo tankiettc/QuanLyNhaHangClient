@@ -1,0 +1,127 @@
+﻿<Window x:Class="QuanLyBanHangClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHangClient"
+        xmlns:foodtab="clr-namespace:QuanLyBanHangClient.AppUserControl.FoodTab"
+        xmlns:ordertab="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab"
+        xmlns:ingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.IngredientTab"
+        xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="900" MinHeight="550" Width="900" Height="548">
+    <Border BorderThickness="1" BorderBrush="Black">
+        <Grid>
+            <Image Source="/Resource/Image/smoke.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,100,0" Width="300"/>
+            <DockPanel>
+                <Border DockPanel.Dock="Bottom" CornerRadius="8,0,0,8" BorderThickness="2,2,0,2" BorderBrush="{StaticResource MainSolidColor}" Margin="2,2,0,2">
+                    <TextBlock  FontWeight="Bold" Text="  Developed by DawningTeam - ©CopyRight 2017" >
+                        <TextBlock.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="8,8,8,8"/>
+                            </Style>
+                        </TextBlock.Resources>
+                    </TextBlock>
+                </Border>
+                <TabControl x:Name="TabControlMain" TabStripPlacement="Top" BorderThickness="0" HorizontalContentAlignment="Center" DockPanel.Dock="Top" SelectionChanged="TabControlMain_SelectionChanged" >
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="Width" Value="150"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="#FF7A3030" CornerRadius="4,4,0,0" Margin="2,0,0,-4">
+                                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="{StaticResource MainColor}" Offset="0.7"/>
+                                                            <GradientStop Color="#FFE2E2E2" Offset="0"/>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected,
+                          RelativeSource={RelativeSource AncestorType=TabItem}}"
+                         Value="True">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabControl.Resources>
+
+                    <TabItem x:Name="TabItemFood" >
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/food-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Món ăn</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <foodtab:FoodTab Height="Auto" Width="Auto" />
+                    </TabItem>
+                    <TabItem x:Name="TabItemOrder">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/order-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Order</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid>
+                            <ordertab:TableTab Height="Auto" Width="Auto" />
+                            <ordertab:OrderTab Height="Auto" Width="Auto" Visibility="Hidden" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="TabItemIngredient">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/ingredient-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}" FontSize="18">Nguyên liệu</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <ingredienttab:IngredientTab Height="Auto" Width="Auto" />
+                    </TabItem>
+                    <TabItem x:Name="TabItemRespository">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/respository-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Kho</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+            
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,0,30,0" Width="864" HorizontalAlignment="Right">
+                <Image Source="/Resource/Image/app-logo-3.png" Margin="0,10" HorizontalAlignment="Right" Height="60" VerticalAlignment="Top"/>
+                <TextBlock Margin="0,20,17,0" FontFamily="UVN Ke Chuyen1" FontWeight="Bold" FontSize="22" Width="180" FlowDirection="LeftToRight" Foreground="{StaticResource MainSolidColor}">
+                    Restauran Manager
+                </TextBlock>
+            </StackPanel>
+            <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
+                <controls:CircularProgressBar x:Name="progressBar"
+                             VerticalAlignment="Center" Width="45" Height="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Canvas.Top="0"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
