@@ -46,7 +46,6 @@ namespace QuanLyBanHangClient.Manager {
         }
         public async Task createFoodCategorizeFromServerAndUpdate(
                     string name,
-                    decimal price,
                     Action<NetworkResponse> cbSuccessSent = null,
                     Action<string> cbError = null
             ) {
@@ -86,7 +85,7 @@ namespace QuanLyBanHangClient.Manager {
             await RequestManager.getInstance().putAsync(
                 API_CONTROLLER + "/" + foodCategorizeId,
                 keys,
-                cbSuccessSent,
+                newCBSuccessSent,
                 cbError
                 );
         }

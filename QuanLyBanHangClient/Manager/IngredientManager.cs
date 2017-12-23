@@ -109,7 +109,7 @@ namespace QuanLyBanHangClient.Manager
             await RequestManager.getInstance().putAsync(
                 API_CONTROLLER + "/" + ingredientId,
                 keys,
-                cbSuccessSent,
+                newCBSuccessSent,
                 cbError
                 );
         }

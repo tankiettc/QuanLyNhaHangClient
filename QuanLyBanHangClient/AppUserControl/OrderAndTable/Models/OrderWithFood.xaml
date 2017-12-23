@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.OrderTab.Models.OrderWithFood"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab.Models"
+             mc:Ignorable="d" Width="Auto" Height="Auto">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <StackPanel  Orientation="Horizontal">
+            <Button x:Name="BtnEdit" Background="#00DDDDDD" BorderBrush="#00707070"  Cursor="Hand" Click="BtnEdit_Click" Visibility="Hidden" Width="0" >
+                <Image Source="/Resource/Image/file_edit.png" Margin="4,0,0,0" Height="20" />
+            </Button>
+            <Button x:Name="BtnRemove" Background="#00DDDDDD" BorderBrush="#00707070" Cursor="Hand" Click="BtnRemove_Click">
+                <Image Source="/Resource/Image/file_delete.png" Margin="10,0,0,0" Height="20" />
+            </Button>
+        </StackPanel>
+        <TextBlock Grid.Column="1" Name="textBlockName" VerticalAlignment="Center" Foreground="White" >
+            Cơm chiên xào tỏi
+        </TextBlock>
+        <StackPanel Grid.Column="2" Orientation="Horizontal">
+            <TextBlock  VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White">
+            x
+            </TextBlock>
+            <TextBox x:Name="TextBoxQuantity" Width="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TextBoxQuantity_TextChanged" PreviewTextInput="NumberValidationTextBox" Margin="10,0,0,0">25</TextBox>
+        </StackPanel>
+        <TextBlock Grid.Column="3" Name="textBlockTotal"  VerticalAlignment="Center" Margin="0" Foreground="White" TextAlignment="Right" Width="100">
+            30000
+        </TextBlock>
+    </Grid>
+</UserControl>

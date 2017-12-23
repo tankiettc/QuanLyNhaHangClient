@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\App.xaml
-13-384882804
+18-1211838541
 
-37-1636429520
+441307984880
 16757607715
-AppUserControl\Custom\CircularProgressBar.xaml;AppUserControl\FoodTab\FoodTab.xaml;AppUserControl\IngredientTab\IngredientTab.xaml;AppUserControl\OrderTab\Models\OrderInfo.xaml;AppUserControl\OrderTab\Models\OrderWithFood.xaml;AppUserControl\OrderTab\OrderTab.xaml;AppUserControl\OrderTab\TableTab.xaml;WindowControl\FoodDetail.xaml;WindowControl\UnitDetail.xaml;WindowControl\IngredientDetail.xaml;WindowControl\MainWindow.xaml;Resource\ResourcesStyle.xaml;Resource\StringResources.xaml;
+AppUserControl\Custom\CircularProgressBar.xaml;AppUserControl\Custom\RadioListBox.xaml;AppUserControl\FoodTab\FoodTab.xaml;AppUserControl\IngredientTab\IngredientTab.xaml;AppUserControl\OrderAndTable\Models\OrderInfo.xaml;AppUserControl\OrderAndTable\Models\OrderWithFood.xaml;AppUserControl\OrderAndTable\Models\TableInfo.xaml;AppUserControl\OrderAndTable\OrderAndTableTab.xaml;AppUserControl\OrderAndTable\OrderHistoryTab.xaml;AppUserControl\OrderAndTable\OrderTab.xaml;AppUserControl\OrderAndTable\TableTab.xaml;WindowControl\CategorizeDetail.xaml;WindowControl\FoodDetail.xaml;WindowControl\UnitDetail.xaml;WindowControl\IngredientDetail.xaml;WindowControl\MainWindow.xaml;Resource\ResourcesStyle.xaml;Resource\StringResources.xaml;
 
 False
 

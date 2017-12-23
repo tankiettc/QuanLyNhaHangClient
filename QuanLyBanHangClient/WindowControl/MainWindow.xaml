@@ -87,10 +87,7 @@
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Order</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
-                        <Grid>
-                            <ordertab:TableTab Height="Auto" Width="Auto" />
-                            <ordertab:OrderTab Height="Auto" Width="Auto" Visibility="Hidden" />
-                        </Grid>
+                        <ordertab:OrderAndTableTab/>
                     </TabItem>
                     <TabItem x:Name="TabItemIngredient">
                         <TabItem.Header>
@@ -114,7 +111,7 @@
             
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,0,30,0" Width="864" HorizontalAlignment="Right">
                 <Image Source="/Resource/Image/app-logo-3.png" Margin="0,10" HorizontalAlignment="Right" Height="60" VerticalAlignment="Top"/>
-                <TextBlock Margin="0,20,17,0" FontFamily="UVN Ke Chuyen1" FontWeight="Bold" FontSize="22" Width="180" FlowDirection="LeftToRight" Foreground="{StaticResource MainSolidColor}">
+                <TextBlock Margin="0,20,17,0" FontFamily="UVN Ke Chuyen1" FontWeight="Bold" FontSize="22" Width="180" FlowDirection="LeftToRight" Foreground="{StaticResource MainSolidColor}" VerticalAlignment="Top">
                     Restauran Manager
                 </TextBlock>
             </StackPanel>

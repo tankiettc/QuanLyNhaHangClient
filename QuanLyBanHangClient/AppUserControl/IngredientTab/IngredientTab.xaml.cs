@@ -117,6 +117,32 @@ namespace QuanLyBanHangClient.AppUserControl.IngredientTab {
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e) {
+            TextBox textBoxName = (TextBox)sender;
+            string filterText = textBoxName.Text;
+
+            ICollectionView cv = CollectionViewSource.GetDefaultView(DataGridIngredient.ItemsSource);
+            cv.Filter = o => {
+                /* change to get data row value */
+                IngredientTable p = o as IngredientTable;
+                if (!string.IsNullOrEmpty(filterText)) {
+                    return (p.Name.ToUpper().Contains(filterText.ToUpper()) || p.UnitName.ToUpper().Contains(filterText.ToUpper()));
+                } else {
+                    return true;
+                }
+                /* end change to get data row value */
+            };
+
+            ICollectionView cv2 = CollectionViewSource.GetDefaultView(DataGridUnit.ItemsSource);
+            cv2.Filter = o => {
+                /* change to get data row value */
+                UnitTable p = o as UnitTable;
+                if (!string.IsNullOrEmpty(filterText)) {
+                    return (p.Name.ToUpper().Contains(filterText.ToUpper()));
+                } else {
+                    return true;
+                }
+                /* end change to get data row value */
+            };
 
         }
 
@@ -149,7 +175,7 @@ namespace QuanLyBanHangClient.AppUserControl.IngredientTab {
                         ingredientListTable.Add(new IngredientTable() {
                             Id = entry.Value.IngredientId,
                             Name = entry.Value.Name,
-                            UnitName = entry.Value.Unit.Name
+                            UnitName = UnitManager.getInstance().UnitList[entry.Value.UnitId].Name
                         });
                     }
                 }

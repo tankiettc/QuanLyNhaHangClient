@@ -48,7 +48,7 @@ namespace QuanLyBanHangClient.WindowControl {
                 TextBoxId.Text = ingredientData.IngredientId.ToString();
                 TextBoxName.Text = ingredientData.Name;
 
-                ComboBoxUnit.SelectedValue = ingredientId;
+                ComboBoxUnit.SelectedValue = ingredientData.UnitId;
                 BtnConfirm.Content = "Sửa";
             }
         }

@@ -1,4 +1,5 @@
-﻿using QuanLyBanHangClient.AppUserControl.IngredientTab;
+﻿using QuanLyBanHangClient.AppUserControl.FoodTab;
+using QuanLyBanHangClient.AppUserControl.IngredientTab;
 using QuanLyBanHangClient.WindowControl;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,12 @@ namespace QuanLyBanHangClient.Manager {
         public void showMessageBoxCheckInfoAgain() {
             MessageBox.Show(Constant.MS_CHECK_INFO_AGAIN);
         }
+        public MessageBoxResult showMessageBoxYesNoCustom(string info) {
+            return MessageBox.Show("Xác nhận", info, MessageBoxButton.YesNo);
+        }
+        public MessageBoxResult showMessageBoxConfirm(string info) {
+            return MessageBox.Show(info, "Xác nhận");
+        }
         public void showMessageBoxErrorNetwork() {
             MessageBox.Show(Constant.MS_ERROR_NETWORK);
         }
@@ -44,6 +51,22 @@ namespace QuanLyBanHangClient.Manager {
             UnitDetail detail = new UnitDetail(
                 ingredientTab,
                 unitId);
+            detail.ShowDialog();
+        }
+        public void showDetailFoodWithCategorizeWindow(
+            FoodTab foodTab,
+            int foodWithCategorizeId = Constant.ID_CREATE_NEW) {
+            CategorizeDetail detail = new CategorizeDetail(
+                foodTab,
+                foodWithCategorizeId);
+            detail.ShowDialog();
+        }
+        public void showDetailFoodWindow(
+            FoodTab foodTab,
+            int foodId = Constant.ID_CREATE_NEW) {
+            FoodDetail detail = new FoodDetail(
+                foodTab,
+                foodId);
             detail.ShowDialog();
         }
     }

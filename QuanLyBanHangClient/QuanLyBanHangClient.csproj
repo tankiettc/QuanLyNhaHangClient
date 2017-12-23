@@ -62,10 +62,17 @@
     <Compile Include="AppUserControl\Custom\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUserControl\Custom\RadioListBox.xaml.cs">
+      <DependentUpon>RadioListBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppUserControl\FoodTab\FoodTab.xaml.cs">
       <DependentUpon>FoodTab.xaml</DependentUpon>
     </Compile>
     <Page Include="AppUserControl\Custom\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppUserControl\Custom\RadioListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -77,19 +84,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppUserControl\OrderTab\Models\OrderInfo.xaml">
+    <Page Include="AppUserControl\OrderAndTable\Models\OrderInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppUserControl\OrderTab\Models\OrderWithFood.xaml">
+    <Page Include="AppUserControl\OrderAndTable\Models\OrderWithFood.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppUserControl\OrderTab\OrderTab.xaml">
+    <Page Include="AppUserControl\OrderAndTable\Models\TableInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppUserControl\OrderTab\TableTab.xaml">
+    <Page Include="AppUserControl\OrderAndTable\OrderAndTableTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\OrderAndTable\OrderHistoryTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\OrderAndTable\OrderTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\OrderAndTable\TableTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowControl\CategorizeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,22 +139,33 @@
     <Compile Include="AppUserControl\IngredientTab\IngredientTab.xaml.cs">
       <DependentUpon>IngredientTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppUserControl\OrderTab\Models\OrderInfo.xaml.cs">
+    <Compile Include="AppUserControl\OrderAndTable\Models\OrderInfo.xaml.cs">
       <DependentUpon>OrderInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppUserControl\OrderTab\Models\OrderWithFood.xaml.cs">
+    <Compile Include="AppUserControl\OrderAndTable\Models\OrderWithFood.xaml.cs">
       <DependentUpon>OrderWithFood.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppUserControl\OrderTab\OrderTab.xaml.cs">
+    <Compile Include="AppUserControl\OrderAndTable\Models\TableInfo.xaml.cs">
+      <DependentUpon>TableInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\OrderAndTable\OrderAndTableTab.xaml.cs">
+      <DependentUpon>OrderAndTableTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\OrderAndTable\OrderHistoryTab.xaml.cs">
+      <DependentUpon>OrderHistoryTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\OrderAndTable\OrderTab.xaml.cs">
       <DependentUpon>OrderTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppUserControl\OrderTab\TableTab.xaml.cs">
+    <Compile Include="AppUserControl\OrderAndTable\TableTab.xaml.cs">
       <DependentUpon>TableTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
+    <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
+    <Compile Include="Manager\TableManager.cs" />
     <Compile Include="Manager\IngredientManager.cs" />
     <Compile Include="Manager\RequestManager.cs" />
     <Compile Include="Manager\WindownsManager.cs" />
@@ -150,6 +184,9 @@
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="WindowControl\CategorizeDetail.xaml.cs">
+      <DependentUpon>CategorizeDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowControl\FoodDetail.xaml.cs">
       <DependentUpon>FoodDetail.xaml</DependentUpon>
     </Compile>
@@ -252,6 +289,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\add-icon-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Aqua-Ball-Green-icon.png" />
+    <Resource Include="Resource\Image\Button-Blank-Gray-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\refresh-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\filter-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\history-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

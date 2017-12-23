@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.OrderTab.Models.OrderInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto">
+    <Expander IsExpanded="True">
+        <Expander.Header >
+            <Border Width="550">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="#FF7F9C8F"/>
+                        <GradientStop Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Name="TextBlockHeader" Foreground="White" Text="Order 1" FontWeight="Bold" TextDecorations="Underline" Margin="10,0,0,0"  />
+            </Border>
+        </Expander.Header>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Margin="0,10">
+                <Button x:Name="BtnAddFood" Width="140" Height="30" HorizontalAlignment="Left" Margin="70,0,0,0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="DarkGray" Click="BtnAddFood_Click">
+                    <StackPanel Orientation="Horizontal" Width="140">
+                        <Image Source="/Resource/Image/add-icon-4.png" Width="30" Margin="5,0,0,0"    />
+                        <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#FFF18527">Thêm món</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="BtnAccept" Template="{StaticResource BtnTemplate}" Width="100" Click="BtnAccept_Click">Xác nhận</Button>
+                <Border BorderBrush="{x:Null}" Height="26"  >
+                    <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="#FFEAD732" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
+                </Border>
+                <Border x:Name="AddFoodGroup" Background="#FF7D4D4D" Margin="0,0,180,0" Height="30" Width="395" Visibility="Hidden" >
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="ComboBoxSelectFood" Style="{StaticResource ComboBoxFlatStyle}" Height="20" Width="180" FontSize="10"/>
+                        <TextBlock VerticalAlignment="Center" Padding="0" Margin="5,0,0,0">x</TextBlock>
+                        <TextBox x:Name="TextBoxQuantity" PreviewTextInput="NumberValidationTextBox"  Template="{StaticResource TextBoxRoundedTemplate}" Height="20" Width="50" Margin="2,0,0,0" FontSize="10" VerticalContentAlignment="Center">1</TextBox>
+                        <Button x:Name="BtnConfirmAdd" Template="{StaticResource BtnTemplate}" Width="50" Height="30" Margin="30,0,0,0" Click="BtnConfirmAdd_Click" FontSize="10">Thêm</Button>
+                        <Button x:Name="BtnConfirmExit" Template="{StaticResource BtnTemplate}" Width="50" Height="30" Margin="20,0,0,0" Click="BtnConfirmExit_Click" FontSize="10">Thoát</Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <ListView Name="listViewOrderWithFood" DockPanel.Dock="Top" Margin="50,0" Background="Transparent" BorderBrush="#00ABADB3">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </DockPanel>
+    </Expander>
+</UserControl>

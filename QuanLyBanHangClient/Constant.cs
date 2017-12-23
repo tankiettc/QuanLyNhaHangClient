@@ -12,6 +12,10 @@ namespace QuanLyBanHangClient
         public const string MS_ERROR_SOMETHING = "Có lỗi xảy ra trong quá trình thực hiện, xin kiểm tra lại thông tin của bạn";
         public const string MS_CHECK_INFO_AGAIN = "Kiểm tra lại và điền đầy đủ thông tin";
         public const int ID_CREATE_NEW = -1;
+
+        public static double GetTime(DateTime dateTime) {
+            return dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+        }
     }
     public class ComboData {
         public int Id { get; set; }

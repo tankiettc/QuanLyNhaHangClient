@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using QuanLyBanHangAPI.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,6 +67,7 @@ namespace QuanLyBanHangClient.Manager {
                     string name,
                     List<IngredientWithFood> ingredientWithFoods,
                     decimal price,
+                    long foodCategorizeId,
                     Action<NetworkResponse> cbSuccessSent = null,
                     Action<string> cbError = null
             ) {
@@ -75,14 +78,18 @@ namespace QuanLyBanHangClient.Manager {
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };
-            KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
-                new KeyValuePair<string, string>("Name", name),
-                new KeyValuePair<string, string>("IngredientWithFoods", JsonConvert.SerializeObject(ingredientWithFoods)),
-                new KeyValuePair<string, string>("Price", price.ToString())
-            };
-            await RequestManager.getInstance().postAsync(
+            var myObject = (dynamic)new JObject();
+            myObject.Name = name;
+            myObject.Price = price;
+            myObject.FoodCategorizeId = foodCategorizeId;
+            myObject.IngredientWithFoods = (dynamic)new JArray();
+            foreach (IngredientWithFood ingredientWithFood in ingredientWithFoods) {
+                myObject.IngredientWithFoods.Add(JObject.Parse(JsonConvert.SerializeObject(ingredientWithFood)));
+            }
+
+            await RequestManager.getInstance().postAsyncJson(
                 API_CONTROLLER,
-                keys,
+                myObject,
                 newCBSuccessSent,
                 cbError
                 );
@@ -92,6 +99,7 @@ namespace QuanLyBanHangClient.Manager {
                     string name,
                     List<IngredientWithFood> ingredientWithFoods,
                     decimal price,
+                    long foodCategorizeId,
                     Action<NetworkResponse> cbSuccessSent = null,
                     Action<string> cbError = null
             ) {
@@ -105,15 +113,21 @@ namespace QuanLyBanHangClient.Manager {
             KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
                 new KeyValuePair<string, string>("Name", name),
                 new KeyValuePair<string, string>("IngredientWithFoods", JsonConvert.SerializeObject(ingredientWithFoods)),
-                new KeyValuePair<string, string>("Price", price.ToString())
+                new KeyValuePair<string, string>("Price", price.ToString()),
+                new KeyValuePair<string, string>("FoodCategorizeId", foodCategorizeId.ToString())
             };
             await RequestManager.getInstance().putAsync(
                 API_CONTROLLER + "/" + foodId,
                 keys,
-                cbSuccessSent,
+                newCBSuccessSent,
                 cbError
                 );
         }
+
+        internal void createFoodFromServerAndUpdate(string text, List<IngredientWithFood> ingredientsWithFood, bool v, Action<NetworkResponse> cbSuccessSent, Action<string> cbError) {
+            throw new NotImplementedException();
+        }
+
         public async Task deleteFoodFromServerAndUpdate(
                     int id,
                     Action<NetworkResponse> cbSuccessSent = null,

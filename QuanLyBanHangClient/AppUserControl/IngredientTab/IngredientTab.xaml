@@ -85,25 +85,25 @@
                     <Border Grid.Column="1" BorderThickness="2" Margin="10" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <DockPanel>
+                            <DockPanel >
+                                <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách đơn vị</TextBlock>
+                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" SelectionChanged="DataGridUnit_SelectionChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                                        <DataGridTextColumn Header="Đơn vị" Binding="{Binding Name}" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+                            <DockPanel  Grid.Column="1">
                                 <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách nguyên liệu</TextBlock>
                                 <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" DockPanel.Dock="Bottom" SelectionChanged="DataGridIngredient_SelectionChanged">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>
                                         <DataGridTextColumn Header="Đơn vị" Binding="{Binding UnitName}" Width="*"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </DockPanel>
-                            <DockPanel Grid.Column="1" >
-                                <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách đơn vị</TextBlock>
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" SelectionChanged="DataGridUnit_SelectionChanged">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                                        <DataGridTextColumn Header="Đơn vị" Binding="{Binding Name}" Width="*"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>
