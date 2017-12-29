@@ -1,5 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.FoodTab;
+using QuanLyBanHangClient.AppUserControl.ImportIngredientTab;
+using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
 using QuanLyBanHangClient.AppUserControl.IngredientTab;
 using QuanLyBanHangClient.AppUserControl.OrderTab;
 using QuanLyBanHangClient.Manager;
@@ -37,7 +39,11 @@ namespace QuanLyBanHangClient
                 ((IngredientTab)(TabItemIngredient.Content)).reloadIngredientTableUI(true, delegate() {
                     ((FoodTab)(TabItemFood.Content)).reloadCategoryTableUI(true, delegate () {
                     ((FoodTab)(TabItemFood.Content)).reloadFoodTableUI(true, delegate() {
-                        isReloading = false;
+                        ((OrderAndTableTab)(TabItemOrder.Content)).reloadOrderUI(true, delegate () {
+                            ((OrderAndTableTab)(TabItemOrder.Content)).reloadTableUI(true, delegate() {
+                                isReloading = false;
+                            });
+                        });
                     });
                     });
                 });
@@ -63,6 +69,9 @@ namespace QuanLyBanHangClient
                 ((OrderAndTableTab)(TabItemOrder.Content)).reloadOrderUI(true, delegate () {
                     ((OrderAndTableTab)(TabItemOrder.Content)).reloadTableUI(true);
                 });
+            } else if(TabItemRespository.IsSelected) {
+                var tabImportIngredient = ((ImportIngredientTab)TabItemRespository.Content).TabImportIngredient;
+                ((ImportTab)tabImportIngredient.Content).setupComboBoxIngredient();
             }
         }
     }

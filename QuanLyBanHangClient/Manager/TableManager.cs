@@ -77,6 +77,7 @@ namespace QuanLyBanHangClient.Manager
                 if (networkResponse.Successful) {
                     Table tableCreated = JsonConvert.DeserializeObject<Table>(networkResponse.Data.ToString());
                     _tableList[tableCreated.TableId] = tableCreated;
+                    _tableList.Remove(tableId);
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };

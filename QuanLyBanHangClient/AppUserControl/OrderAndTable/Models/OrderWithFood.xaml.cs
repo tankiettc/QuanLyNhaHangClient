@@ -39,7 +39,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             if (_foodWithOrder != null) {
                 textBlockName.Text = _foodWithOrder.Food.Name;
                 TextBoxQuantity.Text = _foodWithOrder.Quantities.ToString();
-                textBlockTotal.Text = string.Format("{0:#,0.0}", (_foodWithOrder.Quantities * _foodWithOrder.Food.Price));
+                textBlockTotal.Text = Constant.formatMoney(_foodWithOrder.Quantities * _foodWithOrder.Food.Price);
                 previousQuantity = _foodWithOrder.Quantities;
             }
         }
@@ -69,7 +69,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 BtnEdit.IsEnabled = false;
                 return;
             }
-            textBlockTotal.Text = string.Format("{0:#,0.0}", (newQuantity * _foodWithOrder.Food.Price));
+            textBlockTotal.Text = Constant.formatMoney (newQuantity * _foodWithOrder.Food.Price);
             BtnEdit.IsEnabled = true;
             orderInfo.BtnAccept.Visibility = Visibility.Visible;
             orderInfo.onChangeMoney();

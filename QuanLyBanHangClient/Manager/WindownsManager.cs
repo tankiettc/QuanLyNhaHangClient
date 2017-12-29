@@ -24,7 +24,7 @@ namespace QuanLyBanHangClient.Manager {
             MessageBox.Show(Constant.MS_CHECK_INFO_AGAIN);
         }
         public MessageBoxResult showMessageBoxYesNoCustom(string info) {
-            return MessageBox.Show("Xác nhận", info, MessageBoxButton.YesNo);
+            return MessageBox.Show(info, "Xác nhận", MessageBoxButton.YesNo);
         }
         public MessageBoxResult showMessageBoxConfirm(string info) {
             return MessageBox.Show(info, "Xác nhận");

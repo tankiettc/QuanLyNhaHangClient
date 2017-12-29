@@ -8,8 +8,9 @@
         xmlns:ordertab="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab"
         xmlns:ingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.IngredientTab"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
+        xmlns:importingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="900" MinHeight="550" Width="900" Height="548">
+        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="900" MinHeight="730" Width="900" Height="730">
     <Border BorderThickness="1" BorderBrush="Black">
         <Grid>
             <Image Source="/Resource/Image/smoke.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,100,0" Width="300"/>
@@ -71,6 +72,15 @@
                         </Style>
                     </TabControl.Resources>
 
+                    <TabItem x:Name="TabItemOrder">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/order-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Đặt món</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <ordertab:OrderAndTableTab/>
+                    </TabItem>
                     <TabItem x:Name="TabItemFood" >
                         <TabItem.Header>
                             <StackPanel>
@@ -79,15 +89,6 @@
                             </StackPanel>
                         </TabItem.Header>
                         <foodtab:FoodTab Height="Auto" Width="Auto" />
-                    </TabItem>
-                    <TabItem x:Name="TabItemOrder">
-                        <TabItem.Header>
-                            <StackPanel>
-                                <Image Width="50" Source="/Resource/Image/order-icon.png"/>
-                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Order</TextBlock>
-                            </StackPanel>
-                        </TabItem.Header>
-                        <ordertab:OrderAndTableTab/>
                     </TabItem>
                     <TabItem x:Name="TabItemIngredient">
                         <TabItem.Header>
@@ -105,6 +106,7 @@
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Kho</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
+                        <importingredienttab:ImportIngredientTab Height="Auto" Width="Auto"/>
                     </TabItem>
                 </TabControl>
             </DockPanel>

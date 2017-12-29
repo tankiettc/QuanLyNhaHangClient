@@ -69,7 +69,14 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <Style x:Key="BorderGreen" TargetType="Border">
         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
         <Setter Property="Padding" Value="2"/>
-        <Setter Property="Background" Value="Black"> </Setter>
+        <Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="#FFEAE428" Offset="0"/>
+                    <GradientStop Color="#FFED6F00" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
     </Style>
     <ControlTemplate x:Key="BtnTemplate" TargetType="{x:Type Button}" >
         <Border Style="{StaticResource BorderGreen}">
@@ -84,6 +91,10 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
         </Border>
     </ControlTemplate>
 
+    <Storyboard x:Key="FadeAnim" Storyboard.TargetProperty="(Canvas.Left)">
+        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.3"/>
+    </Storyboard>
+    
     <Style x:Key="BtnInSideBarStyle" TargetType="{x:Type Button}">
         <!--Cursor="Hand" Height="40" Foreground="#FFF4FF00"-->
         <Setter Property="Cursor" Value="Hand"/>
@@ -107,19 +118,6 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="#4CA37A7A"/>
-            </Trigger>
-            <Trigger Property="Visibility" Value="Visible">
-                <Trigger.EnterActions>
-                    <BeginStoryboard Name="MyFadeEffect">
-                        <Storyboard>
-                            <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
-                        From="0.0" To="1.0" Duration="0:0:0.8"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <StopStoryboard BeginStoryboardName="MyFadeEffect"/>
-                </Trigger.ExitActions>
             </Trigger>
         </Style.Triggers>
         

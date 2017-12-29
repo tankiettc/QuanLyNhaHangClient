@@ -16,6 +16,9 @@ namespace QuanLyBanHangClient
         public static double GetTime(DateTime dateTime) {
             return dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
         }
+        public static string formatMoney(decimal money) {
+            return string.Format("{0:#,0.0}", money);
+        }
     }
     public class ComboData {
         public int Id { get; set; }

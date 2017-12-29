@@ -28,6 +28,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
                 }
             }
             BtnRemoveTable.IsEnabled = false;
+            HistoryTab.reloadTable();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9]+");
@@ -85,6 +86,9 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
 
         private void BtnChangeTableId_Click(object sender, System.Windows.RoutedEventArgs e) {
             int newTableId = 0;
+            if(!int.TryParse(TextBoxCurrentTableId.Text, out newTableId)) {
+                return;
+            }
             int oldTableId = ((TableInfo)LVTable.SelectedItem).TableData.TableId;
             RequestManager.getInstance().showLoading();
             Action<NetworkResponse> cbSuccessSent =

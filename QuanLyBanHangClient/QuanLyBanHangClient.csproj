@@ -80,6 +80,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportIngredientTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ImportIngredientTab\ImportTab\ImportTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AppUserControl\IngredientTab\IngredientTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +160,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.xaml.cs">
+      <DependentUpon>ImportDetailTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.xaml.cs">
+      <DependentUpon>ImportHistoryCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.xaml.cs">
+      <DependentUpon>ImportHistoryTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportIngredientTab.xaml.cs">
+      <DependentUpon>ImportIngredientTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.xaml.cs">
+      <DependentUpon>ImportIngredientCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ImportIngredientTab\ImportTab\ImportTab.xaml.cs">
+      <DependentUpon>ImportTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppUserControl\IngredientTab\IngredientTab.xaml.cs">
       <DependentUpon>IngredientTab.xaml</DependentUpon>
     </Compile>
@@ -163,6 +205,7 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
+    <Compile Include="Manager\ImportIngredientManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Manager\TableManager.cs" />
@@ -177,7 +220,7 @@
     <Compile Include="Model\ImportBill.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\IngredientWithFood.cs" />
-    <Compile Include="Model\IngredientWithImportBill.cs" />
+    <Compile Include="Model\.cs" />
     <Compile Include="Model\IngredientWithReport.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PrepareFoodArchive.cs" />

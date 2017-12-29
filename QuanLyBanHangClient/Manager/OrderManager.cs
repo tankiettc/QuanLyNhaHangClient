@@ -35,6 +35,9 @@ namespace QuanLyBanHangClient.Manager
                     _orderList.Clear();
                     List<Order> orderListFromSV = JsonConvert.DeserializeObject<List<Order>>(networkResponse.Data.ToString());
                     orderListFromSV.ForEach(delegate (Order order) {
+                        if (order.FoodWithOrders == null) {
+                            order.FoodWithOrders = new List<FoodWithOrder>();
+                        }
                         _orderList.Add(order.OrderId, order);
                     });
                 }
@@ -56,6 +59,9 @@ namespace QuanLyBanHangClient.Manager
                 int newOrderId = 0;
                 if (networkResponse.Successful) {
                     Order orderCreated = JsonConvert.DeserializeObject<Order>(networkResponse.Data.ToString());
+                    if(orderCreated.FoodWithOrders == null) {
+                        orderCreated.FoodWithOrders = new List<FoodWithOrder>();
+                    }
                     _orderList[orderCreated.OrderId] = orderCreated;
                     newOrderId = orderCreated.OrderId;
                 }
@@ -82,6 +88,9 @@ namespace QuanLyBanHangClient.Manager
             Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
                 if (networkResponse.Successful) {
                     Order orderCreated = JsonConvert.DeserializeObject<Order>(networkResponse.Data.ToString());
+                    if (orderCreated.FoodWithOrders == null) {
+                        orderCreated.FoodWithOrders = new List<FoodWithOrder>();
+                    }
                     _orderList[orderCreated.OrderId] = orderCreated;
                 }
                 cbSuccessSent?.Invoke(networkResponse);
@@ -115,7 +124,7 @@ namespace QuanLyBanHangClient.Manager
             KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
                 new KeyValuePair<string, string>("MoneyReceive", moneyReceive.ToString())
             };
-            await RequestManager.getInstance().putAsync(
+            await RequestManager.getInstance().postAsync(
                 API_CONTROLLER + "/pay/" + orderId,
                 keys,
                 newCBSuccessSent,

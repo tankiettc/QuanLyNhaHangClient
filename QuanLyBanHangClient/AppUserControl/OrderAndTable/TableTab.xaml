@@ -24,7 +24,7 @@
                                 <GradientStop Offset="1"/>
                             </LinearGradientBrush>
                         </TextBlock.Background>
-                Món ăn    @
+                Bàn ăn    @
                     </TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>

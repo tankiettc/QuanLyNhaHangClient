@@ -48,3 +48,15 @@ F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyB
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\Custom\RadioListBox.g.cs
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\OrderAndTable\OrderHistoryTab.g.cs
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\OrderAndTable\OrderHistoryTab.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTAb\ImportIngredientTab.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTAb\ImportIngredientTab.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportTab\ImportTab.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportTab\ImportTab.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.baml

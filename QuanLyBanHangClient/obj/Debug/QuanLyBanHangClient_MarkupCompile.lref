@@ -1,11 +1,13 @@
 ﻿
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\App.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\FoodTab\FoodTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTAb\ImportIngredientTab.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\IngredientTab\IngredientTab.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\Models\OrderInfo.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\Models\OrderWithFood.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\Models\TableInfo.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\OrderAndTableTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\OrderHistoryTab.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\OrderTab.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\TableTab.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\WindowControl\CategorizeDetail.xaml;;
@@ -13,5 +15,9 @@ FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLy
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\WindowControl\UnitDetail.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\WindowControl\IngredientDetail.xaml;;
 FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\WindowControl\MainWindow.xaml;;
-FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\OrderAndTable\OrderHistoryTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTab\ImportTab\ImportTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.xaml;;
+FF:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.xaml;;
 

@@ -54,7 +54,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
             foreach (OrderInfo orderInfo in LVOrderInfo.Items.OfType<OrderInfo>()) {
                 totalMoney += orderInfo.billMoney;
             }
-            TextBlockTotalAllOrder.Text = "Thành tiền: " + totalMoney.ToString("#.000") + " VND";
+            TextBlockTotalAllOrder.Text = "Thành tiền: " + Constant.formatMoney(totalMoney) + " VND";
             totalAllOrder = totalMoney;
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e) {
@@ -152,8 +152,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
                             WindownsManager.getInstance().showMessageBoxSomeThingWrong();
                         } else {
                             LVOrderInfo.Items.Remove(orderInfoWillPay);
-                            totalAllOrder -= (decimal)moneyWillPay;
-                            TextBlockTotalAllOrder.Text = "Thành tiền: " + totalAllOrder.ToString("#.000") + " VND";
+                            onChangeMoney();
                         }
                         cb();
                     };

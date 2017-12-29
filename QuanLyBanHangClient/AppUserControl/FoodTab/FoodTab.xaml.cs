@@ -240,6 +240,12 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                 /* end change to get data row value */
             };
         }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e) {
+            reloadCategoryTableUI(true, delegate () {
+                reloadFoodTableUI(true);
+            });
+        }
     }
     class FoodTable : INotifyPropertyChanged {
         private int id;

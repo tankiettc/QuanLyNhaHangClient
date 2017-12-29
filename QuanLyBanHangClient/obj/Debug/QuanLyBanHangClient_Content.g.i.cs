@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/history-icon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("appusercontrol/importingredienttab/importingredienttab.xaml")]
 
 

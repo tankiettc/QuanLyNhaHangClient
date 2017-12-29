@@ -18,6 +18,9 @@ namespace QuanLyBanHangAPI.model
             get
             {
                 decimal billMoney = 0;
+                if(FoodWithOrders == null) {
+                    return billMoney;
+                }
                 foreach (var foodWithOrder in FoodWithOrders)
                 {
                     billMoney += foodWithOrder.GetTotalPrice();

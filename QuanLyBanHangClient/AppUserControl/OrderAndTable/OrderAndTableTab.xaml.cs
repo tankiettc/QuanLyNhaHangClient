@@ -33,7 +33,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
                             if (!networkResponse.Successful) {
                                 WindownsManager.getInstance().showMessageBoxSomeThingWrong();
                             } else {
-                                reloadTableUI();
+                                reloadTableUI(false, cbAfterReload);
                             }
                         };
 

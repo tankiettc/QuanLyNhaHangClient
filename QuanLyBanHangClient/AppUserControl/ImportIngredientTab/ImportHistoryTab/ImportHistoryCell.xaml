@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTab.ImportHistoryCell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTab"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="550" Width="Auto" Height="40">
+    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="#FFE48D8D" Margin="0,5" Padding="0">
+        <Grid x:Name="GridParent">
+            <Grid.Resources>
+                <ImageSource x:Key="ImageGreenDot">/Resource/Image/Aqua-Ball-Green-icon.png</ImageSource>
+                <ImageSource x:Key="ImageGrayDot">/Resource/Image/Button-Blank-Gray-icon.png</ImageSource>
+            </Grid.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="TextBlockBillId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" Margin="20,0,0,0" Width="180" TextDecorations="{x:Null}">Hóa đơn #53</TextBlock>
+                <Line X1="0" Y1="0" X2="0" Y2="50"  Stroke="White" StrokeThickness="3" />
+                <TextBlock x:Name="TextBlockTime" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Foreground="White" Margin="10,0,0,0">12/25/2017</TextBlock>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock x:Name="TextBlockMoney"  Text="5000000 VND" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#FFF4FF00" FontWeight="Bold" FontSize="18"></TextBlock>
+                <Image Source="/Resource/Image/arrow-right.png" Margin="0,0,5,0" Height="20" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

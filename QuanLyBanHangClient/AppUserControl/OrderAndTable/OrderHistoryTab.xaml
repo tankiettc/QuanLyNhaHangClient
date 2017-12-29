@@ -24,7 +24,7 @@
                             <GradientStop Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Background>
-                Đặt thức ăn    @
+                Lịch sử đặt món    @
                 </TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -66,11 +66,11 @@
                                     <StackPanel x:Name="FilterDateGroup" Visibility="Hidden">
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" FontSize="11" Foreground="#FFFAFAFA">Từ</TextBlock>
-                                            <DatePicker x:Name="DatePickerFrom" Width="120" Height="30" Margin="5,0,0,0" SelectedDateFormat="Short"></DatePicker>
+                                            <DatePicker x:Name="DatePickerFrom" Width="120" Height="30" Margin="5,0,0,0" SelectedDateFormat="Short" FontSize="11"></DatePicker>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" FontSize="11" Foreground="#FFFAFAFA">Đến</TextBlock>
-                                            <DatePicker x:Name="DatePickerTo" Width="120" Height="30" Margin="5,0,0,0"></DatePicker>
+                                            <DatePicker x:Name="DatePickerTo" Width="120" Height="30" Margin="5,0,0,0" FontSize="11"></DatePicker>
                                         </StackPanel>
                                     </StackPanel>
                                 </StackPanel>

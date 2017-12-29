@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,9 +22,23 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
     /// </summary>
     public partial class OrderHistoryTab : UserControl
     {
-        public OrderHistoryTab()
-        {
+        public OrderHistoryTab() {
             InitializeComponent();
+        }
+
+        public void reloadTable() {
+            LVFilterTable.Items.Clear();
+            foreach (KeyValuePair<int, Table> entry in TableManager.getInstance().TableList) {
+                if (entry.Value != null) {
+                    var checkBox = new CheckBox();
+                    checkBox.Content = "Bàn số " + entry.Value.TableId.ToString();
+                    checkBox.FontSize = 11;
+                    checkBox.Foreground = new SolidColorBrush(Colors.White);
+                    checkBox.Tag = entry.Value.TableId;
+                    checkBox.IsChecked = true;
+                    LVFilterTable.Items.Add(checkBox);
+                }
+            }
         }
 
         public void reloadListViewOrder(bool isBaseOnFilter) {
@@ -43,9 +56,13 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
                 }
 
                 if(CheckBoxFilterDate.IsChecked == true) {
-                    timeFrom = Constant.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
-                    timeTo = Constant.GetTime(DatePickerFrom.SelectedDate.Value)  + (TimeSpan.TicksPerDay * TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
-                    if(timeFrom >= timeTo) {
+                    if(DatePickerFrom.SelectedDate != null) {
+                        timeFrom = Constant.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
+                    }
+                    if(DatePickerTo.SelectedDate != null) {
+                        timeTo = Constant.GetTime(DatePickerTo.SelectedDate.Value) + (TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
+                    }
+                    if (timeFrom >= timeTo) {
                         timeFrom = 0;
                         timeTo = DateTime.Now.Millisecond;
                     }
@@ -58,38 +75,77 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
                         && !listTableId.Contains(entry.Value.TableId)) {
                         continue;
                     }
-                    if(entry.Value.CreatedDate.Millisecond < timeFrom
-                        || entry.Value.CreatedDate.Millisecond > timeTo) {
+                    if(Constant.GetTime(entry.Value.CreatedDate) < timeFrom
+                        || Constant.GetTime(entry.Value.CreatedDate) > timeTo) {
                         continue;
                     }
-                    LVOrderInfo.Items.Add(new OrderInfo(entry.Value.OrderId, null, this));
+                    var orderInfo = new OrderInfo(entry.Value.OrderId, null, this);
+                    LVOrderInfo.Items.Add(orderInfo);
+
+                    orderInfo.ExpandOrderInfo.IsExpanded = false;
                 }
             }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e) {
-            this.Visibility = Visibility.Hidden;
+            Visibility = Visibility.Hidden;
         }
         private void BtnFilterOrder_Click(object sender, RoutedEventArgs e) {
-
+            reloadListViewOrder(true);
         }
 
         private void BtnRemoveOrder_Click(object sender, RoutedEventArgs e) {
+            if (LVOrderInfo.SelectedIndex < 0) {
+                return;
+            }
+            var orderInfoWillCancel = ((OrderInfo)LVOrderInfo.SelectedItem);
+            var orderIdWillCancel = orderInfoWillCancel.OrderId;
 
+            RequestManager.getInstance().showLoading();
+            Action<NetworkResponse> cbSuccessSent =
+                    delegate (NetworkResponse networkResponse) {
+                        RequestManager.getInstance().hideLoading();
+                        if (!networkResponse.Successful) {
+                            WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+                        } else {
+                            LVOrderInfo.Items.Remove(orderInfoWillCancel);
+                        }
+                    };
+
+            Action<string> cbError =
+                    delegate (string err) {
+                        WindownsManager.getInstance().showMessageBoxErrorNetwork();
+                        RequestManager.getInstance().hideLoading();
+                    };
+            OrderManager.getInstance().cacelOrderFromServerAndUpdate(
+                orderIdWillCancel,
+                cbSuccessSent,
+                cbError
+                );
         }
         private void CheckBoxFilterDate_Checked(object sender, RoutedEventArgs e) {
-
+            FilterDateGroup.Visibility = Visibility.Visible;
         }
 
         private void CheckBoxFilterDate_Unchecked(object sender, RoutedEventArgs e) {
-
+            FilterDateGroup.Visibility = Visibility.Hidden;
         }
         private void CheckBoxSelectTables_Checked(object sender, RoutedEventArgs e) {
-
+            if(LVFilterTable == null) {
+                return;
+            }
+            foreach (CheckBox checkBox in LVFilterTable.Items.OfType<CheckBox>()) {
+                checkBox.IsChecked = true;
+            }
         }
 
         private void CheckBoxSelectTables_Unchecked(object sender, RoutedEventArgs e) {
-
+            if (LVFilterTable == null) {
+                return;
+            }
+            foreach (CheckBox checkBox in LVFilterTable.Items.OfType<CheckBox>()) {
+                checkBox.IsChecked = false;
+            }
         }
     }
 }

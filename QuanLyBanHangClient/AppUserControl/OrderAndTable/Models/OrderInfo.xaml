@@ -7,7 +7,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              Width="Auto" Height="Auto">
-    <Expander IsExpanded="True">
+    <Expander x:Name="ExpandOrderInfo" IsExpanded="True">
         <Expander.Header >
             <Border Width="550">
                 <Border.Background>
@@ -27,7 +27,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#FFF18527">Thêm món</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="BtnAccept" Template="{StaticResource BtnTemplate}" Width="100" Click="BtnAccept_Click">Xác nhận</Button>
+                <Button x:Name="BtnAccept" Template="{StaticResource BtnTemplate}" Width="100" Click="BtnAccept_Click" Margin="0,0,0,-0.1">Xác nhận</Button>
                 <Border BorderBrush="{x:Null}" Height="26"  >
                     <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="#FFEAD732" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
                 </Border>

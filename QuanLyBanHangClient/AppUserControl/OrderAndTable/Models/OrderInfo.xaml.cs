@@ -91,7 +91,6 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
         public void reloadAllUI() {
             reloadLVOrderWithFood();
             var order = OrderManager.getInstance().OrderList[OrderId];
-            TextBlockTotalOrder.Text = "Tổng cộng " + order.BillMoney.ToString();
             TextBlockHeader.Text = "Order " + OrderId;
             billMoney = order.BillMoney;
 
@@ -114,10 +113,12 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             ComboBoxSelectFood.ItemsSource = FoodNamesComboBox;
             ComboBoxSelectFood.DisplayMemberPath = "Value";
             ComboBoxSelectFood.SelectedValuePath = "Id";
+            onChangeMoney();
 
 
             if (orderHistoryTab != null) {
                 BtnAddFood.Visibility = Visibility.Hidden;
+                TextBlockHeader.Text += ("  -  " + order.CreatedDate.ToShortDateString()) + "  -  " + Constant.formatMoney(billMoney) + " VND";
             }
         }
         public void checkAndAddFoodIdToComboBox(int foodId) {
@@ -155,13 +156,16 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 decimal.TryParse(orderWithFood.textBlockTotal.Text, out money);
                 totalBill += money;
             }
-            TextBlockTotalOrder.Text = "Tổng cộng " + totalBill.ToString();
+            TextBlockTotalOrder.Text = "Tổng cộng " + Constant.formatMoney(totalBill);
             billMoney = totalBill;
-            orderTab.onChangeMoney();
+            if(orderTab != null) {
+                orderTab.onChangeMoney();
+            }
         }
 
         private void BtnAddFood_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Visible;
+            BtnAccept.Opacity = 0;
         }
         private void BtnAccept_Click(object sender, RoutedEventArgs e) {
             updateFoodWithOrderAndReloadUI();
@@ -181,10 +185,12 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             }, this));
             checkAndRemoveFoodIdToComboBox(foodId);
             BtnAccept.Visibility = Visibility.Visible;
+            onChangeMoney();
         }
 
         private void BtnConfirmExit_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Hidden;
+            BtnAccept.Opacity = 1;
         }
     }
 }

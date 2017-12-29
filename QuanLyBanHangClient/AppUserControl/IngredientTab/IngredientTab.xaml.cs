@@ -234,6 +234,12 @@ namespace QuanLyBanHangClient.AppUserControl.IngredientTab {
             BtnEditUnit.IsEnabled = true;
             BtnRemoveUnit.IsEnabled = true;
         }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e) {
+            reloadUnitTableUI(true, delegate () {
+                reloadIngredientTableUI(true);
+            });
+        }
     }
     class IngredientTable : INotifyPropertyChanged {
         private int id;

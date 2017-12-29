@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab.ImportTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Border BorderThickness="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
+        <DockPanel>
+            <Grid Margin="5" DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Nguyên liệu</TextBlock>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Giá</TextBlock>
+                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Số lượng</TextBlock>
+                <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Tổng (VND)</TextBlock>
+            </Grid>
+            <Button x:Name="BtnImport" DockPanel.Dock="Bottom" Height="40" Background="#FFF4FF00" FontWeight="Bold" FontSize="18" Margin="0,15,0,5" Click="BtnImport_Click">
+                 NHẬP - (Tổng cộng: 20,000 VND)
+            </Button>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button x:Name="BtnAdd" Template="{StaticResource BtnTemplate}" Width="150" Click="BtnAdd_Click" Margin="0,0,50,0">
+                    Thêm
+                </Button>
+                <Button x:Name="BtnClear" Template="{StaticResource BtnTemplate}" Width="200" Margin="50,0,0,0" Click="BtnClear_Click">
+                    Xóa hết
+                </Button>
+            </StackPanel>
+            <Grid Margin="5" DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="ComboBoxIngredient" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
+                <StackPanel Grid.Column="1"  Orientation="Horizontal" Margin="40,0,0,0">
+                    <TextBox  x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxPrice_TextChanged" ></TextBox>
+                    <TextBlock x:Name="TextBlockUnit" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Margin="10,0,0,0" Foreground="White"></TextBlock>
+                </StackPanel>
+                <TextBox  Grid.Column="2" x:Name="TextBoxQuantity" Template="{StaticResource TextBoxRoundedTemplate}" Margin="0,0,10,0" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxQuantity_TextChanged" ></TextBox>
+                <TextBox  Grid.Column="3" x:Name="TextBoxTotal" Template="{StaticResource TextBoxRoundedTemplate}" Margin="10,0,0,0" IsReadOnly="True"></TextBox>
+            </Grid>
+            <ListView x:Name="LVIngredient" Background="Transparent" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </DockPanel>
+    </Border>
+</UserControl>

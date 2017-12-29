@@ -31,12 +31,22 @@
                     </Grid.ColumnDefinitions>
                     <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Margin="10,10,0,10">
                         <StackPanel Grid.Column="0">
-                            <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="0,0,0,1" BorderBrush="White">
+
+                            <Button x:Name="BtnRefresh" Style="{StaticResource BtnInSideBarStyle}" Margin="0" BorderThickness="0,0,0,1" Click="BtnRefresh_Click">
+                                <Grid>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Tải lại</TextBlock>
+                                    <Image Source="/Resource/Image/refresh-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
+                                </Grid>
+                            </Button>
+                            
+                            <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" BorderBrush="White" Margin="5,5,5,0">
                                 <Grid>
                                     <TextBox x:Name="TextBoxSearch" Template="{StaticResource TextBoxRoundedTemplate}" Margin="60,0,30,0"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
                                     <Image Source="/Resource/Image/search-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
                                 </Grid>
                             </Border>
+
                             <Button x:Name="BtnAddIngredient" Style="{StaticResource BtnInSideBarStyle}" Click="BtnAddIngredient_Click">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Thêm nguyên liệu</TextBlock>
