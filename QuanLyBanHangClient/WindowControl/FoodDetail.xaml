@@ -12,21 +12,21 @@
         <StackPanel>
             <DockPanel Margin="50,30,0,0">
                 <Button x:Name="BtnCopy" Template="{StaticResource BtnTemplate}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
-                <ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,60,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="256"/>
+                <ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="256" VerticalContentAlignment="Center"/>
                 <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed">ID</TextBlock>
-                <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed"></TextBox>
+                <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
             </DockPanel>
             <DockPanel Margin="50,15,0,0">
                 <TextBlock FontWeight="Bold" Width="80">Tên món ăn</TextBlock>
-                <TextBox x:Name="TextBoxName" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right"></TextBox>
+                <TextBox x:Name="TextBoxName" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
             </DockPanel>
             <DockPanel Margin="50,15,0,0">
                 <TextBlock FontWeight="Bold" Width="80">Giá</TextBlock>
-                <TextBox x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                <TextBox x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center"/>
             </DockPanel>
             <DockPanel Margin="50,15,0,0">
                 <TextBlock FontWeight="Bold" Width="80">Loại món ăn</TextBlock>
-                <ComboBox x:Name="ComboBoxCategory" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,60,0" DockPanel.Dock="Right"/>
+                <ComboBox x:Name="ComboBoxCategory" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
             </DockPanel>
 
             <TextBlock Margin="50,15,0,0" FontWeight="Bold" Width="180" HorizontalAlignment="Left">Danh sách nguyên liệu</TextBlock>

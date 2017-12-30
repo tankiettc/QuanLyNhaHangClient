@@ -35,7 +35,7 @@ namespace QuanLyBanHangClient.Manager {
         }
         const string domainName = "http://quanlybanhangapi.azurewebsites.net";
         const string schemeAuthorization = "Bearer";
-        const string tokenAuthorization = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QiLCJuYmYiOjE1MTIxNTMzNjQsImV4cCI6MTU0MzY4OTM2NCwiaWF0IjoxNTEyMTUzMzY0fQ.1Iya30pFQBMTaL65fbObUBNg0v9ZtnLia4IGX7W78ug";
+        public static string tokenAuthorization = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QiLCJuYmYiOjE1MTIxNTMzNjQsImV4cCI6MTU0MzY4OTM2NCwiaWF0IjoxNTEyMTUzMzY0fQ.1Iya30pFQBMTaL65fbObUBNg0v9ZtnLia4IGX7W78ug";
         HttpClient client = null;
 
         private RequestManager() {

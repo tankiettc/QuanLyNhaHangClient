@@ -10,7 +10,7 @@
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         xmlns:importingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="900" MinHeight="730" Width="900" Height="730">
+        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1100" MinHeight="770" Width="1100" Height="770">
     <Border BorderThickness="1" BorderBrush="Black">
         <Grid>
             <Image Source="/Resource/Image/smoke.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,100,0" Width="300"/>

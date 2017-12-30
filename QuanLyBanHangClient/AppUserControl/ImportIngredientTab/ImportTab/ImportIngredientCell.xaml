@@ -20,7 +20,7 @@
                 <TextBlock x:Name="TextBlockQuantity" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">2222 kilogam</TextBlock>
                 <TextBlock x:Name="TextBlockTotal" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">20,000</TextBlock>
             </Grid>
-            <Button x:Name="BtnRemove" BorderThickness="0" Foreground="White" FontWeight="Bold" FontStyle="Italic" Opacity="0" Visibility="Hidden" Cursor="Hand">
+            <Button x:Name="BtnRemove" BorderThickness="0" Foreground="White" FontWeight="Bold" FontStyle="Italic" Opacity="0" Cursor="Hand" Click="BtnRemove_Click" Visibility="Hidden">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
                         <GradientStop Offset="0"/>
@@ -29,8 +29,8 @@
                     </LinearGradientBrush>
                 </Button.Background>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Image Source="/Resource/Image/remove-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="15" Height="15"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">Xóa</TextBlock>
+                    <Image Source="/Resource/Image/remove-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,15,0" Width="15" Height="15"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,0,0">Xóa</TextBlock>
                 </StackPanel>
             </Button>
         </Grid>

@@ -22,7 +22,7 @@
                 Nhập nguyên liệu    @
                 </TextBlock>
                 <Grid Margin="5,10,5,5">
-                    <TabControl x:Name="TabControlMain" TabStripPlacement="Top" BorderThickness="0" HorizontalContentAlignment="Center" DockPanel.Dock="Top"  Background="Transparent" >
+                    <TabControl x:Name="TabControlMain" TabStripPlacement="Top" BorderThickness="0" HorizontalContentAlignment="Center" DockPanel.Dock="Top"  Background="Transparent" SelectionChanged="TabControlMain_SelectionChanged" >
                         <TabControl.Resources>
                             <Style TargetType="{x:Type TabItem}">
                                 <Setter Property="FontSize" Value="18"/>

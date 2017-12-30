@@ -22,8 +22,8 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
     /// <summary>
     /// Interaction logic for ImportTab.xaml
     /// </summary>
-    public partial class ImportTab : UserControl
-    {
+    public partial class ImportTab : UserControl {
+        public ImportIngredientTab ParentTab { get; set; }
         public ImportTab()
         {
             InitializeComponent();
@@ -105,7 +105,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             importIngredientWithBill.Quantities = (float)quantity;
             importIngredientWithBill.SinglePricePerUnit = price;
 
-            LVIngredient.Items.Add(new ImportIngredientCell(importIngredientWithBill));
+            LVIngredient.Items.Add(new ImportIngredientCell(importIngredientWithBill, this));
             reloadTotalBill();
         }
         private void BtnImport_Click(object sender, RoutedEventArgs e) {
@@ -128,7 +128,12 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                     };
             var ingredientWithImportBillList = new List<IngredientWithImportBill>();
             foreach (ImportIngredientCell importIngredientCell in LVIngredient.Items.OfType<ImportIngredientCell>()) {
-                ingredientWithImportBillList.Add(importIngredientCell._ingredientWithImportBill);
+                ingredientWithImportBillList.Add(new IngredientWithImportBill()
+                {
+                    IngredientId = importIngredientCell._ingredientWithImportBill.Ingredient.IngredientId,
+                    SinglePricePerUnit = importIngredientCell._ingredientWithImportBill.SinglePricePerUnit,
+                    Quantities = importIngredientCell._ingredientWithImportBill.Quantities
+                });
             }
             ImportBillManager.getInstance().createImportBillFromServerAndUpdate(
                 ingredientWithImportBillList,
@@ -140,6 +145,10 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
         private void BtnClear_Click(object sender, RoutedEventArgs e) {
             LVIngredient.Items.Clear();
             reloadTotalBill();
+        }
+
+        public void removeItemLV(ImportIngredientCell importIngredientCell) {
+            LVIngredient.Items.Remove(importIngredientCell);
         }
     }
 }

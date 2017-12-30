@@ -24,11 +24,13 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
     public partial class ImportIngredientCell : UserControl
     {
         public IngredientWithImportBill _ingredientWithImportBill { get; }
+        ImportTab _importTab;
 
-        public ImportIngredientCell(IngredientWithImportBill ingredientWithImportBill)
+        public ImportIngredientCell(IngredientWithImportBill ingredientWithImportBill, ImportTab importTab = null)
         {
             InitializeComponent();
             _ingredientWithImportBill = ingredientWithImportBill;
+            _importTab = importTab;
             reloadUI();
         }
 
@@ -49,17 +51,36 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e) {
+            if(_importTab == null) {
+                return;
+            }
             BtnRemove.Visibility = Visibility.Visible;
+            BtnRemove.IsEnabled = false;
             Storyboard sb = (Storyboard) Application.Current.FindResource("FadeAnim");
             sb.Begin(BtnRemove);
+
+            enableBtnRemove();
+        }
+        private async void enableBtnRemove() {
+            await Task.Delay(500);
+            BtnRemove.IsEnabled = true;
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e) {
-            if(BtnRemove.Visibility == Visibility.Hidden) {
+            if (_importTab == null) {
+                return;
+            }
+            if (BtnRemove.Visibility == Visibility.Hidden) {
                 return;
             }
             BtnRemove.Visibility = Visibility.Hidden;
             BtnRemove.Opacity = 0;
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e) {
+            if(_importTab != null) {
+                _importTab.removeItemLV(this);
+            }
         }
     }
 }

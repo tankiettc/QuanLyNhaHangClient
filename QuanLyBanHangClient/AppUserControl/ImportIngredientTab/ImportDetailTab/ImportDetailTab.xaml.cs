@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyBanHangAPI.model.SQL;
+using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,24 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportDetailTab
     /// <summary>
     /// Interaction logic for ImportDetailTab.xaml
     /// </summary>
-    public partial class ImportDetailTab : UserControl
-    {
+    public partial class ImportDetailTab : UserControl {
+        public ImportIngredientTab ParentTab { get; set; }
+        ImportBill _importBill;
+        ImportBill importBill { get {return _importBill; } }
         public ImportDetailTab()
         {
             InitializeComponent();
+        }
+        public void reloadUI(ImportBill importBillRoot)
+        {
+            _importBill = importBillRoot;
+            TextBoxId.Text = _importBill.ImportBillId.ToString();
+            TextBoxTime.Text = _importBill.CreatedDate.ToString();
+            TextBoxTotal.Text = Constant.formatMoney(_importBill.BillMoney);
+            LVIngredient.Items.Clear();
+            foreach(IngredientWithImportBill ingredient in _importBill.IngredientWithImportBills) {
+                LVIngredient.Items.Add(new ImportIngredientCell(ingredient));
+            }
         }
     }
 }

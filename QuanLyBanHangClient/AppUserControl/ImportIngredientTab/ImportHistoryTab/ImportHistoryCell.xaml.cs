@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBanHangAPI.model.SQL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTa
     /// </summary>
     public partial class ImportHistoryCell : UserControl
     {
-        public ImportHistoryCell()
+        public ImportBill importBill { get; set; }
+        public ImportHistoryCell(ImportBill _importBill)
         {
             InitializeComponent();
+            importBill = _importBill;
+            reloadUI();
+        }
+        public void reloadUI()
+        {
+            TextBlockBillId.Text = "Hóa đơn #" + importBill.ImportBillId.ToString();
+            TextBlockTime.Text = importBill.CreatedDate.ToShortDateString();
+            TextBlockMoney.Text = Constant.formatMoney(importBill.BillMoney);
         }
     }
 }

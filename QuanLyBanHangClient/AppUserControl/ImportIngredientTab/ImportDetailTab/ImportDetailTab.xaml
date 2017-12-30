@@ -17,15 +17,15 @@
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" >
                 <TextBlock FontWeight="Bold" Width="80" VerticalAlignment="Center" Margin="50,0,0,0" FontSize="13" Foreground="White">Id</TextBlock>
-                <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Bottom"></TextBox>
+                <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
             </DockPanel>
             <DockPanel Grid.Row="1" >
                 <TextBlock FontWeight="Bold" Width="80" VerticalAlignment="Center" Margin="50,0,0,0" FontSize="13" Foreground="White">Thời điểm</TextBlock>
-                <TextBox x:Name="TextBoxTime" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Bottom"></TextBox>
+                <TextBox x:Name="TextBoxTime" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
             </DockPanel>
             <DockPanel Grid.Row="2" >
                 <TextBlock FontWeight="Bold" Width="80" VerticalAlignment="Center" Margin="50,0,0,0" FontSize="13" Foreground="White">Tổng cộng</TextBlock>
-                <TextBox x:Name="TextBoxTotal" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Bottom"></TextBox>
+                <TextBox x:Name="TextBoxTotal" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,10,60,10" DockPanel.Dock="Right" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
             </DockPanel>
             <TextBlock Grid.Row="3" FontWeight="Bold" Width="80" HorizontalAlignment="Left" Margin="50,15,0,0" FontSize="13" Foreground="White">Chi tiết nhập</TextBlock>
             <DockPanel Grid.Row="4">

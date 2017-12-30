@@ -205,7 +205,7 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
-    <Compile Include="Manager\ImportIngredientManager.cs" />
+    <Compile Include="Manager\ImportBillManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Manager\TableManager.cs" />
@@ -220,7 +220,7 @@
     <Compile Include="Model\ImportBill.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\IngredientWithFood.cs" />
-    <Compile Include="Model\.cs" />
+    <Compile Include="Model\IngredientWithImportBill.cs" />
     <Compile Include="Model\IngredientWithReport.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PrepareFoodArchive.cs" />
