@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("appusercontrol/importingredienttab/importingredienttab.xaml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/app-logo-4.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/app-logo-5.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/app-logo-6.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/app-logo-7.png")]
 
 

@@ -47,7 +47,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models {
                 TextBlockState.Text = "Đang sử dụng";
                 TextBlockState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF18FA00"));
 
-                TextBlockMoney.Text = Constant.formatMoney((decimal)currentMoneyOfTable) + " VND";
+                TextBlockMoney.Text = UtilFuction.formatMoney((decimal)currentMoneyOfTable) + " VND";
             } else {
                 ImageState.Source = (ImageSource)GridParent.FindResource("ImageGrayDot");
 

@@ -140,7 +140,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowControl\ChangePassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowControl\FoodDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowControl\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +219,8 @@
     <Compile Include="Manager\TableManager.cs" />
     <Compile Include="Manager\IngredientManager.cs" />
     <Compile Include="Manager\RequestManager.cs" />
+    <Compile Include="Manager\UserInfoManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Manager\WindownsManager.cs" />
     <Compile Include="Model\DailyReport.cs" />
     <Compile Include="Model\Food.cs" />
@@ -230,8 +240,14 @@
     <Compile Include="WindowControl\CategorizeDetail.xaml.cs">
       <DependentUpon>CategorizeDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowControl\ChangePassWindow.xaml.cs">
+      <DependentUpon>ChangePassWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowControl\FoodDetail.xaml.cs">
       <DependentUpon>FoodDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowControl\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowControl\UnitDetail.xaml.cs">
       <DependentUpon>UnitDetail.xaml</DependentUpon>
@@ -345,6 +361,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\history-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\arrow-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\app-logo-4.png" />
+    <Resource Include="Resource\Image\app-logo-5.png" />
+    <Resource Include="Resource\Image\app-logo-6.png" />
+    <Resource Include="Resource\Image\app-logo-7.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

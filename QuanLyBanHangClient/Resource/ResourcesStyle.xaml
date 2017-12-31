@@ -46,6 +46,26 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="PasswordBoxRoundedTemplate" TargetType="{x:Type PasswordBox}">
+        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{StaticResource ThicknessValue1}" CornerRadius="{StaticResource CornerRadiusValue}">
+            <ScrollViewer x:Name="PART_ContentHost"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+            <Trigger Property="Width" Value="Auto">
+                <Setter Property="MinWidth" Value="100"/>
+            </Trigger>
+            <Trigger Property="Height" Value="Auto">
+                <Setter Property="MinHeight" Value="20"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     <ControlTemplate x:Key="ComboBoxRoundedTemplate" TargetType="{x:Type ComboBox}">
         <Border Background="{TemplateBinding Background}" 
                 x:Name="Bd" BorderBrush="Black"
@@ -237,4 +257,53 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="Background" Value="MintCream"/>
+        <Setter Property="BorderBrush" Value="#0046E7"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.ColumnSpan="2">
+                            <TextBlock TextAlignment="Center"
+                       Margin="0 10 0 0"
+                       FontSize="22"
+                       FontWeight="DemiBold"
+                       Foreground="RoyalBlue"
+                       Text="{TemplateBinding Title}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1"
+                      Orientation="Horizontal"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center"
+                      Margin="0 10 15 0">
+                            <Button Content="+"
+                    Width="25"
+                    Height="22"
+                    Margin="0 0 10 0"/>
+                            <Button Content="X"
+                    Width="25"
+                    Height="22" />
+                        </StackPanel>
+                        <!-- here goes the content -->
+                        <ContentPresenter Grid.Row="1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

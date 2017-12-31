@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -34,14 +35,13 @@ namespace QuanLyBanHangClient.Manager {
             return _instance;
         }
         const string domainName = "http://quanlybanhangapi.azurewebsites.net";
-        const string schemeAuthorization = "Bearer";
-        public static string tokenAuthorization = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QiLCJuYmYiOjE1MTIxNTMzNjQsImV4cCI6MTU0MzY4OTM2NCwiaWF0IjoxNTEyMTUzMzY0fQ.1Iya30pFQBMTaL65fbObUBNg0v9ZtnLia4IGX7W78ug";
+        //const string schemeAuthorization = "Bearer";
+        //const string tokenAuthorization = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QiLCJuYmYiOjE1MTIxNTMzNjQsImV4cCI6MTU0MzY4OTM2NCwiaWF0IjoxNTEyMTUzMzY0fQ.1Iya30pFQBMTaL65fbObUBNg0v9ZtnLia4IGX7W78ug";
         HttpClient client = null;
 
         private RequestManager() {
             client = new HttpClient();
             client.BaseAddress = new Uri(domainName);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(schemeAuthorization, tokenAuthorization);
         }
         private async Task request(
                     RequestType requestType,
@@ -51,6 +51,8 @@ namespace QuanLyBanHangClient.Manager {
                     Action<string> cbError = null
             ) {
             try {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(UserInfoManager.getInstance().userInfo.type, UserInfoManager.getInstance().userInfo.token);
+
                 var content = new FormUrlEncodedContent(keysValue);
                 HttpResponseMessage result;
                 switch (requestType) {
@@ -95,6 +97,8 @@ namespace QuanLyBanHangClient.Manager {
                     Action<string> cbError = null
             ) {
             try {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(UserInfoManager.getInstance().userInfo.type, UserInfoManager.getInstance().userInfo.token);
+
                 var content = new StringContent(JsonConvert.SerializeObject(obj).ToString(), Encoding.UTF8, "application/json");
                 HttpResponseMessage result;
                 switch (requestType) {
@@ -227,7 +231,25 @@ namespace QuanLyBanHangClient.Manager {
                 cbSuccessSent,
                 cbError);
         }
+        public async Task getAccessTokenAsync(string userName, string password, Action<string> cbSuccess, Action<HttpStatusCode> cbFail) {
+            try {
+                KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+                new KeyValuePair<string, string>("Username", userName),
+                new KeyValuePair<string, string>("Password", password)
+                };
+                var content = new FormUrlEncodedContent(keys);
+                HttpResponseMessage result = await client.PostAsync("/api/token", content);
 
+                if (result.IsSuccessStatusCode) {
+                    string resultContent = await result.Content.ReadAsStringAsync();
+                    cbSuccess?.Invoke(resultContent);
+                } else {
+                    cbFail?.Invoke(result.StatusCode);
+                }
+            } catch (Exception ex) {
+                cbFail?.Invoke(HttpStatusCode.NotFound);
+            }
+        }
         Grid _loadingAnim = null;
         public Grid LoadingAnm { set { _loadingAnim = value; } }
         public void showLoading() {

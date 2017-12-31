@@ -65,7 +65,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                 TextBoxTotal.Text = "0";
                 return;
             }
-            TextBoxTotal.Text = Constant.formatMoney(price * quantity);
+            TextBoxTotal.Text = UtilFuction.formatMoney(price * quantity);
         }
         private void reloadTotalBill() {
             decimal totalBill = 0;
@@ -74,7 +74,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                 ingredientWithImportBillList.Add(importIngredientCell._ingredientWithImportBill);
                 totalBill += (importIngredientCell._ingredientWithImportBill.SinglePricePerUnit * (decimal)importIngredientCell._ingredientWithImportBill.Quantities);
             }
-            BtnImport.Content = "NHẬP - (Tổng cộng: " + Constant.formatMoney(totalBill) + ")";
+            BtnImport.Content = "NHẬP - (Tổng cộng: " + UtilFuction.formatMoney(totalBill) + ")";
         }
         private void TextBoxPrice_TextChanged(object sender, TextChangedEventArgs e) {
             checkAndReloadTotal();

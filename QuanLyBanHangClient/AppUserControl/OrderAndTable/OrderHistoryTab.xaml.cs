@@ -44,7 +44,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
         public void reloadListViewOrder(bool isBaseOnFilter) {
             List<int> listTableId = new List<int>();
             double timeFrom = 0;
-            double timeTo = Constant.GetTime(DateTime.Now);
+            double timeTo = UtilFuction.GetTime(DateTime.Now);
             if(isBaseOnFilter) {
                 foreach(CheckBox checkBox in LVFilterTable.Items.OfType<CheckBox>()) {
                     if(checkBox.IsChecked == true) {
@@ -57,10 +57,10 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
 
                 if(CheckBoxFilterDate.IsChecked == true) {
                     if(DatePickerFrom.SelectedDate != null) {
-                        timeFrom = Constant.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
+                        timeFrom = UtilFuction.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
                     }
                     if(DatePickerTo.SelectedDate != null) {
-                        timeTo = Constant.GetTime(DatePickerTo.SelectedDate.Value) + (TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
+                        timeTo = UtilFuction.GetTime(DatePickerTo.SelectedDate.Value) + (TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
                     }
                     if (timeFrom >= timeTo) {
                         timeFrom = 0;
@@ -75,8 +75,8 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
                         && !listTableId.Contains(entry.Value.TableId)) {
                         continue;
                     }
-                    if(Constant.GetTime(entry.Value.CreatedDate) < timeFrom
-                        || Constant.GetTime(entry.Value.CreatedDate) > timeTo) {
+                    if(UtilFuction.GetTime(entry.Value.CreatedDate) < timeFrom
+                        || UtilFuction.GetTime(entry.Value.CreatedDate) > timeTo) {
                         continue;
                     }
                     var orderInfo = new OrderInfo(entry.Value.OrderId, null, this);

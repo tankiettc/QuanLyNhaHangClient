@@ -118,7 +118,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
 
             if (orderHistoryTab != null) {
                 BtnAddFood.Visibility = Visibility.Hidden;
-                TextBlockHeader.Text += ("  -  " + order.CreatedDate.ToShortDateString()) + "  -  " + Constant.formatMoney(billMoney) + " VND";
+                TextBlockHeader.Text += ("  -  " + order.CreatedDate.ToShortDateString()) + "  -  " + UtilFuction.formatMoney(billMoney) + " VND";
             }
         }
         public void checkAndAddFoodIdToComboBox(int foodId) {
@@ -156,7 +156,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 decimal.TryParse(orderWithFood.textBlockTotal.Text, out money);
                 totalBill += money;
             }
-            TextBlockTotalOrder.Text = "Tổng cộng " + Constant.formatMoney(totalBill);
+            TextBlockTotalOrder.Text = "Tổng cộng " + UtilFuction.formatMoney(totalBill);
             billMoney = totalBill;
             if(orderTab != null) {
                 orderTab.onChangeMoney();

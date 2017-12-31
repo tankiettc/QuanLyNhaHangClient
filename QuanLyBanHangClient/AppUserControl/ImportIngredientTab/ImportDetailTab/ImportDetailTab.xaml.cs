@@ -33,7 +33,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportDetailTab
             _importBill = importBillRoot;
             TextBoxId.Text = _importBill.ImportBillId.ToString();
             TextBoxTime.Text = _importBill.CreatedDate.ToString();
-            TextBoxTotal.Text = Constant.formatMoney(_importBill.BillMoney);
+            TextBoxTotal.Text = UtilFuction.formatMoney(_importBill.BillMoney);
             LVIngredient.Items.Clear();
             foreach(IngredientWithImportBill ingredient in _importBill.IngredientWithImportBills) {
                 LVIngredient.Items.Add(new ImportIngredientCell(ingredient));

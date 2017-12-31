@@ -43,11 +43,11 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                 return;
             }
             TextBlockIngredient.Text = _ingredientWithImportBill.Ingredient.Name;
-            TextBlockPrice.Text = Constant.formatMoney(_ingredientWithImportBill.SinglePricePerUnit)
+            TextBlockPrice.Text = UtilFuction.formatMoney(_ingredientWithImportBill.SinglePricePerUnit)
                 + " / "  
                 +  UnitManager.getInstance().UnitList[_ingredientWithImportBill.Ingredient.UnitId].Name;
             TextBlockQuantity.Text = _ingredientWithImportBill.Quantities.ToString();
-            TextBlockTotal.Text = Constant.formatMoney((decimal)_ingredientWithImportBill.Quantities * _ingredientWithImportBill.SinglePricePerUnit); 
+            TextBlockTotal.Text = UtilFuction.formatMoney((decimal)_ingredientWithImportBill.Quantities * _ingredientWithImportBill.SinglePricePerUnit); 
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e) {

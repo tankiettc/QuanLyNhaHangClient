@@ -86,6 +86,29 @@ namespace QuanLyBanHangClient.Manager
                 cbError
                 );
         }
+        public async Task changePasswordFromServerAndUpdate(
+                    string userName,
+                    string password,
+                    Action<NetworkResponse> cbSuccessSent = null,
+                    Action<string> cbError = null
+            ) {
+            Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
+                if (networkResponse.Successful) {
+                    UserList[userName].password = password;
+                }
+                cbSuccessSent?.Invoke(networkResponse);
+            };
+            KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+                new KeyValuePair<string, string>("Username", userName),
+                new KeyValuePair<string, string>("Password", password)
+            };
+            await RequestManager.getInstance().postAsync(
+                API_CONTROLLER + "/changepassword",
+                keys,
+                newCBSuccessSent,
+                cbError
+                );
+        }
         #endregion
     }
 }

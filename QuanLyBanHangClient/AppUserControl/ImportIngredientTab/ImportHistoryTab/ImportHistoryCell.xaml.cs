@@ -32,7 +32,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTa
         {
             TextBlockBillId.Text = "Hóa đơn #" + importBill.ImportBillId.ToString();
             TextBlockTime.Text = importBill.CreatedDate.ToShortDateString();
-            TextBlockMoney.Text = Constant.formatMoney(importBill.BillMoney);
+            TextBlockMoney.Text = UtilFuction.formatMoney(importBill.BillMoney);
         }
     }
 }

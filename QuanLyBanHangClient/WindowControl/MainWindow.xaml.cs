@@ -5,6 +5,7 @@ using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
 using QuanLyBanHangClient.AppUserControl.IngredientTab;
 using QuanLyBanHangClient.AppUserControl.OrderTab;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.WindowControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,31 @@ namespace QuanLyBanHangClient
             } else if(TabItemRespository.IsSelected) {
                 var tabImportIngredient = ((ImportIngredientTab)TabItemRespository.Content).TabImportIngredient;
                 ((ImportTab)tabImportIngredient.Content).setupComboBoxIngredient();
+            }
+        }
+
+
+        private void BtnChangePass_Click(object sender, RoutedEventArgs e) {
+            WindownsManager.getInstance().showChangePasswordWindow(UserInfoManager.getInstance().userInfo.previousAcc);
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e) {
+            var loginPage = new Login(false);
+            loginPage.Show();
+            Close();
+        }
+
+        private void BtnShowBtnsAccount1_MouseUp(object sender, MouseButtonEventArgs e) {
+            if (BtnChangePass.Visibility == Visibility.Visible) {
+                BtnChangePass.Visibility = Visibility.Hidden;
+                BtnLogout.Visibility = Visibility.Hidden;
+                RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
+                ImageArrowAccount.LayoutTransform = rotateTransform;
+            } else {
+                BtnChangePass.Visibility = Visibility.Visible;
+                BtnLogout.Visibility = Visibility.Visible;
+                RotateTransform rotateTransform = new RotateTransform(-90, 0.5, 0.5);
+                ImageArrowAccount.LayoutTransform = rotateTransform;
             }
         }
     }

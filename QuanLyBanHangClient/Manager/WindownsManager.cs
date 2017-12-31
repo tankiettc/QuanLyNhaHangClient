@@ -23,11 +23,11 @@ namespace QuanLyBanHangClient.Manager {
         public void showMessageBoxCheckInfoAgain() {
             MessageBox.Show(Constant.MS_CHECK_INFO_AGAIN);
         }
-        public MessageBoxResult showMessageBoxYesNoCustom(string info) {
-            return MessageBox.Show(info, "Xác nhận", MessageBoxButton.YesNo);
+        public MessageBoxResult showMessageBoxYesNoCustom(string info, string capture = "Xác nhận") {
+            return MessageBox.Show(info, capture, MessageBoxButton.YesNo);
         }
-        public MessageBoxResult showMessageBoxConfirm(string info) {
-            return MessageBox.Show(info, "Xác nhận");
+        public MessageBoxResult showMessageBoxConfirm(string info, string capture = "Xác nhận") {
+            return MessageBox.Show(info, capture);
         }
         public void showMessageBoxErrorNetwork() {
             MessageBox.Show(Constant.MS_ERROR_NETWORK);
@@ -68,6 +68,12 @@ namespace QuanLyBanHangClient.Manager {
                 foodTab,
                 foodId);
             detail.ShowDialog();
+        }
+        public void showChangePasswordWindow(
+            string userName
+            ) {
+            var window = new ChangePassWindow(userName);
+            window.ShowDialog();
         }
     }
 }

@@ -60,3 +60,7 @@ F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyB
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.g.cs
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.baml
 F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\WindowControl\Login.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\WindowControl\Login.baml
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\WindowControl\ChangePassWindow.g.cs
+F:\Learning\School\PhuongPhapOOP\QuanLyBanHangClient\QuanLyBanHangClient\QuanLyBanHangClient\obj\Debug\WindowControl\ChangePassWindow.baml

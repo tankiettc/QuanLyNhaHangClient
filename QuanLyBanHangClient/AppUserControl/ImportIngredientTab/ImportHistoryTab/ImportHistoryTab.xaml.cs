@@ -29,18 +29,18 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTa
         public void reloadListViewBill(bool isBaseOnFilter)
         {
             double timeFrom = 0;
-            double timeTo = Constant.GetTime(DateTime.Now);
+            double timeTo = UtilFuction.GetTime(DateTime.Now);
             if (isBaseOnFilter)
             {
                 if (CheckBoxFilterDate.IsChecked == true)
                 {
                     if (DatePickerFrom.SelectedDate != null)
                     {
-                        timeFrom = Constant.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
+                        timeFrom = UtilFuction.GetTime(DatePickerFrom.SelectedDate.Value) - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds;
                     }
                     if (DatePickerTo.SelectedDate != null)
                     {
-                        timeTo = Constant.GetTime(DatePickerTo.SelectedDate.Value) + (TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
+                        timeTo = UtilFuction.GetTime(DatePickerTo.SelectedDate.Value) + (TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond - DatePickerFrom.SelectedDate.Value.TimeOfDay.TotalMilliseconds);
                     }
                     if (timeFrom >= timeTo)
                     {
@@ -54,8 +54,8 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTa
             {
                 if (entry.Value != null)
                 {
-                    if (Constant.GetTime(entry.Value.CreatedDate) < timeFrom
-                        || Constant.GetTime(entry.Value.CreatedDate) > timeTo)
+                    if (UtilFuction.GetTime(entry.Value.CreatedDate) < timeFrom
+                        || UtilFuction.GetTime(entry.Value.CreatedDate) > timeTo)
                     {
                         continue;
                     }

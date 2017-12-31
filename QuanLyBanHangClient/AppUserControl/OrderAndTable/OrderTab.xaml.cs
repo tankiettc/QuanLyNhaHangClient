@@ -54,7 +54,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
             foreach (OrderInfo orderInfo in LVOrderInfo.Items.OfType<OrderInfo>()) {
                 totalMoney += orderInfo.billMoney;
             }
-            TextBlockTotalAllOrder.Text = "Thành tiền: " + Constant.formatMoney(totalMoney) + " VND";
+            TextBlockTotalAllOrder.Text = "Thành tiền: " + UtilFuction.formatMoney(totalMoney) + " VND";
             totalAllOrder = totalMoney;
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e) {

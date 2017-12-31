@@ -110,12 +110,26 @@
                     </TabItem>
                 </TabControl>
             </DockPanel>
-            
+
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,0,30,0" Width="864" HorizontalAlignment="Right">
-                <Image Source="/Resource/Image/app-logo-3.png" Margin="0,10" HorizontalAlignment="Right" Height="60" VerticalAlignment="Top"/>
+                <Image Source="/Resource/Image/app-logo-1.png" Margin="0,10" HorizontalAlignment="Right" Height="60" VerticalAlignment="Top"/>
                 <TextBlock Margin="0,20,17,0" FontFamily="UVN Ke Chuyen1" FontWeight="Bold" FontSize="22" Width="180" FlowDirection="LeftToRight" Foreground="{StaticResource MainSolidColor}" VerticalAlignment="Top">
                     Restauran Manager
                 </TextBlock>
+            </StackPanel>
+            <StackPanel Margin="20,88,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Border BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}" Width="150">
+                    <Grid x:Name="BtnShowBtnsAccount">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,0,0,0">Tài khoản:</TextBlock>
+                            <TextBlock FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="#FFECFF0B" Margin="10,0,0,0" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
+                            <Image x:Name="ImageArrowAccount" Source="/Resource/Image/arrow-down.png" Margin="10,2,0,0" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="BtnShowBtnsAccount1" MouseUp="BtnShowBtnsAccount1_MouseUp" Cursor="Hand" Background="#02000000"></StackPanel>
+                    </Grid>
+                </Border>
+                <Button x:Name="BtnChangePass" Template="{StaticResource BtnTemplate}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
+                <Button x:Name="BtnLogout" Template="{StaticResource BtnTemplate}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnLogout_Click">Đăng xuất</Button>
             </StackPanel>
             <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
                 <controls:CircularProgressBar x:Name="progressBar"
