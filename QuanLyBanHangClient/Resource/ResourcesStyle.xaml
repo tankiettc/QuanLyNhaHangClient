@@ -92,8 +92,8 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
         <Setter Property="Background" >
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                    <GradientStop Color="#FFEAE428" Offset="0"/>
-                    <GradientStop Color="#FFED6F00" Offset="1"></GradientStop>
+                    <GradientStop Color="#FFFF7D7D" Offset="0"/>
+                    <GradientStop Color="#FFFF7D7D" Offset="1"></GradientStop>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -104,6 +104,13 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFD4A6A6"/>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </Button.Resources>
                 <ContentPresenter Content="{TemplateBinding Content}"/>

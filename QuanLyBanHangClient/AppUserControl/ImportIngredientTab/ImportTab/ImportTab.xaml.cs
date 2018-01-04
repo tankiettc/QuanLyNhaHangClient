@@ -149,6 +149,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
 
         public void removeItemLV(ImportIngredientCell importIngredientCell) {
             LVIngredient.Items.Remove(importIngredientCell);
+            reloadTotalBill();
         }
     }
 }

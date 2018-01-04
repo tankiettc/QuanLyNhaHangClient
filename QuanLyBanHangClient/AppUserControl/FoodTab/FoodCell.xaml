@@ -7,18 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="500
              ">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="1.8*"/>
-        </Grid.ColumnDefinitions>
-        <Border  BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}" HorizontalAlignment="Center" Padding="2" VerticalAlignment="Center">
-            <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" Width="60" Height="60"/>
-        </Border>
-        <TextBlock x:Name="TextBlockName" Grid.Column="1" HorizontalAlignment="Center" Foreground="Yellow" Margin="10,0,0,0" Text="3 - Bún đậu" FontSize="15" Width="200" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Cursor="Hand" MouseUp="TextBlockName_MouseUp" />
-        <TextBlock x:Name="TextBlockPrice" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="23000.000 vnđ" FontSize="11" FontStyle="Italic" TextDecorations="Underline" Width="70" />
-        <TextBlock x:Name="TextBlockCategory" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,15,0" Text="Bún" Width="120" TextWrapping="Wrap" TextAlignment="Right" FontSize="11.5" />
-    </Grid>
+    <Border BorderThickness="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.8*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" HorizontalAlignment="Left" Margin="8,8,0,8" Width="60" Height="60" Stretch="Fill"/>
+
+            <TextBlock x:Name="TextBlockName" Grid.Column="1" HorizontalAlignment="Center" Foreground="Yellow" Margin="10,0,0,0" Text="3 - Bún đậu" FontSize="15" Width="200" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Cursor="Hand" MouseUp="TextBlockName_MouseUp" />
+            <TextBlock x:Name="TextBlockPrice" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="23000.000 vnđ" FontSize="11" FontStyle="Italic" TextDecorations="Underline" Width="70" />
+            <TextBlock x:Name="TextBlockCategory" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,15,0" Text="Bún" Width="120" TextWrapping="Wrap" TextAlignment="Right" FontSize="11.5" />
+        </Grid>
+    </Border>
 </UserControl>

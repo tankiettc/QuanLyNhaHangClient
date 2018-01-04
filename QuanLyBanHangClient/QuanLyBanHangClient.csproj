@@ -143,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AppUserControl\PrepareFoodTab\PrepareFoodCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowControl\CategorizeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,11 +221,15 @@
     <Compile Include="AppUserControl\OrderAndTable\TableTab.xaml.cs">
       <DependentUpon>TableTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUserControl\PrepareFoodTab\PrepareFoodCell.xaml.cs">
+      <DependentUpon>PrepareFoodCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
     <Compile Include="Manager\ImageManager.cs" />
     <Compile Include="Manager\ImportBillManager.cs" />
+    <Compile Include="Manager\PrepareFoodManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Manager\TableManager.cs" />
@@ -241,7 +249,7 @@
     <Compile Include="Model\IngredientWithImportBill.cs" />
     <Compile Include="Model\IngredientWithReport.cs" />
     <Compile Include="Model\Order.cs" />
-    <Compile Include="Model\PrepareFoodArchive.cs" />
+    <Compile Include="Model\PrepareFood.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />
@@ -310,7 +318,6 @@
     <Resource Include="Resource\Image\cpg-foods-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Image\Asset 7.png" />
     <Resource Include="Resource\Image\food-icon.png" />
     <Resource Include="Resource\Image\ingredient-icon.png" />
     <Resource Include="Resource\Image\order-icon.png" />
@@ -382,6 +389,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\default-food-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\prepare-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

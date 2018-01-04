@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace QuanLyBanHangAPI.model
 {
-    public class PrepareFoodArchive
-    {
-        public String Id { get; set; }
-        public int FoodId { get; set; }
-        public String FoodName { get; set; }
+    public class PrepareFood {
+        public int PrepareFoodId { get; set; }
         public int OrderId { get; set; }
         public int TableId { get; set; }
-        public long CreatedTime { get; set; }
+        public int FoodId { get; set; }
+        public Food Food { get; set; }
+        public int PrepareStateId { get; set; }
+        public DateTime CreateDateTime { get; set; }
         public String Note { get; set; }
 
-        public PrepareFoodArchive()
+        public PrepareFood()
         {
             
         }

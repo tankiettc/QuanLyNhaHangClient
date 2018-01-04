@@ -103,10 +103,18 @@
                         <TabItem.Header>
                             <StackPanel>
                                 <Image Width="50" Source="/Resource/Image/respository-icon.png"/>
-                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Kho</TextBlock>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Nhập hàng</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
                         <importingredienttab:ImportIngredientTab Height="Auto" Width="Auto"/>
+                    </TabItem>
+                    <TabItem x:Name="TabItemPrepareFood">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/prepare-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Trạng thái</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
                     </TabItem>
                 </TabControl>
             </DockPanel>
