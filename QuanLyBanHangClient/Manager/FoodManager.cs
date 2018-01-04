@@ -68,6 +68,7 @@ namespace QuanLyBanHangClient.Manager {
                     List<IngredientWithFood> ingredientWithFoods,
                     decimal price,
                     long foodCategorizeId,
+                    int imageId = -1,
                     Action<NetworkResponse> cbSuccessSent = null,
                     Action<string> cbError = null
             ) {
@@ -83,6 +84,9 @@ namespace QuanLyBanHangClient.Manager {
             myObject.Price = price;
             myObject.FoodCategorizeId = foodCategorizeId;
             myObject.IngredientWithFoods = (dynamic)new JArray();
+            if (imageId > -1) {
+                myObject.ImageId = imageId.ToString();
+            }
             foreach (IngredientWithFood ingredientWithFood in ingredientWithFoods) {
                 myObject.IngredientWithFoods.Add(JObject.Parse(JsonConvert.SerializeObject(ingredientWithFood)));
             }
@@ -100,6 +104,7 @@ namespace QuanLyBanHangClient.Manager {
                     List<IngredientWithFood> ingredientWithFoods,
                     decimal price,
                     long foodCategorizeId,
+                    int imageId = -1,
                     Action<NetworkResponse> cbSuccessSent = null,
                     Action<string> cbError = null
             ) {
@@ -110,15 +115,18 @@ namespace QuanLyBanHangClient.Manager {
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };
-            KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+            List<KeyValuePair<string, string>> keys = new List<KeyValuePair<string, string>>() {
                 new KeyValuePair<string, string>("Name", name),
                 new KeyValuePair<string, string>("IngredientWithFoods", JsonConvert.SerializeObject(ingredientWithFoods)),
                 new KeyValuePair<string, string>("Price", price.ToString()),
                 new KeyValuePair<string, string>("FoodCategorizeId", foodCategorizeId.ToString())
             };
+            if(imageId > -1) {
+                keys.Add(new KeyValuePair<string, string>("ImageId", imageId.ToString()));
+            }
             await RequestManager.getInstance().putAsync(
                 API_CONTROLLER + "/" + foodId,
-                keys,
+                keys.ToArray(),
                 newCBSuccessSent,
                 cbError
                 );

@@ -6,51 +6,81 @@
         xmlns:local="clr-namespace:QuanLyBanHangClient.WindowControl"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         mc:Ignorable="d"
-        Title="FoodDetail" Height="500" Width="500" ResizeMode="NoResize" WindowStartupLocation="Manual">
-    <Grid>
+        Title="Thêm món ăn" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
+    <Grid x:Name="GridParent">
+        <Grid.Resources>
+            <ImageSource x:Key="ImageDefaultFood">/Resource/Image/default-food-image.jpg</ImageSource>
+        </Grid.Resources>
+        <Grid Margin="0,45,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <DockPanel Margin="50,30,0,0">
+                    <Button x:Name="BtnCopy" Template="{StaticResource BtnTemplate}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
+                    <ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>
+                    <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed">ID</TextBlock>
+                    <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                </DockPanel>
+                <DockPanel Margin="50,15,0,0">
+                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Tên món ăn</TextBlock>
+                    <TextBox x:Name="TextBoxName" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="50,15,0,0">
+                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Giá</TextBlock>
+                    <TextBox x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="50,15,0,0">
+                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Loại món ăn</TextBlock>
+                    <ComboBox x:Name="ComboBoxCategory" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
+                </DockPanel>
 
-        <StackPanel>
-            <DockPanel Margin="50,30,0,0">
-                <Button x:Name="BtnCopy" Template="{StaticResource BtnTemplate}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
-                <ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="256" VerticalContentAlignment="Center"/>
-                <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed">ID</TextBlock>
-                <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
-            </DockPanel>
-            <DockPanel Margin="50,15,0,0">
-                <TextBlock FontWeight="Bold" Width="80">Tên món ăn</TextBlock>
-                <TextBox x:Name="TextBoxName" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
-            </DockPanel>
-            <DockPanel Margin="50,15,0,0">
-                <TextBlock FontWeight="Bold" Width="80">Giá</TextBlock>
-                <TextBox x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center"/>
-            </DockPanel>
-            <DockPanel Margin="50,15,0,0">
-                <TextBlock FontWeight="Bold" Width="80">Loại món ăn</TextBlock>
-                <ComboBox x:Name="ComboBoxCategory" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
-            </DockPanel>
-
-            <TextBlock Margin="50,15,0,0" FontWeight="Bold" Width="180" HorizontalAlignment="Left">Danh sách nguyên liệu</TextBlock>
-            <DockPanel Margin="30,15,30,0" Height="180">
-                <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="0" Height="180" Width="300" SelectionChanged="DataGridIngredient_SelectionChanged">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>
-                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
-                        <DataGridTextColumn Header="Đơn vị" Binding="{Binding UnitName}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <StackPanel Margin="5">
-                    <ComboBox x:Name="ComboBoxIngredient" Style="{StaticResource ComboBoxFlatStyle}" Margin="0,20,0,0" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
-                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
-                        <TextBox x:Name="TextBoxQuantity" Template="{StaticResource TextBoxRoundedTemplate}" PreviewTextInput="NumberValidationTextBox" Width="60" HorizontalAlignment="Left"></TextBox>
-                        <TextBlock x:Name="TextBlockUnit" FontStyle="Italic" Margin="6,2,0,0" HorizontalAlignment="Left" Text="Kilogram" TextWrapping="WrapWithOverflow" Width="60" FontSize="10" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <Button x:Name="BtnAdd" Margin="0,10,0,0" Click="BtnAdd_Click" >Thêm</Button>
-                    <Button x:Name="BtnRemove" Margin="0,30,0,0"  IsEnabled="False" Click="BtnRemove_Click">Xóa</Button>
-                </StackPanel>
-            </DockPanel>
-            <Button x:Name="BtnConfirm" Template="{StaticResource BtnTemplate}" Width="120" Height="40" FontSize="16" Margin="0,15,0,0" Click="BtnConfirm_Click" Content="Tạo mới"/>
-        </StackPanel>
+                <TextBlock Margin="50,15,0,0" FontWeight="Bold" Width="180" HorizontalAlignment="Left" Foreground="White">Danh sách nguyên liệu</TextBlock>
+                <Border Margin="30,15,0,0" Height="180" Padding="1" BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}"> 
+                    <DockPanel>
+                        <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="0" Height="180" Width="320" SelectionChanged="DataGridIngredient_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>
+                                <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
+                                <DataGridTextColumn Header="Đơn vị" Binding="{Binding UnitName}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Margin="5">
+                            <ComboBox x:Name="ComboBoxIngredient" Style="{StaticResource ComboBoxFlatStyle}" Margin="0,20,0,0" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                <TextBox x:Name="TextBoxQuantity" Template="{StaticResource TextBoxRoundedTemplate}" PreviewTextInput="NumberValidationTextBox" Width="60" HorizontalAlignment="Left"></TextBox>
+                                <TextBlock x:Name="TextBlockUnit" FontStyle="Italic" Margin="6,2,0,0" Text="Kilogram" TextWrapping="WrapWithOverflow" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+                            </StackPanel>
+                            <Button Template="{StaticResource BtnTemplate}" x:Name="BtnAdd" Margin="0,10,0,0" Click="BtnAdd_Click" >Thêm</Button>
+                            <Button Template="{StaticResource BtnTemplate}" x:Name="BtnRemove" Margin="0,30,0,0"  IsEnabled="False" Click="BtnRemove_Click">Xóa</Button>
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+                <Button x:Name="BtnConfirm" Template="{StaticResource BtnTemplate}" Width="220" Height="50" FontSize="16" Margin="0,20,0,0" Click="BtnConfirm_Click" Content="Tạo mới" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" FontWeight="Bold" FontSize="14" Foreground="#FFFDFF00">Hình ảnh món ăn</TextBlock>
+                <Grid>
+                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}" Width="200" Height="200" Margin="0,10,0,0">
+                        <Image x:Name="ImageFood" Width="176" Height="176" Source="{StaticResource ImageDefaultFood}"/>
+                    </Border>
+                </Grid>
+                <Button Template="{StaticResource BtnTemplate}" x:Name="BtnPickImage" Margin="20,20,20,0"  Click="BtnPickImage_Click" Height="40">Chọn ảnh từ máy</Button>
+            </StackPanel>
+        </Grid>
+        <TextBlock x:Name="TextBlockTile" Margin="0,25,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" Foreground="White" TextAlignment="Center" VerticalAlignment="Top">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                    <GradientStop Offset="0"/>
+                    <GradientStop Color="#FFBC4444" Offset="0.4"/>
+                    <GradientStop Color="#FFBC4444" Offset="0.6"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+                    Thêm món ăn
+        </TextBlock>
         <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
             <controls:CircularProgressBar x:Name="progressBar"
                              VerticalAlignment="Center" Width="45" Height="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Canvas.Top="0"/>

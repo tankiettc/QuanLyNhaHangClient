@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace QuanLyBanHangClient
@@ -56,7 +61,53 @@ namespace QuanLyBanHangClient
                     reader.Close();
             }
         }
+        public static byte[] ImageToBinary(Image image) {
+            using (MemoryStream ms = new MemoryStream()) {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.GetBuffer();
+            }
+        }
+        public static Image ByteToImage(byte[] imageAsByte) {
+            return (Bitmap)((new ImageConverter()).ConvertFrom(imageAsByte));
+        }
+        public static byte[] ResizeImage(byte[] imageAsByte, int width, int height) {
+            Image image = ByteToImage(imageAsByte);
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
 
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage)) {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes()) {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return ImageToBinary(destImage);
+        }
+        public static BitmapSource imageToBitmapSource(Image image) {
+            var bitmap = new Bitmap(image);
+            IntPtr bmpPt = bitmap.GetHbitmap();
+            BitmapSource bitmapSource =
+             System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                   bmpPt,
+                   IntPtr.Zero,
+                   Int32Rect.Empty,
+                   BitmapSizeOptions.FromEmptyOptions());
+
+            //freeze bitmapSource and clear memory to avoid memory leaks
+            bitmapSource.Freeze();
+            //DeleteObject(bmpPt);
+
+            return bitmapSource;
+        }
     }
     public class ComboData {
         public int Id { get; set; }

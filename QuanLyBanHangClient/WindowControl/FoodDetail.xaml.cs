@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
 
 namespace QuanLyBanHangClient.WindowControl {
     /// <summary>
@@ -27,6 +28,8 @@ namespace QuanLyBanHangClient.WindowControl {
         private int _foodDetailId = Constant.ID_CREATE_NEW;
         private FoodTab _foodTab = null;
         private ObservableCollection<IngredientWithFoodTable> _ingredientsWithFood = new ObservableCollection<IngredientWithFoodTable>();
+        private int _currentImageId = -1;
+        private System.Drawing.Image _currentImage;
         public FoodDetail(FoodTab foodTab, int foodId = Constant.ID_CREATE_NEW) {
             InitializeComponent();
             _foodDetailId = foodId;
@@ -66,6 +69,8 @@ namespace QuanLyBanHangClient.WindowControl {
                 setupUIWithFoodData(foodData);
 
                 BtnConfirm.Content = "Sửa";
+                Title = "Sửa chi tiết món";
+                TextBlockTile.Text = "Sửa chi tiết món";
 
                 TextBlockId.Visibility = Visibility.Visible;
                 TextBoxId.Visibility = Visibility.Visible;
@@ -87,6 +92,24 @@ namespace QuanLyBanHangClient.WindowControl {
             TextBoxId.Text = foodData.FoodId.ToString();
             TextBoxName.Text = foodData.Name;
             TextBoxPrice.Text = foodData.Price.ToString();
+            _currentImage = null;
+            if (foodData.ImageId != null) {
+                loadingAnim.Visibility = Visibility.Visible;
+                _currentImageId = foodData.ImageId ?? default(int);
+                ImageManager.getInstance().loadImage(
+                    _currentImageId,
+                    delegate (byte[] imageData) {
+                        if(imageData != null
+                        && imageData.Length > 0) {
+                            ImageFood.Source = UtilFuction.imageToBitmapSource(UtilFuction.ByteToImage(imageData));
+                        }
+                        loadingAnim.Visibility = Visibility.Hidden;
+                    }
+                    );
+            } else {
+                _currentImageId = -1;
+                ImageFood.Source = (ImageSource)GridParent.FindResource("ImageDefaultFood");
+            }
 
             ComboBoxCategory.SelectedValue = foodData.FoodCategorizeId;
 
@@ -119,8 +142,34 @@ namespace QuanLyBanHangClient.WindowControl {
                 WindownsManager.getInstance().showMessageBoxCheckInfoAgain();
                 return;
             }
+            if(_currentImage != null) {
+                loadingAnim.Visibility = Visibility.Visible;
+                ImageManager.getInstance().uploadImage(
+                    UtilFuction.ImageToBinary(_currentImage),
+                    delegate (NetworkResponse result) {
+                        if(result.Successful) {
+                            int imageId = -1;
+                            int.TryParse(result.Data.ToString(), out imageId);
+                            _currentImageId = imageId;
+                            updateOrCreateFood();
+                        } else {
+                            WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+                            loadingAnim.Visibility = Visibility.Hidden;
+                        }
+                    },
+                    delegate (string fail) {
+                        WindownsManager.getInstance().showMessageBoxErrorNetwork();
+                        loadingAnim.Visibility = Visibility.Hidden;
+                    }
+                    );
+            } else {
+                updateOrCreateFood();
+            }
+        }
+
+        private void updateOrCreateFood() {
             loadingAnim.Visibility = Visibility.Visible;
-            Action< NetworkResponse> cbSuccessSent =
+            Action<NetworkResponse> cbSuccessSent =
                     delegate (NetworkResponse networkResponse) {
                         if (!networkResponse.Successful) {
                             WindownsManager.getInstance().showMessageBoxSomeThingWrong();
@@ -128,7 +177,7 @@ namespace QuanLyBanHangClient.WindowControl {
                             if (_foodTab != null) {
                                 _foodTab.reloadFoodTableUI();
                             }
-                            this.Close();
+                            Close();
                         }
                         loadingAnim.Visibility = Visibility.Hidden;
                     };
@@ -150,6 +199,7 @@ namespace QuanLyBanHangClient.WindowControl {
                         ingredientsWithFood,
                         price,
                         Convert.ToInt64(((ComboData)ComboBoxCategory.SelectedItem).Id),
+                        _currentImageId,
                         cbSuccessSent,
                         cbError
                         );
@@ -159,11 +209,12 @@ namespace QuanLyBanHangClient.WindowControl {
                         ingredientsWithFood,
                         price,
                         Convert.ToInt64(((ComboData)ComboBoxCategory.SelectedItem).Id),
+                        _currentImageId,
                         cbSuccessSent,
                         cbError
                         );
                 }
-            } catch(Exception ex) {
+            } catch (Exception ex) {
 
             }
         }
@@ -217,6 +268,20 @@ namespace QuanLyBanHangClient.WindowControl {
             }
             var foodData = FoodManager.getInstance().FoodList[((ComboData)ComboBoxFoodCopy.SelectedItem).Id];
             setupUIWithFoodData(foodData);
+        }
+
+        private void BtnPickImage_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "All Image Files|*.jpeg;*.png;*.jpg|All Files(*.*)|*.*";
+            if (o.ShowDialog() == true) {
+                try {
+                    System.Drawing.Image i = System.Drawing.Image.FromFile(o.FileName);
+                    _currentImage = i;
+                    ImageFood.Source = UtilFuction.imageToBitmapSource(i);
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 

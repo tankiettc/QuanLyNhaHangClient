@@ -213,6 +213,7 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
+    <Compile Include="Manager\ImageManager.cs" />
     <Compile Include="Manager\ImportBillManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
@@ -370,6 +371,9 @@
     <Resource Include="Resource\Image\app-logo-5.png" />
     <Resource Include="Resource\Image\app-logo-6.png" />
     <Resource Include="Resource\Image\app-logo-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\default-food-image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

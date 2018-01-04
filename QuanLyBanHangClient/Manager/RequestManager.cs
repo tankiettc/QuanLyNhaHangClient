@@ -4,6 +4,7 @@ using QuanLyBanHangAPI.model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,11 +12,12 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace QuanLyBanHangClient.Manager {
     class NetworkResponse {
         public bool Successful { get; set; }
-        public JContainer Data { get; set; }
+        public JToken Data { get; set; }
         public String ErrorDescription { get; set; }
         public String ErrorMessage { get; set; }
         public String ErrorCode { get; set; }
@@ -250,6 +252,58 @@ namespace QuanLyBanHangClient.Manager {
                 cbFail?.Invoke(HttpStatusCode.NotFound);
             }
         }
+        async public Task UploadImage(
+            string requestUri, 
+            byte[] ImageData,
+            Action<NetworkResponse> cbSuccessSent = null,
+            Action<string> cbError = null) {
+            try {
+                var requestContent = new MultipartFormDataContent();
+                //    here you can specify boundary if you need---^
+                var imageContent = new ByteArrayContent(ImageData);
+                imageContent.Headers.ContentType =
+                    MediaTypeHeaderValue.Parse("image/jpeg");
+
+                requestContent.Add(imageContent, "image", "image.jpg");
+
+                var result = await client.PostAsync(requestUri, requestContent);
+
+                if (result.IsSuccessStatusCode) {
+                    string resultContent = await result.Content.ReadAsStringAsync();
+
+                    var jsonObject = (JObject)JsonConvert.DeserializeObject(resultContent);
+                    var networkResult = new NetworkResponse() {
+                        Successful = jsonObject["Successful"].Value<bool>(),
+                        Data = JToken.FromObject(jsonObject["Data"].ToString()),
+                        ErrorDescription = jsonObject["ErrorDescription"].Value<string>(),
+                        ErrorMessage = jsonObject["ErrorMessage"].Value<string>(),
+                        ErrorCode = jsonObject["ErrorCode"].Value<string>()
+                    };
+                    cbSuccessSent?.Invoke(networkResult);
+                } else {
+                    cbError?.Invoke("err:" + result.StatusCode.ToString());
+                }
+            }
+            catch (Exception ex) {
+                cbError?.Invoke(ex.ToString());
+                Debug.WriteLine("ex: " + ex);
+            }
+        }
+        public async Task LoadImage(string requestUri, Action<byte[]> cbSuccess, Action<HttpStatusCode> cbFail) {
+            try {
+                var result = await client.GetAsync(requestUri);
+
+                if (result.IsSuccessStatusCode) {
+                    byte[] img = await result.Content.ReadAsByteArrayAsync();
+                    cbSuccess?.Invoke(img);
+                } else {
+                    cbFail?.Invoke(result.StatusCode);
+                }
+            } catch(Exception ex) {
+                cbFail?.Invoke(HttpStatusCode.NotFound);
+            }
+        }
+
         Grid _loadingAnim = null;
         public Grid LoadingAnm { set { _loadingAnim = value; } }
         public void showLoading() {

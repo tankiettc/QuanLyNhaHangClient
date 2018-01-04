@@ -1,4 +1,5 @@
-﻿using QuanLyBanHangAPI.model;
+﻿using Newtonsoft.Json.Linq;
+using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.FoodTab;
 using QuanLyBanHangClient.AppUserControl.ImportIngredientTab;
 using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
@@ -28,8 +29,7 @@ namespace QuanLyBanHangClient
     /// </summary>
     public partial class MainWindow : Window {
         bool isReloading = false;
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
             RequestManager.getInstance().LoadingAnm = loadingAnim;
             reloadAllInfo();

@@ -25,8 +25,6 @@
                 </TextBlock.Background>
                     Đổi mật khẩu
             </TextBlock>
-            <Image Source="/Resource/Image/app-logo-2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="33,0,0,18"/>
-
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
                     <TextBlock Foreground="White" FontWeight="Bold" Width="120">Mật khẩu mới :</TextBlock>

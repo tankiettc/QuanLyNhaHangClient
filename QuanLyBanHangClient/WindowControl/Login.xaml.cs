@@ -1,4 +1,5 @@
-﻿using QuanLyBanHangClient.Manager;
+﻿using Newtonsoft.Json.Linq;
+using QuanLyBanHangClient.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
