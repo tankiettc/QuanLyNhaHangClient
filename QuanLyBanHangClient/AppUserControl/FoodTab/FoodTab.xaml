@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
+             xmlns:foodtab="clr-namespace:QuanLyBanHangClient.AppUserControl.FoodTab"
              mc:Ignorable="d" Width="800" Height="491">
     <Border BorderBrush="{StaticResource MainSolidColor}" CornerRadius="{StaticResource CornerRadiusValue}" Background="{StaticResource MainSolidColor}">
         <Grid>
@@ -107,14 +108,21 @@
                             </DockPanel>
                             <DockPanel Grid.Column="1">
                                 <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách món ăn</TextBlock>
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridFood" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" DockPanel.Dock="Bottom" SelectionChanged="DataGridFood_SelectionChanged">
+                                <!--<DataGrid TextSearch.Text="Cơm" Name="DataGridFood" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" DockPanel.Dock="Bottom" SelectionChanged="DataGridFood_SelectionChanged">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Tên món" Binding="{Binding Name}" Width="2*"/>
                                         <DataGridTextColumn Header="Giá" Binding="{Binding Price}"/>
                                         <DataGridTextColumn Header="Loại món ăn" Binding="{Binding Category}" Width="*"/>
                                     </DataGrid.Columns>
-                                </DataGrid>
+                                </DataGrid>-->
+                                <ListView x:Name="LVFood" Background="Transparent" BorderBrush="#00ABADB3" Margin="0,5,0,0">
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
                             </DockPanel>
                         </Grid>
                     </Border>

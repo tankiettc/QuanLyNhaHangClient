@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,10 @@ namespace QuanLyBanHangClient.Manager {
         private string API_CONTROLLER = "/api/image";
         private string _imageLocalPath = "image/";
         private string _fullImagePath = "";
+
+        private Queue<KeyValuePair<int, Action<byte[]>>> _queue;
+        private bool _isDownloading = false;
+
         private Dictionary<int, byte[]> _imagesData = new Dictionary<int, byte[]>();
         private Dictionary<int, byte[]> ImagesData { get { return _imagesData; } }
         ImageManager() {
@@ -41,24 +46,52 @@ namespace QuanLyBanHangClient.Manager {
             }
             return true;
         }
-        public async Task loadImage(
+        private void pushDownloadToQueue(int imageId, Action<byte[]> cb) {
+            _queue.Enqueue(new KeyValuePair<int, Action<byte[]>>(imageId, cb));
+            checkAndDownload();
+        }
+        private void checkAndDownload() {
+            if(_isDownloading
+                || _queue.Count <= 0) {
+                return;
+            }
+            _isDownloading = true;
+            var downloadData = _queue.Dequeue();
+            
+            Action<byte[]> cbSuccess = delegate (byte[] imageData) {
+                setImageDataAndStoreLocal(downloadData.Key, imageData);
+                downloadData.Value?.Invoke(imageData);
+                _isDownloading = false;
+                checkAndDownload();
+            };
+            Action<HttpStatusCode> cbFail = delegate (HttpStatusCode rsCode) {
+                _isDownloading = false;
+                checkAndDownload();
+            };
+            RequestManager.getInstance().LoadImage(
+                API_CONTROLLER + "/" + downloadData.Key.ToString(),
+                cbSuccess,
+                cbFail
+                );
+        }
+        public bool checkImageExistLocal(int imageId) {
+            if(_imagesData.ContainsKey(imageId)
+                || loadImageFromLocal(imageId)) {
+                return true;
+            }
+            return false;
+        }
+        public async Task<bool> loadImage(
             int imageId,
             Action<byte[]> cb
             ) {
-            if (_imagesData.ContainsKey(imageId)
-                || loadImageFromLocal(imageId)) {
+            //get from local
+            if (checkImageExistLocal(imageId)) {
                 cb?.Invoke(_imagesData[imageId]);
-            }  else {
-                Action<byte[]> cbSuccess = delegate (byte[] imageData) {
-                    setImageDataAndStoreLocal(imageId, imageData);
-                    cb?.Invoke(imageData);
-                };
-                RequestManager.getInstance().LoadImage(
-                    API_CONTROLLER + "/" + imageId.ToString(),
-                    cbSuccess,
-                    null
-                    );
+                return true;
             }
+            pushDownloadToQueue(imageId, cb);
+            return false;
         }
         public async Task uploadImage(
             byte[] imageData,

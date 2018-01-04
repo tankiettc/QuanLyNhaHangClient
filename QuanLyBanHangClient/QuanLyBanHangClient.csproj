@@ -65,6 +65,9 @@
     <Compile Include="AppUserControl\Custom\RadioListBox.xaml.cs">
       <DependentUpon>RadioListBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUserControl\FoodTab\FoodCell.xaml.cs">
+      <DependentUpon>FoodCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppUserControl\FoodTab\FoodTab.xaml.cs">
       <DependentUpon>FoodTab.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
     <Page Include="AppUserControl\Custom\RadioListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppUserControl\FoodTab\FoodCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppUserControl\FoodTab\FoodTab.xaml">
       <SubType>Designer</SubType>
@@ -292,6 +299,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resource\Font\74_14343_UVNKeChuyen1.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

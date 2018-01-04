@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="Thêm món ăn" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
     <Grid x:Name="GridParent">
-        <Grid.Resources>
-            <ImageSource x:Key="ImageDefaultFood">/Resource/Image/default-food-image.jpg</ImageSource>
-        </Grid.Resources>
         <Grid Margin="0,45,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>

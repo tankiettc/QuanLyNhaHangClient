@@ -108,7 +108,7 @@ namespace QuanLyBanHangClient.WindowControl {
                     );
             } else {
                 _currentImageId = -1;
-                ImageFood.Source = (ImageSource)GridParent.FindResource("ImageDefaultFood");
+                ImageFood.Source = (ImageSource)Application.Current.FindResource("ImageDefaultFood");
             }
 
             ComboBoxCategory.SelectedValue = foodData.FoodCategorizeId;

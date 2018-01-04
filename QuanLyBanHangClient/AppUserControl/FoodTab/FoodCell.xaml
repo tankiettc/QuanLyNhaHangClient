@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="QuanLyBanHangClient.AppUserControl.FoodTab.FoodCell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.FoodTab"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="500
+             ">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.8*"/>
+        </Grid.ColumnDefinitions>
+        <Border  BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}" HorizontalAlignment="Center" Padding="2" VerticalAlignment="Center">
+            <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" Width="60" Height="60"/>
+        </Border>
+        <TextBlock x:Name="TextBlockName" Grid.Column="1" HorizontalAlignment="Center" Foreground="Yellow" Margin="10,0,0,0" Text="3 - Bún đậu" FontSize="15" Width="200" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Cursor="Hand" MouseUp="TextBlockName_MouseUp" />
+        <TextBlock x:Name="TextBlockPrice" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="23000.000 vnđ" FontSize="11" FontStyle="Italic" TextDecorations="Underline" Width="70" />
+        <TextBlock x:Name="TextBlockCategory" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,15,0" Text="Bún" Width="120" TextWrapping="Wrap" TextAlignment="Right" FontSize="11.5" />
+    </Grid>
+</UserControl>

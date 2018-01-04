@@ -95,6 +95,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             billMoney = order.BillMoney;
 
             BtnAccept.Visibility = Visibility.Hidden;
+            BtnCancel.Visibility = Visibility.Hidden;
             FoodNamesComboBox = new ObservableCollection<ComboData>();
             foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                 if (entry.Value != null) {
@@ -141,11 +142,14 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             OrderWithFood orderWithFood
             ) {
             BtnAccept.Visibility = Visibility.Visible;
+            BtnCancel.Visibility = Visibility.Visible;
         }
         public void onRemoveOrderWithFood(
             OrderWithFood orderWithFood
             ) {
             BtnAccept.Visibility = Visibility.Visible;
+            BtnCancel.Visibility = Visibility.Visible;
+
             listViewOrderWithFood.Items.Remove(orderWithFood);
             checkAndAddFoodIdToComboBox(orderWithFood._foodWithOrder.FoodId);
         }
@@ -166,6 +170,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
         private void BtnAddFood_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Visible;
             BtnAccept.Opacity = 0;
+            BtnCancel.Opacity = 0;
         }
         private void BtnAccept_Click(object sender, RoutedEventArgs e) {
             updateFoodWithOrderAndReloadUI();
@@ -185,12 +190,20 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             }, this));
             checkAndRemoveFoodIdToComboBox(foodId);
             BtnAccept.Visibility = Visibility.Visible;
+            BtnCancel.Visibility = Visibility.Visible;
             onChangeMoney();
         }
 
         private void BtnConfirmExit_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Hidden;
             BtnAccept.Opacity = 1;
+            BtnCancel.Opacity = 1;
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e) {
+            reloadAllUI();
+            BtnAccept.Visibility = Visibility.Hidden;
+            BtnCancel.Visibility = Visibility.Hidden;
         }
     }
 }

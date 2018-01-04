@@ -240,6 +240,20 @@ namespace QuanLyBanHangClient.AppUserControl.IngredientTab {
                 reloadIngredientTableUI(true);
             });
         }
+
+        private void DataGridIngredient_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            if (DataGridIngredient.SelectedItem != null) {
+                IngredientTable ingredientTable = DataGridIngredient.SelectedItem as IngredientTable;
+                WindownsManager.getInstance().showDetailIngredientWindow(this, ingredientTable.Id);
+            }
+        }
+
+        private void DataGridUnit_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            if (DataGridUnit.SelectedItem != null) {
+                UnitTable unitTable = DataGridUnit.SelectedItem as UnitTable;
+                WindownsManager.getInstance().showDetailUnitWindow(this, unitTable.Id);
+            }
+        }
     }
     class IngredientTable : INotifyPropertyChanged {
         private int id;

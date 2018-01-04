@@ -27,13 +27,11 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
     /// </summary>
     public partial class FoodTab : UserControl
     {
-        private ObservableCollection<FoodTable> foodListTable = new ObservableCollection<FoodTable>();
         private ObservableCollection<CategoryTable> categoryListTable = new ObservableCollection<CategoryTable>();
 
         public FoodTab() {
             InitializeComponent();
             DataGridCategory.ItemsSource = categoryListTable;
-            DataGridFood.ItemsSource = foodListTable;
         }
 
 
@@ -64,19 +62,22 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                         RequestManager.getInstance().hideLoading();
                     };
 
-            FoodTable foodTable = DataGridFood.SelectedItem as FoodTable;
+            FoodCell foodTable = LVFood.SelectedItem as FoodCell;
             FoodManager.getInstance().deleteFoodFromServerAndUpdate(
-                foodTable.Id,
+                foodTable.FoodData.FoodId,
                 cbSuccessSent,
                 cbError
                 );
         }
 
         private void BtnEditFood_Click(object sender, RoutedEventArgs e) {
-            if (DataGridFood.SelectedItem != null) {
-                FoodTable foodTable = DataGridFood.SelectedItem as FoodTable;
-                WindownsManager.getInstance().showDetailFoodWindow(this, foodTable.Id);
+            if (LVFood.SelectedItem != null) {
+                FoodCell foodTable = LVFood.SelectedItem as FoodCell;
+                showEditFoodView(foodTable.FoodData.FoodId);
             }
+        }
+        public void showEditFoodView(int foodId) {
+            WindownsManager.getInstance().showDetailFoodWindow(this, foodId);
         }
 
         private void BtnAddCategory_Click(object sender, RoutedEventArgs e) {
@@ -161,20 +162,40 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                     cbError
                     );
             } else {
-                foodListTable.Clear();
+                LVFood.Items.Clear();
                 foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                     if (entry.Value != null) {
-                        foodListTable.Add(new FoodTable() {
-                            Id = entry.Value.FoodId,
-                            Name = entry.Value.Name,
-                            Price = entry.Value.Price,
-                            Category = FoodCategorizeManager.getInstance().FoodCategorizeList[entry.Value.FoodCategorizeId]?.Name
-                        });
+                        var foodCell = new FoodCell(entry.Value, this);
+                        LVFood.Items.Add(foodCell);
+
+                        var imageId = entry.Value.ImageId ?? default(int);
+                        if (entry.Value.ImageId != null
+                            && imageId >= 0) {
+                            if (ImageManager.getInstance().checkImageExistLocal(imageId)) {
+                                ImageManager.getInstance().loadImage(imageId, delegate (byte[] imageData) {
+                                    foodCell.setImageFood(UtilFuction.ByteToImage(imageData));
+                                });
+                            } else {
+                                ImageManager.getInstance().loadImage(imageId, delegate (byte[] imageData) {
+                                    checkAndSetImageForFoodCell(entry.Value.FoodId, imageId, UtilFuction.ByteToImage(imageData));
+                                });
+                            }
+                        }
                     }
                 }
                 cbAfterReload?.Invoke();
             }
 
+        }
+        private void checkAndSetImageForFoodCell(int foodId, int imageId, System.Drawing.Image image) {
+            foreach(var foodCell in LVFood.Items.OfType<FoodCell>()) {
+                if(foodCell != null
+                    && foodCell.FoodData != null
+                    && foodCell.FoodData.FoodId == foodId
+                    && foodCell.FoodData.ImageId == imageId) {
+                    foodCell.setImageFood(image);
+                }
+            }
         }
         public void reloadCategoryTableUI(bool isReloadFromServer = false, Action cbAfterReload = null) {
             if (isReloadFromServer) {
@@ -216,12 +237,12 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
             TextBox textBoxName = (TextBox)sender;
             string filterText = textBoxName.Text;
 
-            ICollectionView cv = CollectionViewSource.GetDefaultView(DataGridFood.ItemsSource);
+            ICollectionView cv = CollectionViewSource.GetDefaultView(LVFood.ItemsSource);
             cv.Filter = o => {
                 /* change to get data row value */
-                FoodTable p = o as FoodTable;
+                FoodCell p = o as FoodCell;
                 if (!string.IsNullOrEmpty(filterText)) {
-                    return (p.Name.ToUpper().Contains(filterText.ToUpper()) || p.Category.ToUpper().Contains(filterText.ToUpper()));
+                    return (p.TextBlockName.Text.ToUpper().Contains(filterText.ToUpper()) || p.TextBlockCategory.Text.ToUpper().Contains(filterText.ToUpper()));
                 } else {
                     return true;
                 }
@@ -246,58 +267,14 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                 reloadFoodTableUI(true);
             });
         }
-    }
-    class FoodTable : INotifyPropertyChanged {
-        private int id;
-        public int Id {
-            get { return this.id; }
-            set {
-                if (this.id != value) {
-                    this.id = value;
-                    this.NotifyPropertyChanged("Id");
-                }
-            }
-        }
-        private string name;
-        public string Name {
-            get { return this.name; }
-            set {
-                if (this.name != value) {
-                    this.name = value;
-                    this.NotifyPropertyChanged("Name");
-                }
-            }
-        }
-        private decimal price;
-        public decimal Price {
-            get { return this.price; }
-            set {
-                if (this.price != value) {
-                    this.price = value;
-                    this.NotifyPropertyChanged("Price");
-                }
-            }
-        }
-        private string category;
-        public string Category {
-            get { return this.category; }
-            set {
-                if (this.category != value) {
-                    this.category = value;
-                    this.NotifyPropertyChanged("Category");
-                }
-            }
-        }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propName) {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        private void DataGridCategory_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            if (DataGridCategory.SelectedItem != null) {
+                CategoryTable categoryTable = DataGridCategory.SelectedItem as CategoryTable;
+                WindownsManager.getInstance().showDetailFoodWithCategorizeWindow(this, categoryTable.Id);
+            }
         }
     }
-
-
     class CategoryTable : INotifyPropertyChanged {
         private int id;
         public int Id {
