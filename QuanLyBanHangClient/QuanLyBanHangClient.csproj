@@ -62,11 +62,17 @@
     <Compile Include="AppUserControl\Custom\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUserControl\Custom\ComboBoxRoundedImage.xaml.cs">
+      <DependentUpon>ComboBoxRoundedImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppUserControl\Custom\RadioListBox.xaml.cs">
       <DependentUpon>RadioListBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppUserControl\FoodTab\FoodCell.xaml.cs">
       <DependentUpon>FoodCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\FoodTab\FoodComboBoxItem.xaml.cs">
+      <DependentUpon>FoodComboBoxItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppUserControl\FoodTab\FoodTab.xaml.cs">
       <DependentUpon>FoodTab.xaml</DependentUpon>
@@ -75,11 +81,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AppUserControl\Custom\ComboBoxRoundedImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AppUserControl\Custom\RadioListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AppUserControl\FoodTab\FoodCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\FoodTab\FoodComboBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppUserControl\PrepareFoodTab\PrepareFoodCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\PrepareFoodTab\PrepareFoodTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +241,9 @@
     </Compile>
     <Compile Include="AppUserControl\PrepareFoodTab\PrepareFoodCell.xaml.cs">
       <DependentUpon>PrepareFoodCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\PrepareFoodTab\PrepareFoodTab.xaml.cs">
+      <DependentUpon>PrepareFoodTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
@@ -392,6 +413,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\prepare-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\yellow-dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\green-dot.png" />
+    <Resource Include="Resource\Image\orange-dot.png" />
+    <Resource Include="Resource\Image\red-dot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

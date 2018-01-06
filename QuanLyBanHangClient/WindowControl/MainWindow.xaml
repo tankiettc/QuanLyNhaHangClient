@@ -9,6 +9,7 @@
         xmlns:ingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.IngredientTab"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         xmlns:importingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab"
+        xmlns:preparefoodtab="clr-namespace:QuanLyBanHangClient.AppUserControl.PrepareFoodTab"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1100" MinHeight="770" Width="1100" Height="770">
     <Border BorderThickness="1" BorderBrush="Black">
@@ -115,6 +116,7 @@
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Trạng thái</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
+                        <preparefoodtab:PrepareFoodTab/>
                     </TabItem>
                 </TabControl>
             </DockPanel>

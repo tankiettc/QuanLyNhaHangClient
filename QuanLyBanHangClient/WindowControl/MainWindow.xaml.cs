@@ -5,6 +5,7 @@ using QuanLyBanHangClient.AppUserControl.ImportIngredientTab;
 using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
 using QuanLyBanHangClient.AppUserControl.IngredientTab;
 using QuanLyBanHangClient.AppUserControl.OrderTab;
+using QuanLyBanHangClient.AppUserControl.PrepareFoodTab;
 using QuanLyBanHangClient.Manager;
 using QuanLyBanHangClient.WindowControl;
 using System;
@@ -55,24 +56,34 @@ namespace QuanLyBanHangClient
             if(isReloading) {
                 return;
             }
-            if(TabItemIngredient.IsSelected
+            var tabPrepareFood = ((PrepareFoodTab)TabItemPrepareFood.Content);
+
+            if (TabItemIngredient.IsSelected
                 && IngredientManager.getInstance().IngredientList.Count <= 0) {
                 ((IngredientTab)(TabItemIngredient.Content)).reloadUnitTableUI(true, delegate () {
                     ((IngredientTab)(TabItemIngredient.Content)).reloadIngredientTableUI(true);
                 });
-            } else if(TabItemFood.IsSelected
+                tabPrepareFood.IsOpeningThisTab = false;
+            } else if (TabItemFood.IsSelected
                 && FoodManager.getInstance().FoodList.Count <= 0) {
                 ((FoodTab)(TabItemFood.Content)).reloadCategoryTableUI(true, delegate () {
                     ((FoodTab)(TabItemFood.Content)).reloadFoodTableUI(true);
                 });
-            } else if(TabItemOrder.IsSelected
+                tabPrepareFood.IsOpeningThisTab = false;
+            } else if (TabItemOrder.IsSelected
                 && TableManager.getInstance().TableList.Count <= 0) {
                 ((OrderAndTableTab)(TabItemOrder.Content)).reloadOrderUI(true, delegate () {
                     ((OrderAndTableTab)(TabItemOrder.Content)).reloadTableUI(true);
                 });
-            } else if(TabItemRespository.IsSelected) {
+                tabPrepareFood.IsOpeningThisTab = false;
+            } else if (TabItemRespository.IsSelected) {
                 var tabImportIngredient = ((ImportIngredientTab)TabItemRespository.Content).TabImportIngredient;
                 ((ImportTab)tabImportIngredient.Content).setupComboBoxIngredient();
+                tabPrepareFood.IsOpeningThisTab = false;
+            } else if (TabItemPrepareFood.IsSelected
+                && !tabPrepareFood.IsOpeningThisTab) {
+                tabPrepareFood.IsOpeningThisTab = true;
+                tabPrepareFood.reloadAndUpdateUI();
             }
         }
 

@@ -108,14 +108,18 @@
                             </DockPanel>
                             <DockPanel Grid.Column="1">
                                 <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách món ăn</TextBlock>
-                                <!--<DataGrid TextSearch.Text="Cơm" Name="DataGridFood" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" DockPanel.Dock="Bottom" SelectionChanged="DataGridFood_SelectionChanged">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                                        <DataGridTextColumn Header="Tên món" Binding="{Binding Name}" Width="2*"/>
-                                        <DataGridTextColumn Header="Giá" Binding="{Binding Price}"/>
-                                        <DataGridTextColumn Header="Loại món ăn" Binding="{Binding Category}" Width="*"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>-->
+                                <Grid Margin="5" DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="1.8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Hình ảnh</TextBlock>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Món ăn</TextBlock>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Giá</TextBlock>
+                                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Loại</TextBlock>
+                                </Grid>
                                 <ListView x:Name="LVFood" Background="Transparent" BorderBrush="#00ABADB3" Margin="0,5,0,0">
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">

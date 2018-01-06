@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyBanHangClient.WindowControl"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
+        xmlns:custom="clr-namespace:QuanLyBanHangClient.AppUserControl.Custom"
         mc:Ignorable="d"
         Title="Quản lý nhà hàng - Đăng nhập" Height="320" Width="500" ResizeMode="NoResize"  Background="{StaticResource MainSolidColor}" WindowStartupLocation="CenterScreen">
     <Grid>

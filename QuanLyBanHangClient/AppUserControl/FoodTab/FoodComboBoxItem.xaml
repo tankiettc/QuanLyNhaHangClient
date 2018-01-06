@@ -1,0 +1,15 @@
+﻿<UserControl Name="UserControlFoodCBB" x:Class="QuanLyBanHangClient.AppUserControl.FoodTab.FoodComboBoxItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.FoodTab"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="250">
+    <DockPanel>
+        <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" HorizontalAlignment="Left" Margin="0" Width="40" Height="40" Stretch="Fill"/>
+        <TextBlock Name="TextBlockName" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap">
+            3 - Bún đậu
+        </TextBlock>
+    </DockPanel>
+</UserControl>

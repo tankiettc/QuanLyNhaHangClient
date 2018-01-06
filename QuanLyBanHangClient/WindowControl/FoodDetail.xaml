@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyBanHangClient.WindowControl"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
+        xmlns:custom="clr-namespace:QuanLyBanHangClient.AppUserControl.Custom"
         mc:Ignorable="d"
-        Title="Thêm món ăn" Height="550" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
+        Title="Thêm món ăn" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
     <Grid x:Name="GridParent">
         <Grid Margin="0,45,0,0">
             <Grid.ColumnDefinitions>
@@ -16,8 +17,11 @@
             <StackPanel>
                 <DockPanel Margin="50,30,0,0">
                     <Button x:Name="BtnCopy" Template="{StaticResource BtnTemplate}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
-                    <ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>
-                    <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed">ID</TextBlock>
+                    <!--<ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>-->
+                    <custom:ComboBoxRoundedImage x:Name="ComboBoxFoodCopy" Margin="40,0,0,0" Width="295">
+                        
+                    </custom:ComboBoxRoundedImage>
+                    <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed" Foreground="White">ID</TextBlock>
                     <TextBox x:Name="TextBoxId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="50,15,0,0">

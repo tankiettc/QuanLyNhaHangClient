@@ -72,6 +72,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             textBlockTotal.Text = UtilFuction.formatMoney (newQuantity * _foodWithOrder.Food.Price);
             BtnEdit.IsEnabled = true;
             orderInfo.BtnAccept.Visibility = Visibility.Visible;
+            orderInfo.BtnCancel.Visibility = Visibility.Visible;
             orderInfo.onChangeMoney();
         }
     }

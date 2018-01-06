@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using QuanLyBanHangAPI.model;
+using QuanLyBanHangClient.AppUserControl.PrepareFoodTab;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,31 @@ namespace QuanLyBanHangClient.Manager
                 cbSuccessSent?.Invoke(networkResponse);
             };
             await RequestManager.getInstance().getAsync(
-                API_CONTROLLER,
+                API_CONTROLLER + "/prepare",
+                newCBSuccessSent,
+                cbError
+                );
+        }
+        public async Task setStatePrepareFoodAndUpdate(
+                    int prepareFoodId,
+                    PrepareFoodState newState,
+                    Action<NetworkResponse> cbSuccessSent = null,
+                    Action<string> cbError = null
+            ) {
+            Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
+                if (networkResponse.Successful) {
+                   PrepareFood prepareFood = JsonConvert.DeserializeObject<PrepareFood>(networkResponse.Data.ToString());
+                    _prepareFoodList[prepareFood.PrepareFoodId] = prepareFood;
+                }
+                cbSuccessSent?.Invoke(networkResponse);
+            };
+            KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+                new KeyValuePair<string, string>("prepareFoodId", prepareFoodId.ToString()),
+                new KeyValuePair<string, string>("prepareStateId", ((int)newState).ToString())
+            };
+            await RequestManager.getInstance().postAsync(
+                "/api/mobile/SetPrepareFoodTo",
+                keys,
                 newCBSuccessSent,
                 cbError
                 );

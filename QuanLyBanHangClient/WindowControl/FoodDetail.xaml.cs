@@ -77,15 +77,23 @@ namespace QuanLyBanHangClient.WindowControl {
                 BtnCopy.Visibility = Visibility.Collapsed;
                 ComboBoxFoodCopy.Visibility = Visibility.Collapsed;
             } else {
-                var foodNames = new List<ComboData>();
                 foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                     if (entry.Value != null) {
-                        foodNames.Add(new ComboData() { Id = entry.Key, Value = entry.Value.Name });
+                        string txt = entry.Value.FoodId + " - " + entry.Value.Name;
+                        var imgSrc = (ImageSource)Application.Current.FindResource("ImageDefaultFood");
+                        if(entry.Value.ImageId != null) {
+                            byte[] imgData = null;
+                            ImageManager.getInstance().loadImageFromLocal(entry.Value.ImageId ?? default(int) , out imgData);
+                            if(imgData != null) {
+                                var img = UtilFuction.ByteToImage(imgData);
+                                imgSrc = UtilFuction.imageToBitmapSource(img);
+                            }
+                        }
+                        var item = ComboBoxFoodCopy.addItem(txt, imgSrc);
+                        item.Tag = entry.Value.FoodId;
                     }
                 }
-                ComboBoxFoodCopy.ItemsSource = foodNames;
-                ComboBoxFoodCopy.DisplayMemberPath = "Value";
-                ComboBoxFoodCopy.SelectedValuePath = "Id";
+                ComboBoxFoodCopy.ComboBoxData.SelectedIndex = 0;
             }
         }
         private void setupUIWithFoodData(Food foodData) {
@@ -263,10 +271,10 @@ namespace QuanLyBanHangClient.WindowControl {
         }
 
         private void BtnCopy_Click(object sender, RoutedEventArgs e) {
-            if(ComboBoxFoodCopy.SelectedIndex < 0) {
+            if(ComboBoxFoodCopy.ComboBoxData.SelectedIndex < 0) {
                 return;
             }
-            var foodData = FoodManager.getInstance().FoodList[((ComboData)ComboBoxFoodCopy.SelectedItem).Id];
+            var foodData = FoodManager.getInstance().FoodList[(int)((ComboBoxItem)ComboBoxFoodCopy.ComboBoxData.SelectedItem).Tag];
             setupUIWithFoodData(foodData);
         }
 

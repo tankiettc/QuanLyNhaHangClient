@@ -81,6 +81,15 @@ namespace QuanLyBanHangClient.Manager {
             }
             return false;
         }
+        
+        public bool loadImageFromLocal(int imageId, out byte[] imageData) {
+            if(checkImageExistLocal(imageId)) {
+                imageData = _imagesData[imageId];
+                return true;
+            }
+            imageData = null;
+            return false;
+        }
         public async Task<bool> loadImage(
             int imageId,
             Action<byte[]> cb

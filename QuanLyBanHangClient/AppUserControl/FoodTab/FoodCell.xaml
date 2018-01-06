@@ -8,7 +8,6 @@
              d:DesignHeight="80" d:DesignWidth="500
              ">
     <Border BorderThickness="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

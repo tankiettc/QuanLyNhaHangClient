@@ -237,7 +237,7 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
             TextBox textBoxName = (TextBox)sender;
             string filterText = textBoxName.Text;
 
-            ICollectionView cv = CollectionViewSource.GetDefaultView(LVFood.ItemsSource);
+            ICollectionView cv = CollectionViewSource.GetDefaultView(LVFood.Items);
             cv.Filter = o => {
                 /* change to get data row value */
                 FoodCell p = o as FoodCell;
