@@ -59,7 +59,7 @@ namespace QuanLyBanHangClient.AppUserControl.PrepareFoodTab {
                 ComboBoxState.SelectedItem = ComboBoxState.Items[4];
                 ComboBoxState.IsEnabled = false;
             }
-            ComboBoxState.IsDropDownOpen = true;
+            //ComboBoxState.IsDropDownOpen = true;
             _isReloading = false;
         }
 

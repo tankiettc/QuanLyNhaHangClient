@@ -93,7 +93,6 @@ namespace QuanLyBanHangClient.WindowControl {
                         item.Tag = entry.Value.FoodId;
                     }
                 }
-                ComboBoxFoodCopy.ComboBoxData.SelectedIndex = 0;
             }
         }
         private void setupUIWithFoodData(Food foodData) {

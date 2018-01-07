@@ -37,7 +37,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             reloadAllUI();
         }
         public decimal billMoney = 0;
-        ObservableCollection<ComboData> FoodNamesComboBox;
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
@@ -96,7 +96,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
 
             BtnAccept.Visibility = Visibility.Hidden;
             BtnCancel.Visibility = Visibility.Hidden;
-            FoodNamesComboBox = new ObservableCollection<ComboData>();
+
             foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                 if (entry.Value != null) {
                     bool isContinue = false;
@@ -108,12 +108,22 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                     if(isContinue) {
                         continue;
                     }
-                    FoodNamesComboBox.Add(new ComboData() { Id = entry.Key, Value = entry.Value.Name });
+
+
+                    string txt = entry.Value.FoodId + " - " + entry.Value.Name;
+                    var imgSrc = (ImageSource)Application.Current.FindResource("ImageDefaultFood");
+                    if (entry.Value.ImageId != null) {
+                        byte[] imgData = null;
+                        ImageManager.getInstance().loadImageFromLocal(entry.Value.ImageId ?? default(int), out imgData);
+                        if (imgData != null) {
+                            var img = UtilFuction.ByteToImage(imgData);
+                            imgSrc = UtilFuction.imageToBitmapSource(img);
+                        }
+                    }
+                    var item = ComboBoxSelectFood.addItem(txt, imgSrc);
+                    item.Tag = entry.Value.FoodId;
                 }
             }
-            ComboBoxSelectFood.ItemsSource = FoodNamesComboBox;
-            ComboBoxSelectFood.DisplayMemberPath = "Value";
-            ComboBoxSelectFood.SelectedValuePath = "Id";
             onChangeMoney();
 
 
@@ -123,17 +133,29 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             }
         }
         public void checkAndAddFoodIdToComboBox(int foodId) {
-            foreach(ComboData comboData in FoodNamesComboBox) {
-                if(comboData.Id == foodId) {
+            foreach(ComboBoxItem comboData in ComboBoxSelectFood.ComboBoxData.Items) {
+                if((int)comboData.Tag == foodId) {
                     return;
                 }
             }
-            FoodNamesComboBox.Add(new ComboData() { Id = foodId, Value = FoodManager.getInstance().FoodList[foodId].Name });
+            var foodData = FoodManager.getInstance().FoodList[foodId];
+            string txt = foodData.FoodId + " - " + foodData.Name;
+            var imgSrc = (ImageSource)Application.Current.FindResource("ImageDefaultFood");
+            if (foodData.ImageId != null) {
+                byte[] imgData = null;
+                ImageManager.getInstance().loadImageFromLocal(foodData.ImageId ?? default(int), out imgData);
+                if (imgData != null) {
+                    var img = UtilFuction.ByteToImage(imgData);
+                    imgSrc = UtilFuction.imageToBitmapSource(img);
+                }
+            }
+            var item = ComboBoxSelectFood.addItem(txt, imgSrc);
+            item.Tag = foodData.FoodId;
         }
         public void checkAndRemoveFoodIdToComboBox(int foodId) {
-            foreach (ComboData comboData in FoodNamesComboBox) {
-                if (comboData.Id == foodId) {
-                    FoodNamesComboBox.Remove(comboData);
+            foreach (ComboBoxItem comboData in ComboBoxSelectFood.ComboBoxData.Items) {
+                if ((int)comboData.Tag == foodId) {
+                    ComboBoxSelectFood.ComboBoxData.Items.Remove(comboData);
                     return;
                 }
             }
@@ -178,11 +200,11 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
 
         private void BtnConfirmAdd_Click(object sender, RoutedEventArgs e) {
             var quantity = 0;
-            if(ComboBoxSelectFood.SelectedIndex < 0
+            if(ComboBoxSelectFood.ComboBoxData.SelectedIndex < 0
                 || !int.TryParse(TextBoxQuantity.Text, out quantity)) {
                 return;
             }
-            var foodId = ((ComboData)ComboBoxSelectFood.SelectedItem).Id;
+            var foodId = (int)((ComboBoxItem)ComboBoxSelectFood.ComboBoxData.SelectedItem).Tag;
             listViewOrderWithFood.Items.Add(new OrderWithFood(new FoodWithOrder {
                 Food = FoodManager.getInstance().FoodList[foodId],
                 FoodId = foodId,

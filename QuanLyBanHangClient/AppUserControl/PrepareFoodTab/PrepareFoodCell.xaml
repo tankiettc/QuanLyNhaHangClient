@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.PrepareFoodTab"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="500">
+             d:DesignHeight="60" d:DesignWidth="550">
     <Grid x:Name="GridParent">
         <Grid.Resources>
             <ImageSource x:Key="ImageSourceGreenDot">/Resource/Image/green-dot.png</ImageSource>
@@ -26,35 +26,36 @@
                 <TextBlock x:Name="TextBlockTableId" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="1" TextDecorations="{x:Null}" Width="70" TextAlignment="Center" />
                 <DockPanel Grid.Column="3">
                     <Image x:Name="ImageState" Source="{StaticResource ImageSourceGreenDot}" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill" Visibility="Collapsed"/>
-                    <ComboBox x:Name="ComboBoxState"  Style="{StaticResource ComboBoxRounded}" Margin="5" SelectedIndex="0" SelectionChanged="ComboBoxState_SelectionChanged" MinWidth="100" Width="120">
+                    <ComboBox x:Name="ComboBoxState"  Style="{StaticResource ComboBoxRounded}" Margin="5" SelectedIndex="0" SelectionChanged="ComboBoxState_SelectionChanged" MinWidth="100" Width="140" HorizontalContentAlignment="Stretch">
+
                         <ComboBoxItem Style="{StaticResource ComboBoxItemRoundedStyle}" HorizontalContentAlignment="Stretch">
-                            <DockPanel>
+                            <DockPanel Margin="0,0,30,0">
                                 <Image Source="/Resource/Image/red-dot.png" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill"/>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Chờ nấu" DockPanel.Dock="Right"/>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Chờ nấu" DockPanel.Dock="Right" Width="100" HorizontalAlignment="Center" TextAlignment="Center"/>
                             </DockPanel>
                         </ComboBoxItem>
                         <ComboBoxItem Style="{StaticResource ComboBoxItemRoundedStyle}" HorizontalContentAlignment="Stretch">
                             <DockPanel>
                                 <Image Source="/Resource/Image/orange-dot.png" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill"/>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Đang nấu" DockPanel.Dock="Right"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,30,0" TextWrapping="Wrap" Text="Đang nấu" DockPanel.Dock="Right" TextAlignment="Center" Width="100"/>
                             </DockPanel>
                         </ComboBoxItem>
                         <ComboBoxItem Style="{StaticResource ComboBoxItemRoundedStyle}" HorizontalContentAlignment="Stretch">
                             <DockPanel>
                                 <Image Source="/Resource/Image/yellow-dot.png" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill"/>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Đã nấu xong" DockPanel.Dock="Right"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,30,0" TextWrapping="Wrap" Text="Đã nấu xong" DockPanel.Dock="Right" TextAlignment="Center" Width="100"/>
                             </DockPanel>
                         </ComboBoxItem>
                         <ComboBoxItem Style="{StaticResource ComboBoxItemRoundedStyle}" HorizontalContentAlignment="Stretch">
                             <DockPanel>
                                 <Image Source="/Resource/Image/green-dot.png" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill"/>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Đã phục vụ" DockPanel.Dock="Right"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,30,0" TextWrapping="Wrap" Text="Đã phục vụ" DockPanel.Dock="Right" TextAlignment="Center" Width="100"/>
                             </DockPanel>
                         </ComboBoxItem>
                         <ComboBoxItem Style="{StaticResource ComboBoxItemRoundedStyle}" HorizontalContentAlignment="Stretch">
                             <DockPanel>
                                 <Image Source="/Resource/Image/Button-Blank-Gray-icon.png" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill"/>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Đã hủy" DockPanel.Dock="Right"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,30,0" TextWrapping="Wrap" Text="Đã hủy" DockPanel.Dock="Right" TextAlignment="Center" Width="100"/>
                             </DockPanel>
                         </ComboBoxItem>
                     </ComboBox>

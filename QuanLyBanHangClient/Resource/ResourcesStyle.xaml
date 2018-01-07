@@ -313,7 +313,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="FontSize" Value="13" />
         <Setter Property="MinWidth" Value="150"/>
-        <Setter Property="MinHeight" Value="35"/>
+        <Setter Property="MinHeight" Value="25"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
@@ -338,7 +338,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             Margin="10,3,30,3"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Stretch" />
                         <TextBox x:Name="PART_EditableTextBox"
                             Style="{x:Null}"
                             Template="{StaticResource ComboBoxTextBox}"

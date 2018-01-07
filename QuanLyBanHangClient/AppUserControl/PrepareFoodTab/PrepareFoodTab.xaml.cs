@@ -78,13 +78,14 @@ namespace QuanLyBanHangClient.AppUserControl.PrepareFoodTab
             }
             reloadAndUpdateUI();
         }
-        public void reloadAndUpdateUI() {
+        public void reloadAndUpdateUI(bool isShowLoading = false) {
             if(reloadTimer == null
                 || IsChangingState) {
                 return;
             }
             reloadTimer.Stop();
-            RequestManager.getInstance().showLoading();
+            if(isShowLoading)
+                RequestManager.getInstance().showLoading();
             PrepareFoodManager.getInstance().getAllPrepareFoodFromServerAndUpdate(
                 delegate (NetworkResponse rs) {
                     if (rs.Successful) {
@@ -122,11 +123,11 @@ namespace QuanLyBanHangClient.AppUserControl.PrepareFoodTab
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e) {
-            reloadAndUpdateUI();
+            reloadAndUpdateUI(true);
         }
 
         private void ComboBoxState_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            reloadAndUpdateUI();
+            reloadAndUpdateUI(true);
         }
     }
 }
