@@ -108,6 +108,26 @@ namespace QuanLyBanHangClient
 
             return bitmapSource;
         }
+        public static string Utf8ToUtf16(string utf8String) {
+            // Get UTF-8 bytes by reading each byte with ANSI encoding
+            byte[] utf8Bytes = Encoding.Default.GetBytes(utf8String);
+
+            // Convert UTF-8 bytes to UTF-16 bytes
+            byte[] utf16Bytes = Encoding.Convert(Encoding.UTF8, Encoding.Unicode, utf8Bytes);
+
+            // Return UTF-16 bytes as UTF-16 string
+            return Encoding.Unicode.GetString(utf16Bytes);
+        }
+        public static string DecodeFromUtf8(string utf8String) {
+            // copy the string as UTF-8 bytes.
+            byte[] utf8Bytes = new byte[utf8String.Length];
+            for (int i = 0; i < utf8String.Length; ++i) {
+                //Debug.Assert( 0 <= utf8String[i] && utf8String[i] <= 255, "the char must be in byte's range");
+                utf8Bytes[i] = (byte)utf8String[i];
+            }
+
+            return Encoding.UTF8.GetString(utf8Bytes, 0, utf8Bytes.Length);
+        }
     }
     public class ComboData {
         public int Id { get; set; }

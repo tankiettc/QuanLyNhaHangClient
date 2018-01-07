@@ -165,6 +165,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AppUserControl\ReportTab\Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppUserControl\ReportTab\ReportMainTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowControl\CategorizeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -245,6 +253,12 @@
     <Compile Include="AppUserControl\PrepareFoodTab\PrepareFoodTab.xaml.cs">
       <DependentUpon>PrepareFoodTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUserControl\ReportTab\Chart.xaml.cs">
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserControl\ReportTab\ReportMainTab.xaml.cs">
+      <DependentUpon>ReportMainTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="Manager\FoodCategorizeManager.cs" />
     <Compile Include="Manager\FoodManager.cs" />
@@ -269,8 +283,10 @@
     <Compile Include="Model\IngredientWithFood.cs" />
     <Compile Include="Model\IngredientWithImportBill.cs" />
     <Compile Include="Model\IngredientWithReport.cs" />
+    <Compile Include="Model\Log.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PrepareFood.cs" />
+    <Compile Include="Model\ReportModel.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />

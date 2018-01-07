@@ -114,11 +114,55 @@ namespace QuanLyBanHangClient.AppUserControl.Custom {
 
         private void ComboBoxData_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key >= Key.Space && e.Key <= Key.Z) {
-                TextBoxSearch.Text += e.Key.ToString();
+
+                var ch = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+                var caret = TextBoxSearch.CaretIndex;
+                //TextBoxSearch.Text.Insert(caret, ch.ToString());
+                //TextBoxSearch.Text += e.Key.ToString();
+
+                TextBoxSearch.AppendText(ch.ToString());
+
+                //var val = Encoding.Default.GetString(Encoding.Convert(Encoding.Unicode, Encoding.Default, unicode.GetBytes(TextBoxSearch.Text)));
+
+                //byte[] bytes = Encoding.UTF8.GetBytes(UniCodeFeld1.Text);
+                //Encoding enc = Encoding.GetEncoding("Windows-1252");
+                //string asd = enc.GetString();
             } else if(e.Key == Key.Back
                 && !TextBoxSearch.Text.Equals("")) {
                 TextBoxSearch.Text = TextBoxSearch.Text.Substring(0, TextBoxSearch.Text.Length - 1);
             }
+
+            //var ch = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+            //if (!char.IsLetter(ch)) { return; }
+
+            //bool upper = false;
+            //if (Keyboard.IsKeyToggled(Key.Capital) || Keyboard.IsKeyToggled(Key.CapsLock)) {
+            //    upper = !upper;
+            //}
+            //if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)) {
+            //    upper = !upper;
+            //}
+            //if (!upper) {
+            //    ch = char.ToLower(ch);
+            //}
+
+            //var box = TextBoxSearch;
+            //var text = box.Text;
+            //var caret = box.CaretIndex;
+
+            ////string urdu = AsciiToUrdu(e.Key);
+            //byte[] bytes = Encoding.UTF8.GetBytes(ch);
+            //Encoding enc = Encoding.GetEncoding("Windows-1258");
+            //string asd = enc.GetString();
+
+            ////string urdu = ASCIIEncoding.  (ch);
+
+            ////Update the TextBox' text..
+            //box.Text = text.Insert(caret, urdu);
+            ////..move the caret accordingly..
+            //box.CaretIndex = caret + urdu.Length;
+            ////..and make sure the keystroke isn't handled again by the TextBox itself:
+            //e.Handled = true;
         }
     }
 }
