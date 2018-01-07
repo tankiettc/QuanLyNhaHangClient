@@ -84,6 +84,8 @@ namespace QuanLyBanHangClient
                 && !tabPrepareFood.IsOpeningThisTab) {
                 tabPrepareFood.IsOpeningThisTab = true;
                 tabPrepareFood.reloadAndUpdateUI();
+            } else if(TabItemReport.IsSelected) {
+                tabPrepareFood.IsOpeningThisTab = false;
             }
         }
 

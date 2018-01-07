@@ -10,8 +10,9 @@
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         xmlns:importingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab"
         xmlns:preparefoodtab="clr-namespace:QuanLyBanHangClient.AppUserControl.PrepareFoodTab"
+        xmlns:reporttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ReportTab"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1100" MinHeight="770" Width="1100" Height="770">
+        Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1200" MinHeight="770" Width="1200" Height="770">
     <Border BorderThickness="1" BorderBrush="Black">
         <Grid>
             <Image Source="/Resource/Image/smoke.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,100,0" Width="300"/>
@@ -117,6 +118,15 @@
                             </StackPanel>
                         </TabItem.Header>
                         <preparefoodtab:PrepareFoodTab/>
+                    </TabItem>
+                    <TabItem x:Name="TabItemReport">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Width="50" Source="/Resource/Image/prepare-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Trạng thái</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <reporttab:ReportMainTab Height="Auto" Width="Auto" />
                     </TabItem>
                 </TabControl>
             </DockPanel>
