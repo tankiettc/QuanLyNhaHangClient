@@ -23,54 +23,29 @@ namespace QuanLyBanHangClient.AppUserControl.ReportTab
     /// </summary>
     public partial class Chart : UserControl
     {
+
         public Chart()
         {
             InitializeComponent();
-            List<Bar> _bar = new List<Bar>();
-            _bar.Add(new Bar() { BarName = "Rajesh", Value = 80 });
-            _bar.Add(new Bar() { BarName = "Suresh", Value = 60 });
-            _bar.Add(new Bar() { BarName = "Dan", Value = 40 });
-            _bar.Add(new Bar() { BarName = "Sevenx", Value = 67 });
-            _bar.Add(new Bar() { BarName = "Patel", Value = 15 });
-            _bar.Add(new Bar() { BarName = "Joe", Value = 70 });
-            _bar.Add(new Bar() { BarName = "Bill", Value = 90 });
-            _bar.Add(new Bar() { BarName = "Vlad", Value = 23 });
-            _bar.Add(new Bar() { BarName = "Steve", Value = 12 });
-            _bar.Add(new Bar() { BarName = "Pritam", Value = 100 });
-            _bar.Add(new Bar() { BarName = "Genis", Value = 54 });
-            _bar.Add(new Bar() { BarName = "Ponnan", Value = 84 });
-            _bar.Add(new Bar() { BarName = "Mathew", Value = 43 });
-            this.DataContext = new RecordCollection(_bar);
-
-            
-            //GridParent.RowDefinitions.Clear();
-
-            //for (int index = 0; index < _bar.Count; index++) {
-            //    GridParent.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-            //    UIElement child = GridParent.Children[index];
-
-            //    Grid.SetColumn(child, index);
-            //}
         }
 
-        private void Grid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-            int a = 5;
-            GridParent.RowDefinitions.Clear();
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (this.Tag != null)
+                {
+                    var items = (List<Bar>)this.Tag;
+                    var itemColWidth = this.Width / items.Count;
 
-            for (int index = 0; index < GridParent.Children.Count; index++) {
-                GridParent.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-                UIElement child = GridParent.Children[index];
-
-                Grid.SetColumn(child, index);
+                    this.DataContext = new RecordCollection(items);
+                    afgeqqw.Tag = itemColWidth;
+                }
             }
-        }
+            catch (Exception)
+            {
 
-        private void afgeqqw_Initialized(object sender, EventArgs e) {
-            int b = 7;
-        }
-
-        private void GridParent_LayoutUpdated(object sender, EventArgs e) {
-            int b = 7;
+            }
         }
     }
 
