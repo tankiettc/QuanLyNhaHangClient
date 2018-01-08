@@ -101,23 +101,23 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Food:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Tổng món ăn được đặt:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalFood" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Food Sold:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Tổng món ăn đã bán:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalFoodSold" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Processing FoodCancel:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Món ăn đang nấu bị hủy:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalProcessingFoodCancel" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Queue Food Cancel:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Món ăn đang chờ bị hủy:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalQueueFoodCancel" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Order:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Tổng số Order:</TextBlock>
                                             <TextBlock x:Name="TextBlocktotalOrder" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                     </Grid>
@@ -130,23 +130,23 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Pay Orde:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Tổng Order đã thanh toán:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalPayOrder" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Money Receive:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Tổng doanh thu:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalMoneyReceive" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Estimated Profit:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Lợi nhuận dự tính:</TextBlock>
                                             <TextBlock x:Name="TextBlockEstimatedProfit" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Estimated Total Food MoneyUse:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Doanh thu món ăn dự tính:</TextBlock>
                                             <TextBlock x:Name="TextBlockEstimatedTotalFoodMoneyUse" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Total Profit LossByCancelProcessingFood:</TextBlock>
+                                            <TextBlock FontWeight="Bold" Foreground="White" VerticalAlignment="Center">Doanh thu bị mất do hủy món ăn đang/đã nấu:</TextBlock>
                                             <TextBlock x:Name="TextBlockTotalProfitLossByCancelProcessingFood" Margin="20,0,0,0" FontWeight="Bold" Foreground="#FFF4FF00" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                         </StackPanel>
                                     </Grid>
