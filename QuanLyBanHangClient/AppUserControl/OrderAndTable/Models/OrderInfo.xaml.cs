@@ -34,6 +34,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             OrderId = orderId;
             orderTab = _orderTab;
             orderHistoryTab = _orderHistoryTab;
+            ComboBoxSelectFood.TextBoxSearch.FontSize = 11;
             reloadAllUI();
         }
         public decimal billMoney = 0;

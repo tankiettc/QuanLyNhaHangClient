@@ -90,7 +90,8 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
     <Style x:Key="BorderGreen" TargetType="Border">
         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
         <Setter Property="Padding" Value="2"/>
-        <Setter Property="Background" >
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" >
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
                     <GradientStop Color="#FFFF7D7D" Offset="0"/>
@@ -99,19 +100,48 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="BtnBorderStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="Border" Style="{StaticResource BorderGreen}" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFF0D7D7"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="BtnNotMouseOverEffectStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="Border" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{Binding Path=Background}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <ControlTemplate x:Key="BtnTemplate" TargetType="{x:Type Button}" >
         <Border Style="{StaticResource BorderGreen}">
             <Button Cursor="Hand" BorderBrush="Transparent" Background="White" Foreground="Black" FontWeight="Bold">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
-                    </Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFD4A6A6"/>
-                            </Trigger>
-                        </Style.Triggers>
                     </Style>
                 </Button.Resources>
                 <ContentPresenter Content="{TemplateBinding Content}"/>

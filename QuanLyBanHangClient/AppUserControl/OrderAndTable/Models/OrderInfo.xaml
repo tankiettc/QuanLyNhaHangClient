@@ -13,7 +13,7 @@
             <Border Width="550">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                        <GradientStop Color="#FF7F9C8F"/>
+                        <GradientStop Color="#FFE4466D"/>
                         <GradientStop Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
@@ -22,27 +22,32 @@
         </Expander.Header>
         <DockPanel>
             <Grid DockPanel.Dock="Bottom" Margin="0,10">
-                <Button x:Name="BtnAddFood" Width="140" Height="30" HorizontalAlignment="Left" Margin="70,0,0,0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="#00A9A9A9" Click="BtnAddFood_Click">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnAddFood" HorizontalAlignment="Left" Margin="0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="#00A9A9A9" Click="BtnAddFood_Click">
                     <StackPanel Orientation="Horizontal" Width="140">
-                        <Image Source="/Resource/Image/add-icon-4.png" Width="30" Margin="5,0,0,0"    />
-                        <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#FFF18527">Thêm món</TextBlock>
+                        <Image Source="/Resource/Image/add-icon-5.png" Width="30" Margin="5,0,0,0"    />
+                        <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline">Thêm món</TextBlock>
                     </StackPanel>
                 </Button>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0">
-                    <Button x:Name="BtnAccept" Template="{StaticResource BtnTemplate}" Width="70" Click="BtnAccept_Click" Margin="0,0,0,-0.1" FontSize="11">Xác nhận</Button>
-                    <Button x:Name="BtnCancel" Template="{StaticResource BtnTemplate}" Width="70" Click="BtnCancel_Click" Margin="10,0,0,-0.1" FontSize="11">Hủy bỏ</Button>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
+                    <Button x:Name="BtnAccept" Style="{StaticResource BtnBorderStyle}" Click="BtnAccept_Click" Margin="0,0,0,-0.1" FontSize="11" Width="120" Height="35">Xác nhận</Button>
+                    <Button x:Name="BtnCancel" Style="{StaticResource BtnBorderStyle}" Click="BtnCancel_Click" Margin="20,0,0,-0.1" FontSize="11" Width="100" Height="35">Hủy bỏ</Button>
                 </StackPanel>
-                <Border BorderBrush="{x:Null}" Height="26"  >
+                <Border Grid.Column="2" BorderBrush="{x:Null}" Height="26"  >
                     <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="#FFEAD732" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
                 </Border>
-                <Border x:Name="AddFoodGroup" Background="#FF7D4D4D" Margin="0,0,180,0" Height="30" Width="395" >
+                <Border Grid.Column="1" x:Name="AddFoodGroup" Background="#FF7D4D4D" Margin="10,0,1,0" Height="40" Visibility="Hidden" >
                     <StackPanel Orientation="Horizontal">
                         <!--<ComboBox x:Name="ComboBoxSelectFood" Style="{StaticResource ComboBoxFlatStyle}" Height="20" Width="180" FontSize="10"/>-->
-                        <custom:ComboBoxRoundedImage x:Name="ComboBoxSelectFood" Height="25" Width="180"/>
+                        <custom:ComboBoxRoundedImage x:Name="ComboBoxSelectFood" Height="30" Width="240"/>
                         <TextBlock VerticalAlignment="Center" Padding="0" Margin="5,0,0,0">x</TextBlock>
                         <TextBox x:Name="TextBoxQuantity" PreviewTextInput="NumberValidationTextBox"  Template="{StaticResource TextBoxRoundedTemplate}" Height="20" Width="50" Margin="2,0,0,0" FontSize="10" VerticalContentAlignment="Center">1</TextBox>
-                        <Button x:Name="BtnConfirmAdd" Template="{StaticResource BtnTemplate}" Width="50" Height="30" Margin="30,0,0,0" Click="BtnConfirmAdd_Click" FontSize="10">Thêm</Button>
-                        <Button x:Name="BtnConfirmExit" Template="{StaticResource BtnTemplate}" Width="50" Height="30" Margin="20,0,0,0" Click="BtnConfirmExit_Click" FontSize="10">Thoát</Button>
+                        <Button x:Name="BtnConfirmAdd" Style="{StaticResource BtnBorderStyle}" Width="50" Height="30" Margin="20,0,0,0" Click="BtnConfirmAdd_Click" FontSize="10">Thêm</Button>
+                        <Button x:Name="BtnConfirmExit" Style="{StaticResource BtnBorderStyle}" Width="50" Height="30" Margin="10,0,0,0" Click="BtnConfirmExit_Click" FontSize="10">Thoát</Button>
                     </StackPanel>
                 </Border>
             </Grid>

@@ -40,7 +40,7 @@
                 <CheckBox x:Name="CheckBoxKeepLogin" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="28,8,0,0" Background="White" Foreground="White" Checked="CheckBoxKeepLogin_Checked" Unchecked="CheckBoxKeepLogin_Unchecked">Tự động đăng nhập</CheckBox>
                 <TextBlock x:Name="TextBlockWarining" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" Foreground="#FFF4FF00" Visibility="Hidden">Mật khẩu không khớp, vui lòng nhập lại</TextBlock>
             </StackPanel>
-            <Button x:Name="BtnLogin" Template="{StaticResource BtnTemplate}" Grid.Row="2" Width="120" Height="40" Click="BtnLogin_Click">Đăng nhập</Button>
+            <Button x:Name="BtnLogin" Style="{StaticResource BtnBorderStyle}"  Grid.Row="2" Width="120" Height="40" Click="BtnLogin_Click">Đăng nhập</Button>
         </Grid>
         <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
             <controls:CircularProgressBar x:Name="progressBar"

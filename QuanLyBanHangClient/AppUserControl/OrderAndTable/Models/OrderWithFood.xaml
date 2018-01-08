@@ -8,26 +8,29 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="1.3*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <StackPanel  Orientation="Horizontal">
             <Button x:Name="BtnEdit" Background="#00DDDDDD" BorderBrush="#00707070"  Cursor="Hand" Click="BtnEdit_Click" Visibility="Hidden" Width="0" >
                 <Image Source="/Resource/Image/file_edit.png" Margin="4,0,0,0" Height="20" />
             </Button>
-            <Button x:Name="BtnRemove" Background="#00DDDDDD" BorderBrush="#00707070" Cursor="Hand" Click="BtnRemove_Click">
-                <Image Source="/Resource/Image/file_delete.png" Margin="10,0,0,0" Height="20" />
+            <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnRemove" Background="#00DDDDDD" BorderBrush="#00707070" Cursor="Hand" Click="BtnRemove_Click">
+                <Image Source="/Resource/Image/remove-food.png" Margin="10,0,0,0" Height="20" />
             </Button>
         </StackPanel>
         <TextBlock Grid.Column="1" Name="textBlockName" VerticalAlignment="Center" Foreground="White" >
             Cơm chiên xào tỏi
         </TextBlock>
         <StackPanel Grid.Column="2" Orientation="Horizontal">
-            <TextBlock  VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White">
+            <TextBlock x:Name="TextBlockSinglePrice" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0">
+                20,000VND
+            </TextBlock>
+            <TextBlock  VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White">
             x
             </TextBlock>
-            <TextBox x:Name="TextBoxQuantity" Width="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TextBoxQuantity_TextChanged" PreviewTextInput="NumberValidationTextBox" Margin="10,0,0,0">25</TextBox>
+            <TextBox Name="TextBoxQuantity" Template="{StaticResource TextBoxRoundedTemplate}" Width="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TextBoxQuantity_TextChanged" PreviewTextInput="NumberValidationTextBox" Margin="5,0,0,0">25</TextBox>
         </StackPanel>
         <TextBlock Grid.Column="3" Name="textBlockTotal"  VerticalAlignment="Center" Margin="0" Foreground="White" TextAlignment="Right" Width="100">
             30000

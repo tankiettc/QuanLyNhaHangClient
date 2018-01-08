@@ -39,6 +39,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             if (_foodWithOrder != null) {
                 textBlockName.Text = _foodWithOrder.Food.Name;
                 TextBoxQuantity.Text = _foodWithOrder.Quantities.ToString();
+                TextBlockSinglePrice.Text = UtilFuction.formatMoney(_foodWithOrder.Food.Price); 
                 textBlockTotal.Text = UtilFuction.formatMoney(_foodWithOrder.Quantities * _foodWithOrder.Food.Price);
                 previousQuantity = _foodWithOrder.Quantities;
             }

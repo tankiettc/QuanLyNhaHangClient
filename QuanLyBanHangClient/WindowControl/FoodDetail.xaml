@@ -16,7 +16,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel>
                 <DockPanel Margin="50,30,0,0">
-                    <Button x:Name="BtnCopy" Template="{StaticResource BtnTemplate}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
+                    <Button x:Name="BtnCopy" Style="{StaticResource BtnBorderStyle}" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
                     <!--<ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>-->
                     <custom:ComboBoxRoundedImage x:Name="ComboBoxFoodCopy" Margin="40,0,0,0" Width="295">
                         
@@ -54,12 +54,12 @@
                                 <TextBox x:Name="TextBoxQuantity" Template="{StaticResource TextBoxRoundedTemplate}" PreviewTextInput="NumberValidationTextBox" Width="60" HorizontalAlignment="Left"></TextBox>
                                 <TextBlock x:Name="TextBlockUnit" FontStyle="Italic" Margin="6,2,0,0" Text="Kilogram" TextWrapping="WrapWithOverflow" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
                             </StackPanel>
-                            <Button Template="{StaticResource BtnTemplate}" x:Name="BtnAdd" Margin="0,10,0,0" Click="BtnAdd_Click" >Thêm</Button>
-                            <Button Template="{StaticResource BtnTemplate}" x:Name="BtnRemove" Margin="0,30,0,0"  IsEnabled="False" Click="BtnRemove_Click">Xóa</Button>
+                            <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnAdd" Margin="0,10,0,0" Click="BtnAdd_Click" >Thêm</Button>
+                            <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnRemove" Margin="0,30,0,0"  IsEnabled="False" Click="BtnRemove_Click">Xóa</Button>
                         </StackPanel>
                     </DockPanel>
                 </Border>
-                <Button x:Name="BtnConfirm" Template="{StaticResource BtnTemplate}" Width="220" Height="50" FontSize="16" Margin="0,20,0,0" Click="BtnConfirm_Click" Content="Tạo mới" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+                <Button x:Name="BtnConfirm" Style="{StaticResource BtnBorderStyle}" Width="220" Height="50" FontSize="16" Margin="0,20,0,0" Click="BtnConfirm_Click" Content="Tạo mới" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" FontWeight="Bold" FontSize="14" Foreground="#FFFDFF00">Hình ảnh món ăn</TextBlock>
@@ -68,7 +68,7 @@
                         <Image x:Name="ImageFood" Width="176" Height="176" Source="{StaticResource ImageDefaultFood}"/>
                     </Border>
                 </Grid>
-                <Button Template="{StaticResource BtnTemplate}" x:Name="BtnPickImage" Margin="20,20,20,0"  Click="BtnPickImage_Click" Height="40">Chọn ảnh từ máy</Button>
+                <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnPickImage" Margin="20,20,20,0"  Click="BtnPickImage_Click" Height="40">Chọn ảnh từ máy</Button>
             </StackPanel>
         </Grid>
         <TextBlock x:Name="TextBlockTile" Margin="0,25,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" Foreground="White" TextAlignment="Center" VerticalAlignment="Top">

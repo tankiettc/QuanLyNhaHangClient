@@ -435,5 +435,11 @@
     <Resource Include="Resource\Image\orange-dot.png" />
     <Resource Include="Resource\Image\red-dot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\add-icon-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\remove-food.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

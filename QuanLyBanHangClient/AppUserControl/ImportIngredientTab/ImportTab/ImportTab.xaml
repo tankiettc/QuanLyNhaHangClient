@@ -20,14 +20,23 @@
                 <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Số lượng</TextBlock>
                 <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Tổng (VND)</TextBlock>
             </Grid>
-            <Button x:Name="BtnImport" DockPanel.Dock="Bottom" Height="40" Background="#FFF4FF00" FontWeight="Bold" FontSize="18" Margin="0,15,0,5" Click="BtnImport_Click">
-                 NHẬP - (Tổng cộng: 20,000 VND)
-            </Button>
+
+            <Grid DockPanel.Dock="Bottom">
+                <Border BorderBrush="White" Height="50" Padding="2" Margin="2" BorderThickness="1" >
+                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FFF4FF00" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
+                                    Thành tiền: 270000 VND
+                    </TextBlock>
+                </Border>
+                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806" Click="BtnImport_Click" FontWeight="Bold">
+                    NHẬP >>
+                </Button>
+            </Grid>
+            
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button x:Name="BtnAdd" Template="{StaticResource BtnTemplate}" Width="150" Click="BtnAdd_Click" Margin="0,0,50,0">
+                <Button x:Name="BtnAdd" Style="{StaticResource BtnBorderStyle}" Width="150" Click="BtnAdd_Click" Margin="0,0,50,0">
                     Thêm
                 </Button>
-                <Button x:Name="BtnClear" Template="{StaticResource BtnTemplate}" Width="200" Margin="50,0,0,0" Click="BtnClear_Click">
+                <Button x:Name="BtnClear" Style="{StaticResource BtnBorderStyle}" Width="200" Margin="50,0,0,0" Click="BtnClear_Click">
                     Xóa hết
                 </Button>
             </StackPanel>
@@ -38,7 +47,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="ComboBoxIngredient" Style="{StaticResource ComboBoxFlatStyle}" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
+                <ComboBox x:Name="ComboBoxIngredient" Style="{StaticResource ComboBoxRounded}" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
                 <StackPanel Grid.Column="1"  Orientation="Horizontal" Margin="40,0,0,0">
                     <TextBox  x:Name="TextBoxPrice" Template="{StaticResource TextBoxRoundedTemplate}" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxPrice_TextChanged" ></TextBox>
                     <TextBlock x:Name="TextBlockUnit" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Margin="10,0,0,0" Foreground="White"></TextBlock>

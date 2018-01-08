@@ -8,9 +8,13 @@
              d:DesignHeight="25" d:DesignWidth="300">
     <Grid>
         <ComboBox x:Name="ComboBoxData" Style="{StaticResource ComboBoxRounded}" SelectionChanged="ComboBoxData_SelectionChanged" Tag="False" KeyDown="ComboBoxData_KeyDown"/>
-        <DockPanel Margin="15,8,35,8">
-            <Image x:Name="ImageSearch" Source="/Resource/Image/green-dot.png" Margin="0" Width="14" Height="15" Stretch="Fill" Visibility="Hidden"/>
-            <TextBox Name="TextBoxSearch" Margin="0" Background="White" TextChanged="TextBoxSearch_TextChanged" BorderBrush="#00ABADB3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#000078D7" BorderThickness="0" DockPanel.Dock="Right" HorizontalAlignment="Center" TextWrapping="Wrap" >
+        <DockPanel Margin="10,3,30,3">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>-->
+            <Image x:Name="ImageSearch" Source="/Resource/Image/green-dot.png" Margin="0" Stretch="Fill" Width="16" Height="16" Visibility="Hidden"/>
+            <TextBox Grid.Column="1" Name="TextBoxSearch" Margin="0" Background="White" TextChanged="TextBoxSearch_TextChanged" BorderBrush="#00ABADB3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionBrush="#000078D7" BorderThickness="0" DockPanel.Dock="Right" TextWrapping="Wrap" >
                 ...
             </TextBox>        
         </DockPanel>

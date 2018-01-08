@@ -35,15 +35,18 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             }
             ComboBoxIngredient.Items.Clear();
 
-            var ingredientsName = new List<ComboData>();
+            var ingredientsName = new List<ComboBoxItem>();
             foreach (KeyValuePair<int, Ingredient> entry in IngredientManager.getInstance().IngredientList) {
                 if (entry.Value != null) {
-                    ingredientsName.Add(new ComboData() { Id = entry.Key, Value = entry.Value.Name });
+                    var item = new ComboBoxItem();
+                    item.Tag = entry.Key;
+                    item.Content = entry.Value.Name;
+                    item.Style = (Style)Application.Current.FindResource("ComboBoxItemRoundedStyle");
+
+                    ingredientsName.Add(item);
                 }
             }
             ComboBoxIngredient.ItemsSource = ingredientsName;
-            ComboBoxIngredient.DisplayMemberPath = "Value";
-            ComboBoxIngredient.SelectedValuePath = "Id";
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
@@ -54,7 +57,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             if(ComboBoxIngredient.SelectedIndex < 0) {
                 return;
             }
-            var unitId = IngredientManager.getInstance().IngredientList[((ComboData)ComboBoxIngredient.SelectedItem).Id].UnitId;
+            var unitId = IngredientManager.getInstance().IngredientList[(int)((ComboBoxItem)ComboBoxIngredient.SelectedItem).Tag].UnitId;
             TextBlockUnit.Text = " / 1 " + UnitManager.getInstance().UnitList[unitId].Name;
         }
         private void checkAndReloadTotal() {
@@ -74,7 +77,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                 ingredientWithImportBillList.Add(importIngredientCell._ingredientWithImportBill);
                 totalBill += (importIngredientCell._ingredientWithImportBill.SinglePricePerUnit * (decimal)importIngredientCell._ingredientWithImportBill.Quantities);
             }
-            BtnImport.Content = "NHẬP - (Tổng cộng: " + UtilFuction.formatMoney(totalBill) + ")";
+            TextBlockTotal.Text = "Tổng cộng: " + UtilFuction.formatMoney(totalBill) + " VND";
         }
         private void TextBoxPrice_TextChanged(object sender, TextChangedEventArgs e) {
             checkAndReloadTotal();
@@ -97,7 +100,7 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             decimal price = 0;
             decimal.TryParse(TextBoxPrice.Text, out price);
 
-            var ingredientId = ((ComboData)ComboBoxIngredient.SelectedItem).Id;
+            var ingredientId = (int)((ComboBoxItem)ComboBoxIngredient.SelectedItem).Tag;
 
             var importIngredientWithBill = new IngredientWithImportBill();
             importIngredientWithBill.IngredientId = ingredientId;

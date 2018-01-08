@@ -148,8 +148,8 @@
                         <StackPanel x:Name="BtnShowBtnsAccount1" MouseUp="BtnShowBtnsAccount1_MouseUp" Cursor="Hand" Background="#02000000"></StackPanel>
                     </Grid>
                 </Border>
-                <Button x:Name="BtnChangePass" Template="{StaticResource BtnTemplate}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
-                <Button x:Name="BtnLogout" Template="{StaticResource BtnTemplate}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnLogout_Click">Đăng xuất</Button>
+                <Button x:Name="BtnChangePass" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
+                <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnLogout_Click">Đăng xuất</Button>
             </StackPanel>
             <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
                 <controls:CircularProgressBar x:Name="progressBar"

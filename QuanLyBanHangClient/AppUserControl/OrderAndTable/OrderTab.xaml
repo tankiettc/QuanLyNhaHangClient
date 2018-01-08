@@ -53,7 +53,7 @@
                                     <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            <Button x:Name="BtnPay" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnPay_Click">
+                            <Button x:Name="BtnPay" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnPay_Click" Visibility="Hidden">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold" Text="Thanh toán" TextDecorations="Underline" FontSize="16"/>
                                     <Image Source="/Resource/Image/detail-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
@@ -70,7 +70,7 @@
                                     Thành tiền: 270000 VND
                                     </TextBlock>
                                 </Border>
-                                <Button x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806" Click="BtnPay_Click">
+                                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806" Click="BtnPay_Click" FontWeight="Bold">
                                     Thanh toán
                                 </Button>
                             </Grid>
