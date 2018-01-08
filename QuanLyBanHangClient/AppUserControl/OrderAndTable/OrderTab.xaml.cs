@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.WindowControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,23 +121,26 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
         }
 
         private void BtnPay_Click(object sender, RoutedEventArgs e) {
+            var orderList = new List<Order>();
             foreach (OrderInfo orderInfo in LVOrderInfo.Items.OfType<OrderInfo>()) {
-                if(orderInfo.BtnAccept.IsVisible) {
+                orderList.Add(OrderManager.getInstance().OrderList[orderInfo.OrderId]);
+                if (orderInfo.BtnAccept.IsVisible) {
                     WindownsManager.getInstance().showMessageBoxConfirm("Vui lòng xác nhận mọi thay đổi trước khi thanh toán.");
                     return;
                 }
             }
 
-            var result = WindownsManager.getInstance().showMessageBoxYesNoCustom("Bạn có muốn thanh toán các order của bàn này?");
-            if(result == MessageBoxResult.Yes) {
+            var exportWindow = new ExportBillWindow(orderList, delegate () {
                 Action pay = null;
                 pay = delegate () {
-                    if(LVOrderInfo.Items.Count > 0) {
+                    if (LVOrderInfo.Items.Count > 0) {
                         onPayOneOrder((OrderInfo)LVOrderInfo.Items[LVOrderInfo.Items.Count - 1], pay);
                     }
                 };
                 pay();
-            }
+            });
+            exportWindow.ShowDialog();
+
         }
 
         private void onPayOneOrder(OrderInfo orderInfo, Action cb) {

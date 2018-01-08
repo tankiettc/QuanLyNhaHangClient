@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         xmlns:custom="clr-namespace:QuanLyBanHangClient.AppUserControl.Custom"
         mc:Ignorable="d"
-        Title="Thêm món ăn" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
+        Title="Thêm món ăn" Height="570" Width="800" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="{StaticResource MainSolidColor}">
     <Grid x:Name="GridParent">
         <Grid Margin="0,45,0,0">
             <Grid.ColumnDefinitions>

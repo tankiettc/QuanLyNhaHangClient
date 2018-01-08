@@ -36,6 +36,8 @@ namespace QuanLyBanHangClient.WindowControl {
                 TextBoxId.Text = unitData.UnitId.ToString();
                 TextBoxName.Text = unitData.Name;
 
+                Title = "Chi tiết đơn vị";
+                TextBlockNameWindow.Text = "Chi tiết đơn vị";
                 BtnConfirm.Content = "Sửa";
             }
         }

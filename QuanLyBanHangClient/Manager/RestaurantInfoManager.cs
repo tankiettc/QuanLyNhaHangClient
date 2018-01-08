@@ -44,6 +44,7 @@ namespace QuanLyBanHangClient.Manager
             rsi.Name = "Your Restaurant Name";
             rsi.Phone = "Your Number Phone";
             rsi.Address = "Your Address";
+            rsi.Path = "";
             save(rsi);
             return rsi;
         }
@@ -62,6 +63,12 @@ namespace QuanLyBanHangClient.Manager
         }
         public void setAddess(string newAddress, bool isSave = true) {
             _info.Address = newAddress;
+            if (isSave) {
+                save(_info);
+            }
+        }
+        public void setPath(string newPath, bool isSave = true) {
+            _info.Path = newPath;
             if (isSave) {
                 save(_info);
             }

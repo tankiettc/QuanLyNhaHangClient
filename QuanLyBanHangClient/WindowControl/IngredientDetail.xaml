@@ -6,24 +6,36 @@
         xmlns:local="clr-namespace:QuanLyBanHangClient.WindowControl"
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         mc:Ignorable="d"
-        Title="IngredientDetail" Height="220
-" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Thêm nguyên liệu" Height="220
+" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{StaticResource MainSolidColor}" >
     <Grid>
 
-        <StackPanel Margin="0,30,0,0">
-            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
-                <TextBlock Width="83">Id</TextBlock>
-                <TextBox x:Name="TextBoxId" IsReadOnly="True" Width="160" Margin="20,0,0,0"></TextBox>
+        <StackPanel Margin="0,10,0,0">
+            <TextBlock x:Name="TextBlockNameWindow" Margin="0,5,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" Foreground="White" VerticalAlignment="Center" TextAlignment="Center">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                        <GradientStop Offset="0"/>
+                        <GradientStop Color="#FFBC4444" Offset="0.4"/>
+                        <GradientStop Color="#FFBC4444" Offset="0.6"/>
+                        <GradientStop Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+                    Thêm nguyên liệu
+            </TextBlock>
+
+            <StackPanel Orientation="Horizontal" Margin="15,10,0,0">
+                <TextBlock Width="83" Foreground="White">Id</TextBlock>
+                <TextBox Template="{StaticResource TextBoxRoundedTemplate}" x:Name="TextBoxId" IsReadOnly="True" Width="160" Margin="20,0,0,0"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="15,15,0,0">
-                <TextBlock Width="83">Tên nguyên liệu</TextBlock>
-                <TextBox x:Name="TextBoxName" Width="160" Margin="20,0,0,0"></TextBox>
+                <TextBlock Width="83" Foreground="White">Tên nguyên liệu</TextBlock>
+                <TextBox Template="{StaticResource TextBoxRoundedTemplate}" x:Name="TextBoxName" Width="160" Margin="20,0,0,0"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="15,15,0,0">
-                <TextBlock Width="83">Đơn vị</TextBlock>
-                <ComboBox x:Name="ComboBoxUnit" IsReadOnly="True" Width="160" Margin="20,0,0,0"></ComboBox>
+                <TextBlock Width="83" Foreground="White">Đơn vị</TextBlock>
+                <ComboBox Style="{StaticResource ComboBoxRounded}" x:Name="ComboBoxUnit" IsReadOnly="True" Width="160" Margin="20,0,0,0"></ComboBox>
             </StackPanel>
-            <Button x:Name="BtnConfirm" Height="30" Margin="0,15,0,0" Width="80" Click="BtnConfirm_Click" IsManipulationEnabled="True">
+            <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnConfirm" Height="30" Margin="0,15,0,0" Width="80" Click="BtnConfirm_Click" IsManipulationEnabled="True">
                 Tạo mới
             </Button>
         </StackPanel>

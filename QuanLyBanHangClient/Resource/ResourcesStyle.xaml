@@ -103,6 +103,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
     <Style x:Key="BtnBorderStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="White"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">

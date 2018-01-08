@@ -44,8 +44,6 @@ namespace QuanLyBanHangClient.Manager
                             order.FoodWithOrders = new List<FoodWithOrder>();
                         }
                         _orderList.Add(order.OrderId, order);
-                        //test
-                        //exportBillAsPdf("", null);
                     });
                 }
                 cbSuccessSent?.Invoke(networkResponse);
@@ -161,50 +159,54 @@ namespace QuanLyBanHangClient.Manager
         #endregion
 
         public void exportBillAsPdf(string path, Order order) {
-            int index = 0;
-            while(index < 100) {
-                if (OrderList.ContainsKey(index)) {
-                    order = OrderList[index];
-                    break;
-                }
-                index++;
-            }
             if(order == null) {
                 return;
             }
-            FileStream fs = new FileStream("F:" + "\\" + "First PDF document.pdf", FileMode.Create);
+            try {
+                FileStream fs = new FileStream(path + "\\Order" + order.OrderId.ToString() + ".pdf", FileMode.Create);
 
-            Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+                Document document = new Document(PageSize.A4, 25, 25, 30, 30);
 
-            PdfWriter writer = PdfWriter.GetInstance(document, fs);
-            document.Open();
+                PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                document.Open();
 
-            string orderStr = "Nhà hàng: " + RestaurantInfoManager.getInstance().Info.Name;
-            orderStr += "\n" + "Số điện thoại: " + RestaurantInfoManager.getInstance().Info.Phone;
-            orderStr += "\n" + "Địa chỉ: " + RestaurantInfoManager.getInstance().Info.Address;
-            orderStr += "\n" + "Thời điểm: " + DateTime.Now.ToString("H:mm:ss  dd/MM/yyyy");
+                string orderStr = "Nhà hàng: " + RestaurantInfoManager.getInstance().Info.Name;
+                orderStr += "\n" + "Số điện thoại: " + RestaurantInfoManager.getInstance().Info.Phone;
+                orderStr += "\n" + "Địa chỉ: " + RestaurantInfoManager.getInstance().Info.Address;
+                orderStr += "\n" + "Thời điểm: " + DateTime.Now.ToString("H:mm:ss  dd/MM/yyyy");
 
-            orderStr += "\n" + "             Hóa đơn bán hàng ";
-            foreach(FoodWithOrder foodWithOrder in order.FoodWithOrders) {
-                string strFoodName = foodWithOrder.Food.FoodId + "-" + foodWithOrder.Food.Name;
-                string strQuantity = foodWithOrder.Quantities.ToString();
-                string strFoodPrice = "x  " + foodWithOrder.Food.Price;
-                orderStr += "\n" 
-                    + strFoodName + UtilFuction.getSpacesFromQuantityChar(70, strFoodName) 
-                    + strQuantity + UtilFuction.getSpacesFromQuantityChar(10, strQuantity)
-                    + strFoodPrice + UtilFuction.getSpacesFromQuantityChar(20, strFoodPrice);
+                orderStr += "\n\n" + "             Hóa đơn bán hàng ";
+                foreach (FoodWithOrder foodWithOrder in order.FoodWithOrders) {
+                    string strFoodName = foodWithOrder.Food.FoodId + "-" + foodWithOrder.Food.Name;
+                    string strQuantity = foodWithOrder.Quantities.ToString();
+                    string strFoodPrice = "x  " + UtilFuction.formatMoney(foodWithOrder.Food.Price);
+                    orderStr += "\n"
+                        + strFoodName + UtilFuction.getSpacesFromQuantityChar(50, strFoodName)
+                        + strQuantity + UtilFuction.getSpacesFromQuantityChar(10, strQuantity)
+                        + strFoodPrice + UtilFuction.getSpacesFromQuantityChar(10, strFoodPrice);
+                }
+                string totalStr = "TỔNG CỘNG: ";
+                orderStr += "\n\n" + totalStr + UtilFuction.getSpacesFromQuantityChar(70, totalStr) + UtilFuction.formatMoney(order.BillMoney);
+
+                orderStr += "\n\n\n Nếu quý khách có nhu cầu xuất hóa đơn, \n xin liên hệ với chúng tôi trong ngày.";
+
+                iTextSharp.text.Font font = null;
+                try {
+                    var vini = BaseFont.CreateFont("c:/windows/fonts/aachenb.ttf", BaseFont.IDENTITY_H, true);
+                    font = new iTextSharp.text.Font(vini, 14);
+                } catch (Exception ex) {
+
+                }
+                if (font != null) {
+                    document.Add(new Paragraph(18, orderStr, font));
+                } else {
+                    document.Add(new Paragraph(16, orderStr, font));
+                }
+
+                document.Close();
+                fs.Close();
+            } catch(Exception ex) {
             }
-            string totalStr = "TỔNG CỘNG: ";
-            orderStr += "\n\n" + totalStr + UtilFuction.getSpacesFromQuantityChar(20, totalStr);
-
-            orderStr += "\n\n\n Nếu quý khách có nhu cầu xuất hóa đơn, \n xin liên hệ với chúng tôi trong ngày";
-
-            var vini = BaseFont.CreateFont("c:/windows/fonts/VnTime.ttf", BaseFont.IDENTITY_H, true);
-            var font = new iTextSharp.text.Font(vini, 16);
-            document.Add(new Paragraph(16, orderStr, font));
-
-            document.Close();
-            fs.Close();
         }
     }
 }

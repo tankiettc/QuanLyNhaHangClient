@@ -188,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowControl\ExportBillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowControl\FoodDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,6 +309,9 @@
     </Compile>
     <Compile Include="WindowControl\ChangeRestaurantInfoWindow.xaml.cs">
       <DependentUpon>ChangeRestaurantInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowControl\ExportBillWindow.xaml.cs">
+      <DependentUpon>ExportBillWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowControl\FoodDetail.xaml.cs">
       <DependentUpon>FoodDetail.xaml</DependentUpon>

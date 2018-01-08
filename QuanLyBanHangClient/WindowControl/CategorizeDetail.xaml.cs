@@ -36,6 +36,8 @@ namespace QuanLyBanHangClient.WindowControl
                 TextBoxId.Text = foodWithCategorizeData.FoodCategorizeId.ToString();
                 TextBoxName.Text = foodWithCategorizeData.Name;
 
+                this.Title = "Chi tiết loại món";
+                TextBlockNameWindow.Text = "Chi tiết loại món";
                 BtnConfirm.Content = "Sửa";
             }
         }

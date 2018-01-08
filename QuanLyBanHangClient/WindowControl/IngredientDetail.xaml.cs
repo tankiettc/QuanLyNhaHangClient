@@ -49,6 +49,8 @@ namespace QuanLyBanHangClient.WindowControl {
                 TextBoxName.Text = ingredientData.Name;
 
                 ComboBoxUnit.SelectedValue = ingredientData.UnitId;
+                Title = "Chi tiết nguyên liệu";
+                TextBlockNameWindow.Text = "Chi tiết nguyên liệu";
                 BtnConfirm.Content = "Sửa";
             }
         }
