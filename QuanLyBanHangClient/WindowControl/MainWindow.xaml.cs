@@ -6,6 +6,7 @@ using QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab;
 using QuanLyBanHangClient.AppUserControl.IngredientTab;
 using QuanLyBanHangClient.AppUserControl.OrderTab;
 using QuanLyBanHangClient.AppUserControl.PrepareFoodTab;
+using QuanLyBanHangClient.AppUserControl.ReportTab;
 using QuanLyBanHangClient.Manager;
 using QuanLyBanHangClient.WindowControl;
 using System;
@@ -84,7 +85,10 @@ namespace QuanLyBanHangClient
                 && !tabPrepareFood.IsOpeningThisTab) {
                 tabPrepareFood.IsOpeningThisTab = true;
                 tabPrepareFood.reloadAndUpdateUI();
-            } else if(TabItemReport.IsSelected) {
+            } else if (TabItemReport.IsSelected) {
+                if (ReportManager.getInstance().ReportModel == null) {
+                    ((ReportMainTab)TabItemReport.Content).reloadUI();
+                }
                 tabPrepareFood.IsOpeningThisTab = false;
             }
         }
