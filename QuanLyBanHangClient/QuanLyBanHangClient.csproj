@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -180,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowControl\ChangeRestaurantInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowControl\FoodDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -263,6 +270,7 @@
     <Compile Include="Manager\PrepareFoodManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\ReportManager.cs" />
+    <Compile Include="Manager\RestaurantInfoManager.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Manager\TableManager.cs" />
     <Compile Include="Manager\IngredientManager.cs" />
@@ -284,6 +292,7 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PrepareFood.cs" />
     <Compile Include="Model\ReportModel.cs" />
+    <Compile Include="Model\RestaurantInfo.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />
@@ -292,6 +301,9 @@
     </Compile>
     <Compile Include="WindowControl\ChangePassWindow.xaml.cs">
       <DependentUpon>ChangePassWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowControl\ChangeRestaurantInfoWindow.xaml.cs">
+      <DependentUpon>ChangeRestaurantInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowControl\FoodDetail.xaml.cs">
       <DependentUpon>FoodDetail.xaml</DependentUpon>
@@ -341,6 +353,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resource\Font\VHELVCN.TTF" />
     <Resource Include="Resource\Font\74_14343_UVNKeChuyen1.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -350,12 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\cpg-foods-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\Image\food-icon.png" />
-    <Resource Include="Resource\Image\ingredient-icon.png" />
-    <Resource Include="Resource\Image\order-icon.png" />
-    <Resource Include="Resource\Image\respository-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\app-logo-1.png" />
@@ -425,9 +432,6 @@
     <Resource Include="Resource\Image\default-food-image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Image\prepare-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\Image\yellow-dot.png" />
   </ItemGroup>
   <ItemGroup>
@@ -440,6 +444,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\remove-food.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\info-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\numbers-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\food-icon.png" />
+    <Resource Include="Resource\Image\import-icon.png" />
+    <Resource Include="Resource\Image\ingredient-icon.png" />
+    <Resource Include="Resource\Image\order-icon.png" />
+    <Resource Include="Resource\Image\prepare-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,6 +7,7 @@
     <Application.Resources>
         <ResourceDictionary >
             <FontFamily x:Key="KeChuyen">pack://application:,,,/Resource/Font/#UVN Ke Chuyen1</FontFamily>
+            <FontFamily x:Key="Vini">pack://application:,,,/Resource/Font/#VNI-Helve-Condense</FontFamily>
             <ImageSource x:Key="ImageDefaultFood">/Resource/Image/default-food-image.jpg</ImageSource>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resource/StringResources.xaml" />

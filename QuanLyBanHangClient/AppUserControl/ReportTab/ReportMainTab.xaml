@@ -76,11 +76,12 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid>
-                                <Border BorderThickness="2" BorderBrush="White" CornerRadius="8">
-                                    <chartingToolkit:Chart  Name="LineChart1" Title="Department" Width="450" Margin="0">
-                                        <chartingToolkit:LineSeries  DependentValuePath="Value"
+                                <Border BorderThickness="2" BorderBrush="White" CornerRadius="8" Padding="2">
+                                    <chartingToolkit:Chart  Name="LineChart1" Title="Thống kê lượng order" Margin="0" Background="White">
+                                        <chartingToolkit:LineSeries  DependentValuePath="Value" Title="Số lượng"
             IndependentValuePath="Key" ItemsSource="{Binding}"
             IsSelectionEnabled="True"/>
+                                        
                                     </chartingToolkit:Chart>
                                 </Border>
                             </Grid>

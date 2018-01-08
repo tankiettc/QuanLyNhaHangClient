@@ -44,6 +44,7 @@ namespace QuanLyBanHangClient
                     ((FoodTab)(TabItemFood.Content)).reloadFoodTableUI(true, delegate() {
                         ((OrderAndTableTab)(TabItemOrder.Content)).reloadOrderUI(true, delegate () {
                             ((OrderAndTableTab)(TabItemOrder.Content)).reloadTableUI(true, delegate() {
+                                ((ReportMainTab)TabItemReport.Content).reloadUI();
                                 isReloading = false;
                             });
                         });
@@ -86,9 +87,6 @@ namespace QuanLyBanHangClient
                 tabPrepareFood.IsOpeningThisTab = true;
                 tabPrepareFood.reloadAndUpdateUI();
             } else if (TabItemReport.IsSelected) {
-                if (ReportManager.getInstance().ReportModel == null) {
-                    ((ReportMainTab)TabItemReport.Content).reloadUI();
-                }
                 tabPrepareFood.IsOpeningThisTab = false;
             }
         }
@@ -104,10 +102,11 @@ namespace QuanLyBanHangClient
             Close();
         }
 
-        private void BtnShowBtnsAccount1_MouseUp(object sender, MouseButtonEventArgs e) {
+
+        private void ButttonUser_Click(object sender, RoutedEventArgs e) {
             if (BtnChangePass.Visibility == Visibility.Visible) {
-                BtnChangePass.Visibility = Visibility.Hidden;
-                BtnLogout.Visibility = Visibility.Hidden;
+                BtnChangePass.Visibility = Visibility.Collapsed;
+                BtnLogout.Visibility = Visibility.Collapsed;
                 RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
                 ImageArrowAccount.LayoutTransform = rotateTransform;
             } else {
@@ -116,6 +115,11 @@ namespace QuanLyBanHangClient
                 RotateTransform rotateTransform = new RotateTransform(-90, 0.5, 0.5);
                 ImageArrowAccount.LayoutTransform = rotateTransform;
             }
+        }
+
+        private void BtnInfo_Click(object sender, RoutedEventArgs e) {
+            var window = new ChangeRestaurantInfoWindow();
+            window.ShowDialog();
         }
     }
 }

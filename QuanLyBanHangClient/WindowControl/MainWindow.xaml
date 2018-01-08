@@ -18,13 +18,7 @@
             <Image Source="/Resource/Image/smoke.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,100,0" Width="300"/>
             <DockPanel>
                 <Border DockPanel.Dock="Bottom" CornerRadius="8,0,0,8" BorderThickness="2,2,0,2" BorderBrush="{StaticResource MainSolidColor}" Margin="2,2,0,2">
-                    <TextBlock  FontWeight="Bold" Text="  Developed by DawningTeam - ©CopyRight 2017" >
-                        <TextBlock.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="8,8,8,8"/>
-                            </Style>
-                        </TextBlock.Resources>
-                    </TextBlock>
+                    <TextBlock  FontWeight="Bold" Text="  Developed by DawningTeam - ©CopyRight 2017" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0" />
                 </Border>
                 <TabControl x:Name="TabControlMain" TabStripPlacement="Top" BorderThickness="0" HorizontalContentAlignment="Center" DockPanel.Dock="Top" SelectionChanged="TabControlMain_SelectionChanged" >
                     <TabControl.Resources>
@@ -104,7 +98,7 @@
                     <TabItem x:Name="TabItemRespository">
                         <TabItem.Header>
                             <StackPanel>
-                                <Image Width="50" Source="/Resource/Image/respository-icon.png"/>
+                                <Image Width="50" Source="/Resource/Image/import-icon.png"/>
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Nhập hàng</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
@@ -113,7 +107,7 @@
                     <TabItem x:Name="TabItemPrepareFood">
                         <TabItem.Header>
                             <StackPanel>
-                                <Image Width="50" Source="/Resource/Image/prepare-icon.png"/>
+                                <Image Width="50" Source="/Resource/Image/prepare-icon.png" Height="50"/>
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Trạng thái</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
@@ -122,8 +116,8 @@
                     <TabItem x:Name="TabItemReport">
                         <TabItem.Header>
                             <StackPanel>
-                                <Image Width="50" Source="/Resource/Image/prepare-icon.png"/>
-                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Trạng thái</TextBlock>
+                                <Image Width="50" Source="/Resource/Image/numbers-icon.png"/>
+                                <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Báo cáo</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
                         <reporttab:ReportMainTab Height="Auto" Width="Auto" />
@@ -137,19 +131,22 @@
                     Restauran Manager
                 </TextBlock>
             </StackPanel>
-            <StackPanel Margin="20,88,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Border BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}" Width="150">
-                    <Grid x:Name="BtnShowBtnsAccount">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,0,0,0">Tài khoản:</TextBlock>
-                            <TextBlock FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="#FFECFF0B" Margin="10,0,0,0" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
-                            <Image x:Name="ImageArrowAccount" Source="/Resource/Image/arrow-down.png" Margin="10,2,0,0" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel x:Name="BtnShowBtnsAccount1" MouseUp="BtnShowBtnsAccount1_MouseUp" Cursor="Hand" Background="#02000000"></StackPanel>
-                    </Grid>
-                </Border>
-                <Button x:Name="BtnChangePass" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
-                <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="20,0,0,0" Visibility="Hidden" Click="BtnLogout_Click">Đăng xuất</Button>
+            <StackPanel Margin="20,83,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="ButttonUser" Style="{StaticResource BtnBorderStyle}" Click="ButttonUser_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="Black" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,0,0,0">Tài khoản:</TextBlock>
+                        <TextBlock FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Red" Margin="10,0,0,0" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
+                        <Image x:Name="ImageArrowAccount" Source="/Resource/Image/arrow-down.png" Margin="10,2,0,0" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="BtnChangePass" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
+                <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click">Đăng xuất</Button>
+                <Button x:Name="BtnInfo" Style="{StaticResource BtnBorderStyle}" Width="150" Margin="20,0,0,0" Click="BtnInfo_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resource/Image/info-icon.png" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20"/>
+                        <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Thông tin</TextBlock>
+                    </StackPanel>
+                </Button>
             </StackPanel>
             <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
                 <controls:CircularProgressBar x:Name="progressBar"

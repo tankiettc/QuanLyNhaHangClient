@@ -60,7 +60,7 @@ namespace QuanLyBanHangClient.AppUserControl.ReportTab
                     for(int j = 1; j <= 12; j++) {
                         var month = new DateTime(i, j, 1);
                         var monthTs = UtilFuction.GetTime(month);
-                        var startTs = UtilFuction.GetTime(rp.startDate);
+                        var startTs = UtilFuction.GetTime(rp.startDate) - TimeSpan.TicksPerDay * 31 * 10000;
                         var endTs = UtilFuction.GetTime(rp.endDate);
                         if (startTs <= monthTs && endTs >= monthTs) {
                             valuesByTimes[j.ToString("D2") + '/' + i.ToString()] = 0;
@@ -69,10 +69,10 @@ namespace QuanLyBanHangClient.AppUserControl.ReportTab
                 }
             } else { //ngay
                 chartTime = ChartTime.ChartByDate;
-                for (int i = rp.startDate.Year; i < rp.endDate.Year; i++) {
-                    for (int j = 1; j < 12; j++) {
+                for (int i = rp.startDate.Year; i <= rp.endDate.Year; i++) {
+                    for (int j = 1; j <= 12; j++) {
                         var totalDay = DateTime.DaysInMonth(i, j);
-                        for(int z = 1; z < totalDay; z++) {
+                        for(int z = 1; z <= totalDay; z++) {
                             var day = new DateTime(i, j, z);
                             var dayTs = UtilFuction.GetTime(day);
                             var startTs = UtilFuction.GetTime(rp.startDate);
@@ -167,11 +167,15 @@ namespace QuanLyBanHangClient.AppUserControl.ReportTab
 
         private void ComboxBoxDate_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             BtnFilterOrder.IsEnabled = false;
+            if(FilterDateGroup != null) {
+                FilterDateGroup.Visibility = Visibility.Hidden;
+            }
             if (ComboxBoxDate.SelectedIndex < 0) {
             } else if(ComboxBoxDate.SelectedIndex == 0
                 || ComboxBoxDate.SelectedIndex == 1) {
             } else {
                 BtnFilterOrder.IsEnabled = true;
+                FilterDateGroup.Visibility = Visibility.Visible;
             }
         }
 

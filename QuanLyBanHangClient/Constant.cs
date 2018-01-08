@@ -128,6 +128,16 @@ namespace QuanLyBanHangClient
 
             return Encoding.UTF8.GetString(utf8Bytes, 0, utf8Bytes.Length);
         }
+        public static string getSpacesFromQuantityChar(int totalChar, string currentStr) {
+            if(totalChar <= currentStr.Length) {
+                return "";
+            }
+            string rs = "";
+            for(int i = currentStr.Length; i < totalChar; i++) {
+                rs += " ";
+            }
+            return rs;
+        }
     }
     public class ComboData {
         public int Id { get; set; }

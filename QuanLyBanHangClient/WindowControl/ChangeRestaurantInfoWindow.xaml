@@ -1,0 +1,44 @@
+﻿<Window x:Class="QuanLyBanHangClient.WindowControl.ChangeRestaurantInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHangClient.WindowControl"
+        mc:Ignorable="d"
+        Title="Thông tin nhà hàng" Height="300" Width="600" Background="{StaticResource MainSolidColor}">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.3*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0,5,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" Foreground="White" VerticalAlignment="Center" TextAlignment="Center">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                        <GradientStop Offset="0"/>
+                        <GradientStop Color="#FFBC4444" Offset="0.4"/>
+                        <GradientStop Color="#FFBC4444" Offset="0.6"/>
+                        <GradientStop Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+                    Thông tin nhà hàng
+            </TextBlock>
+            <StackPanel Grid.Row="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
+                    <TextBlock Foreground="White" FontWeight="Bold" Width="120">Tên nhà hàng :</TextBlock>
+                    <TextBox x:Name="TextBoxName" Template="{StaticResource TextBoxRoundedTemplate}" Width="250" MaxLength="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock Foreground="White" FontWeight="Bold" Width="120">Số điện thoại:</TextBlock>
+                    <TextBox x:Name="TextBoxPhone" Template="{StaticResource TextBoxRoundedTemplate}" Width="250" MaxLength="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock Foreground="White" FontWeight="Bold" Width="120">Địa chỉ:</TextBlock>
+                    <TextBox x:Name="TextBoxAddress" Template="{StaticResource TextBoxRoundedTemplate}" Width="250" MaxLength="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="BtnConfirm" Style="{StaticResource BtnBorderStyle}" Grid.Row="2" Width="120" Height="40" Margin="0,0,0,10" Click="BtnConfirm_Click">Cập nhật</Button>
+        </Grid>
+    </Grid>
+</Window>
